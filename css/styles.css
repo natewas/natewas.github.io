@@ -907,13 +907,18 @@ nav ul li a:hover {
 /* Media Query for Mobile */
 @media screen and (max-width: 768px) {
     nav ul {
-        display: none;
+        display: none; /* Hide menu by default */
         flex-direction: column;
         width: 100%;
         background-color: #333;
         position: absolute;
         top: 60px;
         left: 0;
+        padding: 0;
+        margin: 0;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
     }
 
     nav ul li {
@@ -930,7 +935,12 @@ nav ul li a:hover {
         display: flex;
     }
 
+    /* When menu is active, show the menu */
     nav ul.show {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
         display: flex;
     }
 }
+
