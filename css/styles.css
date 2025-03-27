@@ -903,8 +903,21 @@ nav ul li a:hover {
     background-color: white;
     margin: 3px 0;
 }
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-/* Media Query for Mobile */
+/* Show flex layout only on larger screens */
+@media screen and (min-width: 769px) {
+    nav ul {
+        display: flex;
+        gap: 1rem;
+    }
+}
+
+/* Hide by default for mobile */
 @media screen and (max-width: 768px) {
     nav ul {
         display: none; /* Hide menu by default */
@@ -916,31 +929,14 @@ nav ul li a:hover {
         left: 0;
         padding: 0;
         margin: 0;
-        transition: all 0.3s ease-in-out;
         opacity: 0;
         visibility: hidden;
+        transition: all 0.3s ease-in-out;
     }
 
-    nav ul li {
-        text-align: center;
-        margin: 0;
-    }
-
-    nav ul li a {
-        padding: 15px;
-        display: block;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    /* When menu is active, show the menu */
     nav ul.show {
         display: flex;
         opacity: 1;
         visibility: visible;
-        display: flex;
     }
 }
-
