@@ -21,14 +21,14 @@
 
     <header class="navbar">
         <div class="logo"><a href="/">natewasden</a></div>
-
+    
         <!-- Hamburger Menu Icon -->
         <div class="menu-toggle" id="menu-toggle">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-
+    
         <nav id="nav-menu">
             <ul>
                 <li><a href="/">Home</a></li>
@@ -40,18 +40,19 @@
             </ul>
         </nav>
     </header>
+    
 
     <script>
-        // Toggle Menu Open/Close
         const menuToggle = document.getElementById("menu-toggle");
         const navMenu = document.getElementById("nav-menu");
-
+    
         menuToggle.addEventListener("click", () => {
+            console.log("Menu clicked!"); // This should log in the browser console
             navMenu.querySelector("ul").classList.toggle("show");
         });
-
-
     </script>
+    
+    
 
 </body>
 
