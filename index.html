@@ -11,48 +11,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('header.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
     
-                    // Wait for header to load before adding event listener
+                // Initialize menu toggle after header loads
+                setTimeout(() => {
                     const menuToggle = document.getElementById("menu-toggle");
                     const navMenu = document.getElementById("nav-menu");
     
                     if (menuToggle && navMenu) {
-                        menuToggle.addEventListener("click", () => {
-                            navMenu.classList.toggle("show"); // Toggle "show" on nav-menu
-                        });
+                        // Check to prevent multiple event listeners
+                        if (!menuToggle.dataset.listener) {
+                            menuToggle.addEventListener("click", () => {
+                                navMenu.classList.toggle("show"); // Toggle "show" class
+                            });
+                            menuToggle.dataset.listener = "true";
+                        }
                     } else {
                         console.error("Menu elements not found!");
                     }
-                })
-                .catch(error => {
-                    console.error("Error fetching header:", error);
-                });
+                }, 100); // Small delay to allow the header to load
+            })
+            .catch(error => {
+                console.error("Error fetching header:", error);
+            });
     
-            // Load footer
-            fetch('footer.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                })
-                .catch(error => {
-                    console.error("Error fetching footer:", error);
-                });
-        });
+        // Load footer
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error fetching footer:", error);
+            });
+    });
+    
     </script>
     
 </head>
