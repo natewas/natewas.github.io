@@ -11,24 +11,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <script>
-        fetch('./header.html')   <!-- First call -->
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-    </script>
-    
-    <script>
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('header.html')   <!-- Second call -->
+            fetch('header.html')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -37,11 +21,11 @@
                 })
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
-    
+
                     // Initialize menu toggle after header loads
                     const menuToggle = document.getElementById("menu-toggle");
                     const navMenu = document.getElementById("nav-menu");
-    
+
                     if (menuToggle && navMenu) {
                         menuToggle.addEventListener("click", () => {
                             navMenu.querySelector("ul").classList.toggle("show");
@@ -53,24 +37,32 @@
                 .catch(error => {
                     console.error("Error fetching header:", error);
                 });
+
+            // Load footer
+            fetch('footer.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error("Error fetching footer:", error);
+                });
         });
     </script>
-    
-
 </head>
 <body>
- 
-
     <!-- Placeholder for the header -->
     <div id="header-placeholder"></div>
-
-
-
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-buttons" >
+            <div class="hero-buttons">
                 <a href="solutions.html" class="btn">Solutions</a>
                 <a href="portfolio.html" class="btn">View Portfolio</a>
                 <a href="gallery.html" class="btn">View Woodworking Gallery</a>
@@ -78,14 +70,7 @@
         </div>
     </section>
 
-
-    
-
-    
-    
-
+    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
-
 </body>
 </html>
-
