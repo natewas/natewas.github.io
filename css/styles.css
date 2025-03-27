@@ -885,7 +885,7 @@ nav ul {
 /* Hide by default for mobile */
 @media screen and (max-width: 768px) {
     nav ul {
-        display: none; /* Hide menu by default */
+        display: none; /* Hide the menu by default */
         flex-direction: column;
         width: 100%;
         background-color: #333;
@@ -899,23 +899,28 @@ nav ul {
         transition: all 0.3s ease-in-out;
     }
 
-    .menu-toggle {
-        display: flex; /* Show hamburger on mobile */
-    }
-
+    /* Show menu when .show class is added */
     nav ul.show {
-        display: flex;
+        display: flex; /* Show menu when class is toggled */
         opacity: 1;
         visibility: visible;
     }
+
+    /* Make sure .menu-toggle is visible */
+    .menu-toggle {
+        display: flex;
+    }
 }
 
+/* Updated to correctly display menu toggle */
 .menu-toggle {
-    display: none;
+    display: none; /* Hide by default on larger screens */
     flex-direction: column;
     cursor: pointer;
-    position: absolute; /* Added to position correctly */
-    right: 20px; /* Align to the right */
+    position: absolute;
+    right: 20px;
     top: 15px;
     z-index: 999;
 }
+
+/* Show the hamburger icon for mobile screens */
