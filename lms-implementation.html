@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <title>LMS Implementation</title>
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+            
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer:', error);
+            });
+    </script>
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>LMS Implementation</li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-project">
+        <div class="hero-text">
+            <h1>LMS Implementation</h1>
+            <p class="tldr">TL;DR: Built a learning system for 300,000+ users. Automated 1,000+ hours of manual tasks, wrote global theme code, and remapped 15,000 links. Basically, I turned a logistical nightmare into a scalable, user-friendly dream.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="project-container">
+        <section class="project">
+            <p>
+                I led the implementation and launch of a new learning management system (LMS) designed to provide an invaluable educational platform for over 300,000 sysadmins, end users, partners, and employees. The project involved remapping and updating hyperlinks across 1,000+ courses to ensure seamless access to resources. To streamline this process, I developed automation tools using Python and Selenium, saving more than 1000 hours and significant effort during the transition.
+            </p>
+            <p>
+                In addition to managing content migration, I developed and maintained over 50 web pages and wrote the global theme code used across the domain, creating a cohesive and user-friendly experience. I also designed wireframes in Adobe XD to incorporate stakeholder feedback and conducted pilot testing to ensure the platform met user needs. To enhance functionality, I built front- and back-end solutions using HTML, CSS, JavaScript, and Node.js, enabling users to quickly find and navigate relevant training resources.
+            </p>
+            <p>
+                This project showcased my ability to deliver impactful educational tools, automate complex workflows, and design scalable, user-centric solutions that deliver exceptional value to customers.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Include the header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Include the footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

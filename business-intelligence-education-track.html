@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <title>Business Intelligence Education</title>
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+            
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer:', error);
+            });
+    </script>
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>Business Intelligence Education Track</li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-project">
+        <div class="hero-text">
+            <h1>Business Intelligence Education</h1>
+            <p class="tldr">TL;DR: Created 15 microlearning courses in Rise 360 to help users transition to a new BI tool. Simplified complex data concepts for both analysts and low-access end users. Delivered everything—content, SME reviews, and publication—within a 20-day sprint. The result? A smoother transition for customers, making the switch from the legacy tool nearly effortless.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="project-container">
+        <section class="project">
+            <p>
+To support the adoption of a new business intelligence platform, I designed and developed an education track using Rise 360, starting with 10 courses and expanding to 15. The curriculum bridged the gap between the old and new tools, leveraging learners' existing data analysis knowledge to ease the transition.
+            </p>
+            <p>
+
+The training was built for a wide audience—from advanced analysts to casual end users—ensuring accessibility without sacrificing depth. It included written course material, a structured learning path, multimedia assets, and assessments. Working within a tight 20-day timeline, I collaborated with SMEs to create, refine, and launch the courses efficiently.
+            </p>
+            <p>
+The impact? Customers transitioned to the new BI tool with minimal friction, thanks to clear, structured training that made learning intuitive and practical.            </p>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Include the header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Include the footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

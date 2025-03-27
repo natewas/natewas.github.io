@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Envelope Generator</title>
+
+    <!-- Link to Global Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;900&family=Noto+Sans:wght@100;900&display=swap" rel="stylesheet">
+
+    <script src="/scripts/envelope_tool.js"></script>
+
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Envelope PDF Generator</h1>
+            <p class="tldr">Generate print-ready envelopes with personalized addresses.</p>
+        </div>
+    </section>
+
+    <div class="main-container">
+
+    <!-- Left Side: Form -->
+    <div class="project-container shadow">
+        <div class="style-settings">
+            <h2 class="card-title">Step 1: Choose Envelope Size</h2>
+            <select id="envelopeSize">
+                    <option value="A7">A7 (5.25 x 7.25 inches)</option>
+                    <option value="10">#10 (4.125 x 9.5 inches)</option>
+                    <option value="A2">A2 (4.375 x 5.75 inches)</option>
+                </select>
+
+
+
+            <h2 class="card-title">Step 2: Upload CSV File</h2>
+            <input type="file" id="csvFile" accept=".csv" class="form-group">
+
+            <h2 class="card-title">Step 3: Select Settings</h2>
+
+            <label for="fontSize">Choose Font Size:</label>
+            <select id="fontSize">
+                <option value="10">Small</option>
+                <option value="12" selected>Medium</option>
+                <option value="16">Large</option>
+            </select>
+
+            <label for="alignment">Text Alignment:</label>
+            <select id="alignment">
+                <option value="center" selected>Centered</option>
+                <option value="left">Left-Aligned</option>
+            </select>
+
+            <label for="lineSpacing">Line Spacing:</label>
+            <select id="lineSpacing">
+                <option value="1.2">Tight</option>
+                <option value="1.5" selected>Normal</option>
+                <option value="2.0">Loose</option>
+            </select>
+
+            <label for="fontFamily">Choose a Font:</label>
+            <select id="fontFamily">
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times-Roman">Times New Roman</option>
+                <option value="Courier">Courier</option>
+                <option value="Lato">Lato</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Noto Sans">Noto Sans</option>
+                <option value="Imperial Script">Imperial Script</option>
+            </select>
+
+            <!-- ✅ Return Address Section -->
+            <h2 class="card-title">Return Address</h2>
+            <label>
+                <input type="checkbox" id="includeReturn" onclick="toggleReturnAddress()"> Include Return Address?
+            </label>
+
+            <div id="returnAddressFields" style="display: none;">
+                <label for="returnName">Name:</label>
+                <input type="text" id="returnName" class="form-group" placeholder="John Doe">
+
+                <label for="returnStreet">Street Address:</label>
+                <input type="text" id="returnStreet" class="form-group" placeholder="123 Main St">
+
+                <label for="returnCity">City:</label>
+                <input type="text" id="returnCity" class="form-group" placeholder="New York">
+
+                <label for="returnState">State:</label>
+                <input type="text" id="returnState" class="form-group" placeholder="NY">
+
+                <label for="returnZIP">ZIP Code:</label>
+                <input type="text" id="returnZIP" class="form-group" placeholder="10001">
+            </div>
+
+            <h2 class="card-title">Step 4: Generate PDF</h2>
+            <button class="btn" onclick="uploadCSV()">Generate PDF</button>
+        </div>
+    </div>
+
+<div class="preview-container">
+    <h2 class="preview-title">Live Preview</h2>  <!-- 🔹 Moves this OUT of the box -->
+    <div class="envelope-preview">
+        <div id="returnAddress" class="preview-text return-address">Return Address</div>
+        <div id="recipient" class="preview-text recipient">
+            Recipient Name<br>Street Address<br>City, State ZIP
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+
+
+    
+
+</body>
+</html>

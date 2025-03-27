@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>natewasden.com</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+            
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+    </script>
+
+</head>
+<body>
+ 
+
+    <!-- Placeholder for the header -->
+    <div id="header-placeholder"></div>
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-buttons" >
+                <a href="solutions.html" class="btn">Solutions</a>
+                <a href="portfolio.html" class="btn">View Portfolio</a>
+                <a href="gallery.html" class="btn">View Woodworking Gallery</a>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+    
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>
+

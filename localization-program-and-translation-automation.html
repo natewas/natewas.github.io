@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <title>Localization Program and Translation Automation</title>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer:', error);
+            });
+    });
+</script>
+
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+    
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>Localization Program and Translation Automation</li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-project">
+        <div class="hero-text">
+            <h1>Localization Program</h1>
+
+            <p class="tldr">TL;DR: Designing a scalable, automated translation system to make MasterControl Academy content accessible in 15 languages. Currently translating 96 courses, with a vision for seamless, fully translated learning experiences—from catalog pages to multimedia content. The goal? Reduce manual effort, ensure compliance, and enhance customer success in global markets.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="project-container">
+        <section class="project">
+            <p>
+MasterControl Academy houses 750+ English-language courses, but no automated translation system is in place, making localization slow and resource-intensive. The current manual process takes 38-60 minutes per course, leaving videos untranslated, links redirecting to English content, and searchability issues that hinder non-native speakers.
+            </p>
+            <p>
+
+
+To solve this, we’re implementing a fully automated translation system that will process content updates within 24 hours of English course modifications. The system will support 90-95% translation accuracy, ensuring a seamless learning journey from login to course completion—including catalog pages, learning paths, and multimedia assets.
+            </p>
+            <p>
+
+By leveraging SmartCat, Articulate, and MasterControl’s internal translation workflows, we will streamline content localization while meeting compliance requirements and boosting customer adoption in non-English-speaking markets. A structured feedback loop will also allow for continuous improvements, ensuring high-quality, regionally relevant training experiences.
+        </p>
+        <p>
+This initiative will eliminate operational bottlenecks, increase training accessibility, and reinforce MasterControl’s global market leadership in regulatory learning solutions.    </p>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Include the header
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Include the footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

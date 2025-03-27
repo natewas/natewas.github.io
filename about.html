@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>natewasden.com | About Me</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer:', error);
+            });
+    </script>
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>About</li>
+        </ul>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="about-container">
+        
+
+        <!-- Skills Section -->
+        <section class="skills">
+    <div class="outer">
+        <div class="selfie">
+            <img src="images/nate.webp" alt="A photo of me">
+        </div>
+        <div class="written">
+            <h1 style="margin:0px !important; font-size:2em;">About me</h1>
+            <p style="margin:0px !important;">I'm a lifelong learner, problem-solver, and designer. For the past four years, I’ve been part of the education team at a Life Sciences company, most recently as a program coordinator, helping customers bring life-changing products to market. My background blends instructional technology, psychology, design thinking, and even music (because picking just one path sounded way too limiting).</p>
+
+            <p>I thrive on discovering and designing smarter solutions, whether that’s in education, technology, or my latest woodworking project. I believe in automating the tedious, embracing the messy parts of creativity, and creating space for unfiltered ideas. When I’m not optimizing, researching, or tinkering, you’ll find me fostering beagles with my wife and our own beagle, Walter, or deep in a new learning rabbit hole—probably on YouTube.</p>
+        </div>
+
+    </div>
+
+</section>
+
+                <a href="assets/Nathaniel Wasden Resume - 03-10-25.pdf" download class="resume-button">Download Resume</a>
+
+
+
+            <h1 style="margin-top:60px;">Skills</h1>
+
+            <div class="skills-grid">
+                <div class="skill-item">Instructional design</div>
+                <div class="skill-item">Program development</div>
+                <div class="skill-item">Process automation</div>
+                <div class="skill-item">Project management</div>
+                <div class="skill-item">Research and data analysis</div>
+                <div class="skill-item">Computer programming</div>
+                <div class="skill-item">Stakeholder collaboration</div>
+                <div class="skill-item">Needs analysis</div>
+                <div class="skill-item">Generative AI prompting</div>
+
+
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

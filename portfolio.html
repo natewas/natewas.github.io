@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>natewasden.com | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <script>
+        // JavaScript to include the header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+    </script>
+</head>
+<body>
+
+    <!-- Placeholder for the header -->
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Portfolio</li>
+        </ul>
+    </nav>
+
+    <section id="project-grid" class="project-grid-section">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="project-grid">
+            <a href="http://natewasden.com/envelope_tool/index.html" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Custom Envelope Generator</h3>
+                    <p>A variable data web application that combines preselected envelope sizes with data and custom styling to make print-ready envelopes for a variety of occasions and use cases.</p>
+                    <p>Please note I am making refinements to this application. </p>
+                </div>
+            </a>
+            <a href="localization-program-and-translation-automation.html" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Localization Program and Translation Automation</h3>
+                    <p>Implementing an automated translation system to make training content accessible in 15 languages, enhancing global user experience, compliance, and scalability.</p>
+                </div>
+            </a>
+            <a href="digital-credential-programs.html" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Digital Credential Programs</h3>
+                    <p>Developed and automated credential programs with 96% learner satisfaction and over 600 badges issued.</p>
+                </div>
+            </a>
+            <a href="lms-implementation.html" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Learning Management System Implementation</h3>
+                    <p>Streamlined a new LMS for 300,000+ users, saving 1,000+ hours with automation.</p>
+                </div>
+            </a>
+            <a href="business-intelligence-education-track.html" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Business Intelligence Education Track</h3>
+                    <p>Developed and oversaw the creation of 15 microlearning courses for a new data visualization application.</p>
+                </div>
+            </a>
+            <a href="" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">End-User Basics Video</h3>
+                    <p>Created engaging, user-focused eLearning activities for various industries.</p>
+                </div>
+            </a>
+            <a href="" class="project-card">
+                <div class="project-card-content">
+                    <h3 class="card-title">Hybrid Curriculum Design</h3>
+                    <p>Designed 100+ hybrid learning experiences, automating processes for scalability.</p>
+                </div>
+            </a>
+            
+            
+        </div>
+    </section>
+
+
+    <div id="footer-placeholder"></div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>natewasden.com | Contact</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <script>
+        // JavaScript to include the header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+    </script>
+</head>
+<body>
+    <!-- Placeholder for the header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h1>Contact Me</h1>
+        <p>If you have any questions, project inquiries, or just want to say hi, feel free to reach out using the form below.</p>
+        
+        <form action="mailto:your-email@example.com" method="post" enctype="text/plain" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject of your message" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required></textarea>
+            </div>
+            <div class="hero-buttons" >
+
+                <button class="btn" type="submit">Send Message</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Placeholder for the footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // JavaScript to include the footer
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching footer:', error);
+            });
+    </script>
+</body>
+</html>

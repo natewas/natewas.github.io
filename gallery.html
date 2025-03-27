@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>natewasden.com | Woodworking</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <script>
+        // JavaScript to include the header
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching header:', error);
+            });
+    </script>
+</head>
+<body>
+
+    <!-- Placeholder for the header -->
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Woodworking</li>
+        </ul>
+    </nav>
+
+    <section id="in-progress-project-grid" class="project-grid-section">
+        <h2 class="section-title">Woodworking Project Gallery</h2>
+        <h3>In-progress projects</h3>
+        <div class="project-grid">
+            <div class="project-card" onclick="openModal('dresser')">
+                <div class="project-card-content">
+                    <img src="images/dresser/dresser.webp" class="project-image" alt="Dresser">
+                    <h3 class="card-title">Dresser</h3>
+                    <p>An ongoing project with plywood frames clad in solid cherry, all with tongue and groove joinery and bookmatch panels. Includes half-blind dovetail drawers from baltic birch plywood with full-extension drawer slides and continuous grain cherry drawer fronts.</p>
+                </div>
+            </div>
+
+
+
+            <div class="project-card" onclick="openModal('shaker-bench')">
+
+                <div class="project-card-content">
+                    <img src="images/shaker-bench.webp" class="project-image" alt="Shaker Dining Bench">
+                    <h3 class="card-title">Shaker Dining Bench</h3>
+                    <p>Made from quartersawn white oak and sapele, this shaker bench is modeled after a similar bench my wife and I made with my grandfather in his shop. The only decorative touch are the supports that follow a nice s-curve. Other than that, the wood is the star of the show here.</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <section id="project-grid" class="project-grid-section">
+        <h3>Completed projects</h3>
+
+        <div class="project-grid">
+            <div class="project-card" onclick="openModal('little-free-library')">
+                <div class="project-card-content">
+                    <img src="images/little-free-library.webp" class="project-image" alt="Little Free Library">
+                    <h3 class="card-title">Little Free Library</h3>
+                    <p>Made from CDX plywood and sapele. This tiny free library will be placed outside our house for those in our neighborhood to enjoy. It features soft-close Euro-style hinges, adjustable shelving, a solid sapele door with a plexiglass panel, and magnets that function as an invisible latch.</p>
+                </div>
+            </div>
+            <div class="project-card" onclick="openModal('bookshelf-gallery')">
+                <div class="project-card-content">
+                    <img src="images/bookshelf.webp" class="project-image" alt="Bookshelf">
+                    <h3 class="card-title">Bookshelf</h3>
+                    <p>Walnut plywood and solid walnut. Adjustable shelves. Holds a lot of books. I made the crown molding out of solid walnut by performing cove cuts at the table saw and with various router bits.</p>
+                </div>
+            </div>
+            
+            <div class="project-card" onclick="openModal('slatted-plant-shelf')">
+                <div class="project-card-content">
+                    <img src="images/slatted-plant-shelf.webp" class="project-image" alt="Slatted Plant Shelf">
+                    <h3 class="card-title">Slatted Plant Shelf</h3>
+                    <p>A three-tiered unit to showcase plants, terrariums, greenhouses, and more. Made from red oak. Each slat includes tenons that fit into mortises, and the whole thing is just ridiculously overbuilt.</p>
+                </div>
+            </div>
+            <div class="project-card" onclick="openModal('coat-rack')">
+
+                <div class="project-card-content">
+                    <img src="images/coat-rack.webp" class="project-image" alt="Coat Rack">
+                    <h3 class="card-title">Coat Rack</h3>
+                    <p>Made from cherry and walnut. The 1/4" walnut "hooks" were cut at 60 degrees, and they protrude out when extended. I routed keyholes on the back for an integrated mounting system.</p>
+                </div>
+            </div>            
+
+
+            <div class="project-card" onclick="openModal('slatted-nightstand')">
+
+                <div class="project-card-content">
+                    <img src="images/nightstand.webp" class="project-image" alt="Slatted Night Stand">
+                    <h3 class="card-title">Slatted Night Stand</h3>
+                    <p>Made from alder and walnut and constructed using pocket screws. Simple, square, modern.</p>
+                </div>
+            </div>            
+
+            <div class="project-card" onclick="openModal('box')">
+                <div class="project-card-content">
+                    <img src="images/box.webp" class="project-image" alt="Small box with drawers">
+                    <h3 class="card-title">Small box with drawers</h3>
+                    <p>Made with white oak and walnut. The miter joints are reinforced with walnut splines. The drawers are made from solid white oak using rabbet joints with walnut drawer faces. The feet were cut at 30 degrees and reinforced with dowels.</p>
+                </div>
+            </div>       
+
+            <div class="project-card" onclick="openModal('cabinet')">
+
+                <div class="project-card-content">
+                    <img src="images/cabinet.webp" class="project-image" alt="Medium-sized shop cabinet">
+                    <h3 class="card-title">Medium-sized shop cabinet</h3>
+                    <p>Made from solid alder and assembled with miters. The door includes splines that reinforce the miters for enhanced durability. It includes adjustable shelving and an integrated cove profile between the door and cabinet for a minimalist look. The panel in the door is a bookmatch.</p>
+                </div>
+            </div>
+            <div class="project-card" onclick="openModal('router-lift')">
+
+                <div class="project-card-content">
+                    <img src="images/router-lift.webp" class="project-image" alt="Router Lift">
+                    <h3 class="card-title">Router Lift</h3>
+                    <p>This router lift design came from Shopnotes magazine. Router lifts are convenient in that they allow woodworkers to adjust the height of their router from above the table. Unfortunately, they are sold for anywhere between $300-$500+, so I am making my own, which will readily serve my purpose.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('nightstand-2')">
+
+                <div class="project-card-content">
+                    <img src="images/nightstand-2.webp" class="project-image" alt="Nightstand">
+                    <h3 class="card-title">Nightstand</h3>
+                    <p>Made from solid cherry using loose mortise and tenon joinery. Includes a drawer made of baltic birch. The footprint of the nightstand was the primary design feature, allowing for more space and a greater view of the cherry's whacky grain.</p>
+                </div>
+            </div>            
+
+            <div class="project-card" onclick="openModal('plant-stand')">
+
+                <div class="project-card-content">
+                    <img src="images/plant-stand.webp" class="project-image" alt="Plant Stand">
+                    <h3 class="card-title">Plant Stand</h3>
+                    <p>I've made several plant stands and although the design appears simple, the assembly is tricky. Here, the center supports are joined to each other using a half-lap. Then, these supports are joined to the legs using mortise and tenon joinery. A high degree of precision during assembly is the key to prevent even the slightest wobbling.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('round-table')">
+
+                <div class="project-card-content">
+                    <img src="images/round-table.webp" class="project-image" alt="Round Table">
+                    <h3 class="card-title">Round Table</h3>
+                    <p>Made from Birds-eye maple and cherry. I cut the circular table at the table saw. The legs were cut at 15 degrees (I think...) and joined to a center support 8mm dominos. The most challenging aspect of this project was preventing tearout on the table with the 45-degree chamfer.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('serving-tray')">
+            
+                <div class="project-card-content">
+                    <img src="images/serving-tray.webp" class="project-image" alt="Serving Tray">
+                    <h3 class="card-title">Serving Tray</h3>
+                    <p>Made from maple and bookmatched cherry with integrated handles. I use rabbet joinery here, although in hindsight, I probably should have reinforced these joints. The grain of the maple and cherry is what is striking about this piece.</p>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('utensils')">
+            
+                <div class="project-card-content">
+                    <img src="images/utensils.webp" class="project-image" alt="Utensils">
+                    <h3 class="card-title">Utensils</h3>
+                    <p>Tapered cooking utensils made from cherry, walnut, and Birds eye maple.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-gallery" class="modal-gallery"></div>
+        </div>
+    </div>
+
+    <script>
+ function openModal(project) {
+    console.log('Opening modal for project:', project);
+    const modal = document.getElementById('modal');
+    const modalGallery = document.getElementById('modal-gallery');
+
+    // Clear existing content
+    modalGallery.innerHTML = '';
+
+    // Fetch the list of images for the project
+    fetch(`/images/list_files.php?project=${project}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(images => {
+            if (images.length === 0) {
+                modalGallery.innerHTML = '<p>No images available for this project.</p>';
+                return;
+            }
+
+            // Add each image to the modal
+            images.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = `${project} image`;
+                img.style.width = '100%';
+                img.style.marginBottom = '10px';
+                modalGallery.appendChild(img);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching images:', error);
+            modalGallery.innerHTML = '<p>Failed to load images.</p>';
+        });
+
+    // Show the modal
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+    // Close modal when clicking outside content
+    window.onclick = function (event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+    </script>
+
+
+    <div id="footer-placeholder"></div>
+
+
+</body>
+</html>
+
