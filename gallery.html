@@ -214,7 +214,7 @@
     modalGallery.innerHTML = '';
 
     // Define the base path for images
-    const basePath = `/images/${project}/`;
+    const basePath = `./images/${project}/`;
     
     // Number of images expected (you can change this number if needed)
     const totalImages = 10; // Example: Expecting up to 10 images per project
@@ -227,6 +227,7 @@
 
         // Check if the image exists by trying to load it
         const img = document.createElement('img');
+        console.log(`Trying to load image: ${imageSrc}`);
         img.src = imageSrc;
         img.alt = `${project} image`;
         img.style.width = '100%';
