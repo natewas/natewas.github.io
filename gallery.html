@@ -215,45 +215,43 @@
 
     // Define the base path for images
     const basePath = `./images/${project}/`;
-    
-    // Number of images expected (you can change this number if needed)
+
+    // Number of images expected (adjust if needed)
     const totalImages = 10; // Example: Expecting up to 10 images per project
 
     let imagesFound = false;
 
-    // Loop through possible image names to check and display them
+    // Loop through possible image names
     for (let i = 1; i <= totalImages; i++) {
-        const imageSrc = `${basePath}img${i}.webp`; // Example: img1.webp, img2.webp, ...
-
-        // Check if the image exists by trying to load it
-        const img = document.createElement('img');
+        const imageSrc = `${basePath}img${i}.webp`; // Example: img1.webp, img2.webp, etc.
         console.log(`Trying to load image: ${imageSrc}`);
+
+        const img = document.createElement('img');
         img.src = imageSrc;
         img.alt = `${project} image`;
         img.style.width = '100%';
         img.style.marginBottom = '10px';
 
-        // If the image loads successfully, add it to the modal
+        // Check if the image loads successfully before adding it
         img.onload = () => {
             modalGallery.appendChild(img);
             imagesFound = true;
         };
 
+        // Stop checking for more images if one fails to load
         img.onerror = () => {
-            // Do nothing if the image is not found
+            if (!imagesFound) {
+                modalGallery.innerHTML = '<p>No images found for this project.</p>';
+            }
+            console.warn(`Image not found: ${imageSrc}`);
+            return; // Stop after the first failed image
         };
     }
 
     // Show the modal
     modal.style.display = 'flex';
-
-    // Fallback message if no images are found after a short delay
-    setTimeout(() => {
-        if (!imagesFound) {
-            modalGallery.innerHTML = '<p>No images available for this project.</p>';
-        }
-    }, 500);
 }
+
 
 
 function closeModal() {
