@@ -962,3 +962,22 @@ body {
 body {
     overflow-x: hidden;
 }
+
+@media screen and (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    .project-card-content p {
+        font-size: 1rem;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
