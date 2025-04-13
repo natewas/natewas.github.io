@@ -257,11 +257,12 @@ body {
 
 /* Hero Section */
 .hero-project {
-    position: relative;
-    width: 100%;
-    min-height: 200px; /* Allows the section to grow */
-    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #2C3E50;
 }
+
 
 
 .hero-image {
@@ -271,14 +272,10 @@ body {
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #2C3E50;
-    text-align: center;
-    /*text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);*/
+    max-width: 800px;
+    margin: 0 auto;
 }
+
 
 .hero-text h1 {
     font-size: 2.5rem;
@@ -1000,5 +997,20 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-project {
+        padding: 2rem 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 1.75rem;
+    }
+
+    .tldr {
+        font-size: 1rem;
+        line-height: 1.6;
     }
 }
