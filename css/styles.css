@@ -947,7 +947,7 @@ body {
     .hero-buttons .btn,
     .resume-button {
         width: 100%;
-        height: 75px;               /* Set the same height for all buttons */
+        height: auto;
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 75px;
