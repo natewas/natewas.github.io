@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-56E5DC1BR1');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Automation Services</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching header:', error));
+
+        fetch('footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching footer:', error));
+    </script>
+</head>
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>LMS Automation Services</li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-project">
+        <div class="hero-text">
+            <h1>LMS Automation Services</h1>
+            <p class="tldr">TL;DR: I automate repetitive LMS admin tasks — from file uploads and enrollments to full course setup — saving you hours of clicking. Whether you manage 5 courses or 500, I can help you scale with precision, reduce errors, and keep your sanity intact.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="project-container">
+        <section class="project">
+
+            <p>
+                LMS platforms are powerful — but they're often full of repetitive, click-heavy workflows that waste valuable time. I help educators, instructional designers, and business operations teams automate those tedious processes using tools like Python and Selenium.
+            </p>
+
+            <p>
+                Whether you're launching a new semester, onboarding students, or maintaining dozens of courses, automation can dramatically reduce the overhead. I create custom scripts tailored to your platform, process, and team — so you can focus on teaching, designing, or scaling, not clicking.
+            </p>
+
+            <h3>🔧 What I Automate</h3>
+            <ul>
+                <li>Bulk uploading files, quizzes, and media</li>
+                <li>Cloning and updating course shells</li>
+                <li>Automating student enrollments</li>
+                <li>Downloading grade reports and analytics</li>
+                <li>Checking for broken links or outdated content</li>
+            </ul>
+
+            <h3>✅ Why It Matters</h3>
+            <ul>
+                <li><strong>Save Time:</strong> Reclaim hours each week from repetitive tasks</li>
+                <li><strong>Reduce Human Error:</strong> Avoid copy/paste mistakes or missed steps</li>
+                <li><strong>Stay Consistent:</strong> Ensure clean, repeatable processes across courses or users</li>
+                <li><strong>Scale Smoothly:</strong> Support large course volumes without burning out your team</li>
+                <li><strong>Work Securely:</strong> Scripts are built with care, and I can run them inside your environment if needed</li>
+            </ul>
+
+            <h3>🎯 Who This Is For</h3>
+            <ul>
+                <li>Instructional designers supporting multiple faculty or sections</li>
+                <li>Educators managing high course loads across terms</li>
+                <li>Small business owners or coaches running course platforms</li>
+                <li>Operations teams maintaining web-based training systems</li>
+            </ul>
+
+            <h3>📦 Packages</h3>
+            <ul>
+                <li><strong>Starter Script – $75:</strong> One-time automation for a small task (e.g., bulk file upload)</li>
+                <li><strong>Workflow Package – $150:</strong> Complete workflow automation (e.g., course copy, update, notify)</li>
+                <li><strong>Support Plan – $250+:</strong> Script, setup, usage training, and 30-day support</li>
+            </ul>
+
+            <p>
+                I also offer ongoing support and monitoring plans — great if your platform changes frequently or your automation needs grow over time.
+            </p>
+
+            <h3>📩 Ready to Stop Clicking?</h3>
+            <p>
+                If you have an LMS task that feels like a never-ending loop, let’s automate it. I offer free consultations to explore what’s possible.
+            </p>
+            <p><a href="mailto:your@email.com">Send me a message</a> or use the contact form to get started.</p>
+
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>
