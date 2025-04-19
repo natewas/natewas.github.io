@@ -11,14 +11,15 @@
 
     gtag('config', 'G-56E5DC1BR1');
     </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    <meta charset="UTF-8">
-    <title>AI-Powered Assessment Grader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <title>LMS Implementation</title>
     <script>
         fetch('header.html')
             .then(response => {
@@ -45,7 +46,7 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             })
             .catch(error => {
-                console.error('Error fetching header:', error);
+                console.error('Error fetching footer:', error);
             });
     </script>
 </head>
@@ -53,38 +54,37 @@
 
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
-
+    
     <nav class="breadcrumbs">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li>AI-Powered Assessment Grader</li>
+            <li>Artificial Intelligence Grading Assistant</li>
         </ul>
     </nav>
-    
+
+
     <!-- Hero Section -->
     <section class="hero-project">
         <div class="hero-text">
-            <h1>AI-Powered Assessment Grader</h1>
-            <p class="tldr">TL;DR: Wrote 700+ exam questions (without putting people to sleep). Automated everything from learner enrollment to badge delivery, making each step of the process highly efficient. Collaborated with stakeholders to ensure the questions weren’t too easy (or alienating), then piloted, tweaked, and scaled it all with a +88 NPS. Basically, I turned chaos into a certification machine that everyone loved.</p>
+            <h1>Artificial Intelligence Grading Assistant</h1>
+            <p class="tldr">TL;DR: Building an AI grading assistant to evaluate short-answer responses from Certified Admin exams—reducing grading time by 50% while maintaining a 95–99% accuracy match with human graders. The tool aims to provide consistent, contextual feedback to learners, handle complex inputs, and scale human effort across seven exams and 70+ unique questions.</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="project-container">
         <section class="project">
-            <p>
-                As the principal designer of the MasterControl Certified Admin and Certified Integrations Developer digital credential program, I created and implemented a scalable, automated initiatives to assess and validate the expertise of MasterControl administrators and developers. I wrote over 700 examination questions and built automated processes for user enrollment, grading, recertification, and credential issuance. I also worked with subject-matter experts to design stable "sandbox" test environments. These efforts drove a 96% learner satisfaction rate and an impressive +88 Net Promoter Score (NPS).
-            </p>
-            <p>
-                Using Python, I developed a dashboard that automated key workflows, including user account creation for sandbox environments, grading and weighting exam sections to generate overall scores, and using Credly’s API to issue digital badges. I also developed a dynamic email messaging system that provided examinees with personalized feedback and customized communication. These streamlined processes enabled the program to scale efficiently, resulting in a 75% decrease in total administration costs and the issuance of more than 600 badges.
-            </p>
-            <p>
-                Crafting exam questions presented a unique challenge. I worked to ensure that questions targeted core competencies without excluding users with varied workflows or expertise. To address this, I collaborated with stakeholders across the company and conducted pilot testing with customers to refine the questions and improve the user experience. By automating the administration process, I made scaling the program not only feasible but seamless.
-            </p>
-            <p>
-                This project highlights my ability to design and execute complex learning initiatives that align with organizational goals, enhance user satisfaction, and deliver measurable outcomes. It demonstrates my expertise in instructional design, process automation, and cross-functional collaboration.
-            </p>
+						<p>
+							To improve the efficiency and consistency of grading Certified Admin exams, I’m building an AI-powered tool that evaluates short-answer responses across 70+ questions from seven exams. The goal is to reduce manual grading time by 50% while maintaining a 95–99% agreement rate with human graders. The tool uses proprietary software trained on course materials, pre-scored responses, and company-specific context to assess responses and deliver accurate, context-aware feedback.
+						</p>            
+						<p>
+							This system is designed to handle a variety of real-world scenarios: vague or overly detailed responses, nuanced industry-specific answers, and learners with different levels of experience. It also avoids common AI pitfalls by not learning from incorrect or partially correct historical data. By running AI evaluations alongside human graders and comparing results, we’re able to refine the tool’s accuracy and reliability before expanding its use. Success is being measured through grading speed, accuracy, feedback quality, and overall user satisfaction from both graders and learners.
+						</p>
+						<p>
+							The project is moving through multiple phases: prototyping, pilot testing with blind comparisons, application development for scaled grading, and eventual integration with Skilljar (pending feasibility). We’re also evaluating the broader implications of AI in education, including ethical considerations and potential expansion to other training areas. If successful, this tool will not only streamline grading but also elevate the overall certification experience for global learners.
+						</p>
+
         </section>
     </main>
 
