@@ -1,0 +1,39 @@
+WEBVTT
+
+00:00:02.080 --> 00:00:06.640
+Let’s look at one more example. Let’s assume 
+I want to send an API call that returns the
+
+00:00:06.640 --> 00:00:15.440
+details of a specific InfoCard. The 
+InfoCard number is TRN-SOP-0015. In
+
+00:00:15.440 --> 00:00:20.200
+the Web Services API documentation, 
+select the getFullInfoCard method.
+
+00:00:20.200 --> 00:00:25.400
+The getFullInfoCard method will “Retrieve 
+an InfoCard with a few additional fields.”
+
+00:00:25.400 --> 00:00:30.000
+Here, we’ll utilize the connectionID we 
+created in the last video. We’ll also
+
+00:00:30.000 --> 00:00:35.080
+enter the InfoCard Number and Revision. 
+Notice these are required parameters.
+
+00:00:35.080 --> 00:00:45.240
+Copy the example call, create a new API call 
+in Postman, and enter the required arguments:
+
+00:00:45.240 --> 00:00:59.240
+the connectionID, InfoCard Number, and Revision.
+
+00:00:59.240 --> 00:01:08.480
+We’ll use the GET method, and ensure we’re sending 
+the call to the correct site. Then, select Send.
+
+00:01:08.480 --> 00:01:13.560
+Here is the InfoCard information.

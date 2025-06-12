@@ -1,0 +1,125 @@
+WEBVTT
+
+00:00:02.159 --> 00:00:07.660
+From the WebServices API Documentation Overview
+page, select ConnectionService to expand the
+
+00:00:07.660 --> 00:00:08.950
+list of methods.
+
+00:00:08.950 --> 00:00:13.120
+Then, select the connectWithApiKey method.
+
+00:00:13.120 --> 00:00:17.600
+Each method includes a brief description,
+the method’s result, and the Return Type,
+
+00:00:17.600 --> 00:00:21.730
+such as an integer, Boolean, string, and so
+on.
+
+00:00:21.730 --> 00:00:25.660
+This information helps you anticipate the
+output of your API call.
+
+00:00:25.660 --> 00:00:31.130
+Because we’re expecting a connectionID, which
+includes numbers and letters, the Return Type
+
+00:00:31.130 --> 00:00:37.280
+will be a string, as opposed to, say, an integer,
+which would only include whole numbers.
+
+00:00:37.280 --> 00:00:41.840
+The method also includes the required Parameters—which
+are the placeholders or variables that you
+
+00:00:41.840 --> 00:00:47.770
+must define—the Data Type for each parameter,
+whether each parameter is Required or optional
+
+00:00:47.770 --> 00:00:52.309
+in your call, and a Hint, which is a description
+of the parameter.
+
+00:00:52.309 --> 00:00:57.670
+For example, you may be confused about what
+the logoutCurrentWebConnection parameter does.
+
+00:00:57.670 --> 00:01:02.289
+The hint helps you understand that if this
+value is true, your API call will, “disconnect
+
+00:01:02.289 --> 00:01:05.990
+the user’s current web session”, which
+is akin to logging out.
+
+00:01:05.990 --> 00:01:09.130
+Next, let’s look at the Example Call.
+
+00:01:09.130 --> 00:01:13.400
+This is the actual text you’ll copy and
+use for your API call.
+
+00:01:13.400 --> 00:01:17.380
+Notice how the example call is formatted to
+include curly brackets around the array of
+
+00:01:17.380 --> 00:01:21.330
+text and how quotation marks are wrapped around
+each variable.
+
+00:01:21.330 --> 00:01:27.259
+This format is called JSON—JavaScript Object
+Notation—and it makes the data you’ll
+
+00:01:27.259 --> 00:01:31.960
+pass in your API call understandable to humans
+and computers.
+
+00:01:31.960 --> 00:01:36.659
+Notice that the Example Result is also formatted
+using JSON.
+
+00:01:36.659 --> 00:01:42.829
+To use this method, copy the Example Call.
+
+00:01:42.829 --> 00:02:02.630
+Open Postman, and select Send an API request.
+
+00:02:02.630 --> 00:02:07.890
+Since we are sending our API key to our MasterControl
+site—instead of, say, asking for information
+
+00:02:07.890 --> 00:02:12.290
+on the site—we’ll select POST as the method.
+
+00:02:12.290 --> 00:02:15.410
+Copy the first part of your MasterControl
+site—for example, https://[site].mastercontrol.com/[site]—and
+
+00:02:15.410 --> 00:02:18.390
+concatenate with the following string: /ws/JSONBridge.cfm.
+
+00:02:18.390 --> 00:02:21.849
+Paste the entire URL in the Enter URL or paste
+text box.
+
+00:02:23.063 --> 00:02:27.849
+Lastly, select the Send button to send the
+API call.
+
+00:02:27.849 --> 00:02:31.239
+If we did everything right, we’ll see a
+result with our connection ID.
+
+00:02:31.239 --> 00:02:34.680
+If not, we’ll begin the beloved process
+of troubleshooting.
+
+00:02:34.680 --> 00:02:36.520
+Looks like we have success!
+
+00:02:36.520 --> 00:02:39.020
+This is our connectionID, and we'll use it
+in the next video.

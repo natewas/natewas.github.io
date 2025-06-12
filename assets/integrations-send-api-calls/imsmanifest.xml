@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<manifest identifier="dvr-ArkCoQ5B1W4HyUw7jnjK6XGiSGCLotAWWgeU" version="1"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                      http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <adlcp:location>metadata.xml</adlcp:location>
+  </metadata>
+  <organizations default="articulate_rise">
+      <organization identifier="articulate_rise">
+      <title>Integrations: Send API Calls</title>
+      <item identifier="i1" identifierref="r1" isvisible="true">
+        <title>Integrations: Send API Calls</title>
+        <adlcp:datafromlms>eyJjcHYiOiJvdEFXV2dlVSIsInJsZCI6ZmFsc2V9</adlcp:datafromlms>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="r1" type="webcontent" adlcp:scormtype="sco" href="scormdriver/indexAPI.html">
+      <!-- SCORMDRIVER STUFF -->
+      <file href="scormdriver/indexAPI.html" />
+      <file href="scormdriver/preloadIntegrity.js" />
+      <file href="scormdriver/driverOptions.js" />
+      <file href="scormdriver/AICCComm.html" />
+      <file href="scormdriver/auto-scripts/AutoBookmark.js" />
+      <file href="scormdriver/auto-scripts/AutoCompleteSCO.js" />
+      <file href="scormdriver/auto-scripts/CourseExit.js" />
+      <file href="scormdriver/blank.html" />
+      <file href="scormdriver/goodbye.html" />
+      <file href="scormdriver/scormdriver.js" />
+      <file href="scormdriver/browsersniff.js" />
+
+      <!-- RUNTIME COMMON STUFF -->
+      <file href="scormcontent/index.html" />
+
+      
+        <file href="scormcontent/lib/fonts/icomoon.ttf"/>
+        <file href="scormcontent/lib/fonts/icomoon.woff"/>
+
+        <file href="scormcontent/lib/icomoon.css"/>
+        <file href="scormcontent/lib/player-0.0.11.min.js"/>
+        <file href="scormcontent/lib/lzwcompress.js"/>
+      
+
+      <!-- FRONTEND BUNDLE ASSETS -->
+      <file href="scormcontent/lib/rise/82f2e020.js" />
+<file href="scormcontent/lib/rise/11732e6a.css" />
+<file href="scormcontent/lib/rise/86d2a19e.js" />
+<file href="scormcontent/lib/rise/f9aec6d7.css" />
+<file href="scormcontent/lib/rise/7704acd8.js" />
+<file href="scormcontent/lib/rise/92e0d0dc.js" />
+<file href="scormcontent/lib/rise/bca1d3e6.js" />
+<file href="scormcontent/lib/mondrian/entry.js" />
+<file href="scormcontent/lib/mondrian/976bee94.js" />
+<file href="scormcontent/lib/mondrian/5397085a.js" />
+<file href="scormcontent/lib/mondrian/b176ca34.js" />
+<file href="scormcontent/lib/mondrian/c16e7dd3.js" />
+<file href="scormcontent/lib/mondrian/d7134136.js" />
+<file href="scormcontent/lib/mondrian/c1257364.js" />
+<file href="scormcontent/lib/mondrian/eab04a62.js" />
+<file href="scormcontent/lib/mondrian/714fc133.js" />
+
+
+      <!-- RUNTIME CONTENT STUFF -->
+      <file href="scormcontent/lib/fonts/Lato-Black.woff" />
+<file href="scormcontent/lib/fonts/Lato-Italic.woff" />
+<file href="scormcontent/lib/fonts/Lato-Bold.woff" />
+<file href="scormcontent/lib/fonts/Lato-Regular.woff" />
+<file href="scormcontent/lib/fonts/Lato-Light.woff" />
+<file href="scormcontent/lib/fonts/hQPFUvwPLJk0QEEo-flama-book-webfont.woff" />
+<file href="scormcontent/assets/nARWW0wc_b_XiQW_.jpg" />
+<file href="scormcontent/assets/MC%20logo%20small.png" />
+<file href="scormcontent/assets/Gradient_Process-Management-2%20%281%29.png" />
+<file href="scormcontent/assets/log%20in.png" />
+<file href="scormcontent/assets/change%20url.png" />
+<file href="scormcontent/assets/gen%20api.png" />
+<file href="scormcontent/assets/ws%20doc.png" />
+<file href="scormcontent/assets/RESTful%20doc.png" />
+<file href="scormcontent/assets/Send%20an%20API%20Call%20with%20Postman%20-%20connectWithApiKey.mp4" />
+<file href="scormcontent/assets/Send%20an%20API%20Call%20with%20Postman%20-%20connectWithApiKey.jpg" />
+<file href="scormcontent/assets/Send%20an%20API%20Call%20with%20Postman%20-%20connectWithApiKey.vtt" />
+<file href="scormcontent/assets/ConnectionService.png" />
+<file href="scormcontent/assets/connectWithApiKey%20-%201.png" />
+<file href="scormcontent/assets/connectWithApiKey%20-%202.png" />
+<file href="scormcontent/assets/copy%20example%20call.jpg" />
+<file href="scormcontent/assets/postman%20send%20an%20api%20req.png" />
+<file href="scormcontent/assets/API%20call.png" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20getFullInfoCard.mp4" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20getFullInfoCard.jpg" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20getFullInfoCard.vtt" />
+<file href="scormcontent/assets/InfoCard%20ex.jpg" />
+<file href="scormcontent/assets/getFullInfoCard%20ex.jpg" />
+<file href="scormcontent/assets/getFullInfoCard%20ex%202.png" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20Get%20latest%20revision.mp4" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20Get%20latest%20revision.jpg" />
+<file href="scormcontent/assets/Send%20API%20Call%20with%20Postman%20-%20Get%20latest%20revision.vtt" />
+<file href="scormcontent/assets/QKhpXy/RESTful%20doc.png" />
+<file href="scormcontent/assets/get%20latest%20rev.jpg" />
+<file href="scormcontent/assets/bearer%20token.png" />
+<file href="scormcontent/assets/RESTful%20API%20call.png" />
+<file href="scormcontent/assets/troubleshoot%20error.png" />
+<file href="scormcontent/assets/Y_D53I/troubleshoot%20error.png" />
+<file href="scormcontent/assets/mvMXTl/mountains.jpg" />
+<file href="scormcontent/assets/Business%20Context_B.jpg" />
+<file href="scormcontent/assets/ivHPopE-LGDvYGCx.png" />
+
+      <file href="scormcontent/locales/und.js" />
+
+    </resource>
+  </resources>
+</manifest>

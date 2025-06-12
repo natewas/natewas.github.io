@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:02.080 --> 00:00:05.400
+Let’s look at a demonstration of the RESTful API.
+
+00:00:05.400 --> 00:00:09.320
+First, navigate to the RESTful API documentation.
+
+00:00:09.320 --> 00:00:15.640
+We’ll use the "Get latest revision" endpoint. 
+Here, you can see the syntax, the description,
+
+00:00:15.640 --> 00:00:22.200
+the path parameters, and a URL that you can 
+copy and paste in Postman for your API call.
+
+00:00:22.200 --> 00:00:28.000
+We’ll open a new call in Postman. Select 
+the Authorization tab. Then, select the Type
+
+00:00:28.000 --> 00:00:34.680
+dropdown and choose Bearer Token. Simply enter 
+your API key in the Token field. Once again,
+
+00:00:34.680 --> 00:00:40.040
+we’re using a variable for our API key. 
+One nice thing about the RESTful API is
+
+00:00:40.040 --> 00:00:45.800
+you don’t need to include an API key or 
+connectionID in your API call syntax. When
+
+00:00:45.800 --> 00:00:51.040
+you add your API key as a Bearer Token, 
+the API call knows where to look for it.
+
+00:00:51.040 --> 00:00:58.480
+Next, we’ll paste the endpoint URL we copied from 
+the API documentation. Edit any field with a curly
+
+00:00:58.480 --> 00:01:08.480
+bracket surrounding it . We’ll enter the same 
+InfoCard number from the last video: TRN-SOP-0015.
+
+00:01:09.400 --> 00:01:11.440
+Lastly, select Send.
+
+00:01:11.440 --> 00:01:14.360
+Here is the result.
