@@ -1,0 +1,65 @@
+WEBVTT
+
+00:00:01.920 --> 00:00:06.960
+Here, we'll demonstrate how to use a filter to 
+see only results with the training status Overdue.
+
+00:00:07.500 --> 00:00:10.860
+To filter, select Search Filters 
+and enter the keyword Training.
+
+00:00:11.520 --> 00:00:15.780
+Then, find the Training Status filter, and 
+select the toggle to turn the filter on.
+
+00:00:16.440 --> 00:00:21.180
+Note the teal box that says, Include all, which 
+means the filter isn’t filtering anything yet.
+
+00:00:22.020 --> 00:00:25.680
+Edit the filter by hovering over the 
+Training Status box to reveal and
+
+00:00:25.680 --> 00:00:30.060
+select the pencil or Edit Filter icon. 
+This will open the Edit Filter window.
+
+00:00:30.900 --> 00:00:35.520
+The default selection will be Include all (no 
+filter applied). Remember, for this example,
+
+00:00:35.520 --> 00:00:41.040
+you want the filter to only show results with the 
+Training Status Overdue. There are multiple ways
+
+00:00:41.040 --> 00:00:45.720
+to manipulate the filter to do what you want.
+The easiest method would be to select the
+
+00:00:45.720 --> 00:00:50.940
+option next to Find, and use the search to find 
+the field or fields you need. The Select All
+
+00:00:50.940 --> 00:00:55.440
+option will select all the results within your 
+search. But for a short list like this, you can
+
+00:00:55.440 --> 00:01:00.480
+simply select the checkbox next to Overdue.
+Another method would be to select the option
+
+00:01:00.480 --> 00:01:06.480
+next to the Is not and Select from list dropdowns. 
+Then, select the Is not dropdown, and select Is.
+
+00:01:07.020 --> 00:01:11.580
+Finally, select the Select from list dropdown, 
+and select the checkbox next to Overdue.
+
+00:01:12.300 --> 00:01:17.160
+Lastly, select the Apply button.
+The widgets now only show results based
+
+00:01:17.160 --> 00:01:21.480
+on the training status Overdue filter, making 
+it incredibly simple to interpret the data.
