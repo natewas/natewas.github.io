@@ -1058,6 +1058,7 @@ html {
     gap: 2rem;
     padding: 2rem;
     background-color: #f6f8e0;
+    justify-content:center;
   }
   
   /* Sticky TOC */
@@ -1093,6 +1094,7 @@ html {
     flex: 1;
     border-left: 3px solid #2C3E50;
     padding-left: 3rem;
+    max-width:600px;
   }
   
   /* Vertical line centered */
@@ -1109,6 +1111,7 @@ html {
     transform: translateY(20px);
     opacity: 0;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
   }
   
   .timeline-content h2 {
