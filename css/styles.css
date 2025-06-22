@@ -1091,7 +1091,7 @@ html {
   .timeline {
     position: relative;
     flex: 1;
-    border-left: 3px solid #ccc;
+    border-left: 3px solid #2C3E50;
     padding-left: 3rem;
   }
   
