@@ -16,55 +16,6 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .sticky-nav {
-      position: sticky;
-      top: 80px; /* adjust based on your site header */
-      background: #fff;
-      z-index: 900;
-      padding: 1em;
-      display: flex;
-      gap: 1em;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .sticky-nav a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .proj-header-section {
-      display: none;
-      scroll-margin-top: 160px;
-      min-height: 80vh;
-      padding: 2rem 1rem;
-    }
-
-    .hero-project {
-      background-color: #f9f9f9;
-      padding: 3rem 1rem;
-    }
-
-    .hero-text h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .tldr {
-      max-width: 800px;
-      font-style: italic;
-    }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      margin: 0;
-    }
-  </style>
 </head>
 
 <body>
@@ -93,68 +44,77 @@
   <!-- Main Content -->
   <main>
     <div class="project-container">
-      <section class="project">
-        <div class="proj-header-section" id="challenge">
-          <h2>Challenge</h2>
-          <p>MasterControl Academy offers 750+ English-language eLearning courses...</p>
-          <ul>
-            <li>Video captions remaining in English.</li>
-            <li>Internal navigation and links redirecting to untranslated content.</li>
-            <li>Poor searchability for non-English terms.</li>
-          </ul>
-        </div>
-
-        <div class="proj-header-section" id="solution">
-          <h2>Solution</h2>
-          <p>I developed an automated localization pipeline...</p>
-
-          <h3>Custom Utility Development</h3>
-          <ul>
-            <li>Extracts all course text—including <code>.vtt</code> captions—from SCORM packages.</li>
-            <li>Converts content into structured JSON for translation.</li>
-            <li>Uses SmartCat’s CLI...</li>
-            <li>Reintegrates translated assets...</li>
-          </ul>
-
-          <h3>Full Ecosystem Translation</h3>
-          <p>The system localizes not just core course content, but also:</p>
-          <ul>
-            <li>Catalog pages and metadata.</li>
-            <li>Learning paths and UI navigation.</li>
-            <li>Multimedia captions and content.</li>
-          </ul>
-
-          <h3>Quality Control Loop</h3>
-          <p>A feedback process with SMEs ensures high-quality translations...</p>
-        </div>
-
-        <div class="proj-header-section" id="my-role">
-          <h2>My Role</h2>
-          <ul>
-            <li>Owned end-to-end design, development, and deployment.</li>
-            <li>Created the automation workflow...</li>
-          </ul>
-        </div>
-
-        <div class="proj-header-section" id="tools">
-          <h2>Tools & Technologies</h2>
-          <ul>
-            <li><strong>Development:</strong> Python, SmartCat CLI, JSON...</li>
-            <li><strong>Authoring:</strong> Articulate Rise</li>
-            <li><strong>LMS:</strong> Skilljar</li>
-            <li><strong>Versioning:</strong> Git</li>
-          </ul>
-        </div>
-
-        <div class="proj-header-section" id="impact">
-          <h2>Impact</h2>
-          <ul>
-            <li><strong>96 courses localized</strong>, scaling to 750+.</li>
-            <li><strong>Up to 80% time reduction</strong> per course.</li>
-            <li><strong>Automated translation of all elements</strong>.</li>
-          </ul>
-        </div>
-      </section>
+      <!-- Project Slider Section -->
+<section class="slider-container">
+    <div class="slider-wrapper">
+  
+      <div class="slide" id="challenge">
+        <h2>Challenge</h2>
+        <p>MasterControl Academy offers 750+ English-language eLearning courses...</p>
+        <ul>
+          <li>Video captions remaining in English.</li>
+          <li>Internal navigation and links redirecting to untranslated content.</li>
+          <li>Poor searchability for non-English terms.</li>
+        </ul>
+      </div>
+  
+      <div class="slide" id="solution">
+        <h2>Solution</h2>
+        <p>I developed an automated localization pipeline...</p>
+        <h3>Custom Utility Development</h3>
+        <ul>
+          <li>Extracts .vtt video captions from SCORM packages</li>
+          <li>Converts content into structured JSON</li>
+          <li>Uses SmartCat’s CLI for translation</li>
+          <li>Reintegrates translated assets</li>
+        </ul>
+        <h3>Full Ecosystem Translation</h3>
+        <ul>
+          <li>Catalog pages and metadata</li>
+          <li>Learning paths and UI navigation</li>
+          <li>Multimedia captions and embedded content</li>
+        </ul>
+        <h3>Quality Control Loop</h3>
+        <p>SME feedback ensures quality and context relevance</p>
+      </div>
+  
+      <div class="slide" id="my-role">
+        <h2>My Role</h2>
+        <ul>
+          <li>Owned end-to-end system design</li>
+          <li>Developed SCORM-to-JSON utility in Python</li>
+          <li>Integrated SmartCat CLI with LMS</li>
+          <li>Collaborated globally for validation/testing</li>
+        </ul>
+      </div>
+  
+      <div class="slide" id="tools">
+        <h2>Tools & Technologies</h2>
+        <ul>
+          <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
+          <li><strong>Authoring:</strong> Articulate Rise</li>
+          <li><strong>LMS:</strong> Skilljar</li>
+          <li><strong>Collaboration:</strong> Git</li>
+        </ul>
+      </div>
+  
+      <div class="slide" id="impact">
+        <h2>Impact</h2>
+        <ul>
+          <li><strong>96 courses localized</strong>, scaling to 750+</li>
+          <li><strong>Up to 80% reduction</strong> in localization time</li>
+          <li><strong>Automated full course translation</strong></li>
+          <li><strong>Adopted globally</strong> as the standard</li>
+        </ul>
+      </div>
+  
+    </div>
+  
+    <!-- Navigation Arrows -->
+    <button class="nav-arrow left">&#8592;</button>
+    <button class="nav-arrow right">&#8594;</button>
+  </section>
+  
     </div>
   </main>
 
@@ -176,31 +136,33 @@
         document.getElementById('footer-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error loading footer:', error));
-  </script>
 
-  <!-- Section Display Logic -->
-  <script>
-    const navLinks = document.querySelectorAll('.sticky-nav a');
-    const sections = document.querySelectorAll('.proj-header-section');
 
-    function showSectionById(id) {
-      sections.forEach(section => {
-        section.style.display = section.id === id ? 'block' : 'none';
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.querySelector('.nav-arrow.right');
+    const prevBtn = document.querySelector('.nav-arrow.left');
+    let currentIndex = 0;
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
       });
     }
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        const id = link.getAttribute('href').substring(1);
-        showSectionById(id);
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-      });
+  
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
     });
-
+  
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    });
+  
     document.addEventListener('DOMContentLoaded', () => {
-      showSectionById('challenge');
+      showSlide(currentIndex);
     });
+   
   </script>
 </body>
 </html>
