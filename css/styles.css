@@ -1022,6 +1022,6 @@ body {
 
 .project li::marker {
     content: "• ";
-    color: #0073e6; /* Your accent color */
+    color: #66B032; /* Your accent color */
     font-weight: bold;
 }
