@@ -1053,17 +1053,12 @@ html {
     }
   }
   /* Layout */
-  .timeline-layout {
+.timeline-layout {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
     gap: 2rem;
     padding: 2rem;
     background-color: #f6f8e0;
-    max-width: 1200px;
-    margin: 0 auto;
   }
-  
   
   /* Sticky TOC */
   .timeline-toc {
@@ -1096,31 +1091,25 @@ html {
   .timeline {
     position: relative;
     flex: 1;
-    max-width: 800px;
+    border-left: 3px solid #2C3E50;
+    padding-left: 3rem;
   }
-  
   
   /* Vertical line centered */
   .timeline-item {
     position: relative;
     margin-bottom: 3rem;
-    width:60%;
   }
   
   .timeline-content {
-    width: 55%;
     background: white;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    transform: translateY(20px);
     opacity: 0;
-    transform: translate(-50%, 20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
-  
   
   .timeline-content h2 {
     margin-top: 0;
@@ -1150,15 +1139,3 @@ html {
     }
   }
     
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3px;
-    height: 100%;
-    background-color: #333;
-    z-index: 0;
-  }
-  
