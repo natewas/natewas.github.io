@@ -1025,3 +1025,7 @@ body {
     color: #66B032; /* Your accent color */
     font-weight: bold;
 }
+
+main {
+    background: #F0F7D4;
+}
