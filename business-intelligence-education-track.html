@@ -1,108 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
-    <script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-56E5DC1BR1');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
-    <title>Business Intelligence Education</title>
-    <script>
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-            
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching footer:', error);
-            });
-    </script>
+  </script>
+
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Intelligence Education</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div id="header-placeholder"></div>
 
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
-    
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li>Business Intelligence Education Track</li>
-        </ul>
-    </nav>
+  <nav class="breadcrumbs">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li>Business Intelligence Education</li>
+    </ul>
+  </nav>
 
+  <section class="hero-project">
+    <div class="hero-text">
+      <h1>Business Intelligence Education</h1>
+      <p class="tldr">
+        TL;DR: Created 15 microlearning courses in Rise 360 to help users transition to a new BI tool. Simplified complex data concepts for both analysts and low-access end users. Delivered everything—content, SME reviews, and publication—within a 20-day sprint.
+      </p>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero-project">
-        <div class="hero-text">
-            <h1>Business Intelligence Education</h1>
-            <p class="tldr">TL;DR: Created 15 microlearning courses in Rise 360 to help users transition to a new BI tool. Simplified complex data concepts for both analysts and low-access end users. Delivered everything—content, SME reviews, and publication—within a 20-day sprint. The result? A smoother transition for customers, making the switch from the legacy tool nearly effortless.</p>
+  <main class="timeline-layout">
+    <aside class="timeline-toc">
+      <ul>
+        <li>
+          <a href="#challenge">
+            <svg class="toc-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Challenge
+          </a>
+        </li>
+        <li>
+          <a href="#solution">
+            <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 0-6"/><path d="M4.6 15a1.7 1.7 0 0 1 0-6"/><path d="M12 3v2m0 14v2m9-9h-2M5 12H3"/></svg>
+            Solution
+          </a>
+        </li>
+        <li>
+          <a href="#my-role">
+            <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg>
+            My Role
+          </a>
+        </li>
+        <li>
+          <a href="#tools">
+            <svg class="toc-icon" viewBox="0 0 24 24"><path d="M14.7 6.3l3 3"/><path d="M12 2l2 2-6 6-2-2L12 2zM2 20h20"/><path d="M5 20v-3h14v3"/></svg>
+            Tools
+          </a>
+        </li>
+        <li>
+          <a href="#impact">
+            <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            Impact
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <section class="timeline">
+      <div class="timeline-item" id="challenge">
+        <div class="timeline-content fade-in">
+          <h2>Challenge</h2>
+          <p>Users across departments needed to transition from a legacy BI platform to a new one. Many users were unfamiliar with the new interface, and existing training resources were outdated or overly technical.</p>
         </div>
+      </div>
+
+      <div class="timeline-item" id="solution">
+        <div class="timeline-content fade-in">
+          <h2>Solution</h2>
+          <p>I developed a structured, scalable learning experience in Rise 360, starting with 10 courses and expanding to 15 based on user needs. Courses were designed to build upon each other, introducing basic to advanced concepts.</p>
+          <ul>
+            <li>Courses included multimedia, interactive modules, and built-in assessments.</li>
+            <li>Materials targeted both analysts and low-access users with customized examples.</li>
+            <li>All assets were reviewed by SMEs and published within a tight 20-day sprint.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="my-role">
+        <div class="timeline-content fade-in">
+          <h2>My Role</h2>
+          <ul>
+            <li>Designed the full course track structure and learning objectives.</li>
+            <li>Wrote scripts, built courses, and produced interactive content in Rise 360.</li>
+            <li>Collaborated with SMEs and QA reviewers to validate accuracy and clarity.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="tools">
+        <div class="timeline-content fade-in">
+          <h2>Tools & Technologies</h2>
+          <ul>
+            <li><strong>Authoring:</strong> Rise 360, Adobe XD</li>
+            <li><strong>Development:</strong> HTML, CSS (for supplemental web content)</li>
+            <li><strong>Collaboration:</strong> Google Docs, Slack, Zoom</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="impact">
+        <div class="timeline-content fade-in">
+          <h2>Impact</h2>
+          <ul>
+            <li><strong>15 courses</strong> created in just 20 days</li>
+            <li><strong>Broad accessibility</strong> across end-user and analyst audiences</li>
+            <li><strong>Accelerated adoption</strong> of new BI platform with minimal disruption</li>
+            <li>Demonstrated ROI by replacing costly 1:1 training and outdated manuals</li>
+          </ul>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Main Content -->
-    <main class="project-container">
-        <section class="project">
-            <p>
-To support the adoption of a new business intelligence platform, I designed and developed an education track using Rise 360, starting with 10 courses and expanding to 15. The curriculum bridged the gap between the old and new tools, leveraging learners' existing data analysis knowledge to ease the transition.
-            </p>
-            <p>
+  <div id="footer-placeholder"></div>
 
-The training was built for a wide audience—from advanced analysts to casual end users—ensuring accessibility without sacrificing depth. It included written course material, a structured learning path, multimedia assets, and assessments. Working within a tight 20-day timeline, I collaborated with SMEs to create, refine, and launch the courses efficiently.
-            </p>
-            <p>
-The impact? Customers transitioned to the new BI tool with minimal friction, thanks to clear, structured training that made learning intuitive and practical.            </p>
-        </section>
-    </main>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
-
-    <script>
-        // Include the header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        // Include the footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-    </script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
