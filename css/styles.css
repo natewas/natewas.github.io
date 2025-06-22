@@ -1116,12 +1116,7 @@ html {
     border-bottom: 1px solid #ddd;
   }
   
-  
-  .sticky-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-  }
+
   
   /* Scroll offset to account for sticky nav */
   h2 {
@@ -1129,8 +1124,24 @@ html {
   }
   
   
+  
+
   .proj-header-section {
-    min-height: 80vh;
+    display: none;
+    scroll-margin-top: 160px;
     padding-top: 2rem;
+    min-height: 80vh;
+  }
+  
+  /* Navigation bar below hero */
+  .sticky-nav {
+    position: sticky;
+    top: 80px; /* adjust if your header is taller */
+    background: #fff;
+    z-index: 900;
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    border-bottom: 1px solid #ddd;
   }
   
