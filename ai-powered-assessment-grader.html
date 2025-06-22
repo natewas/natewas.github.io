@@ -1,110 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-56E5DC1BR1');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-56E5DC1BR1');
     </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
-    <title>LMS Implementation</title>
-    <script>
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-            
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching footer:', error);
-            });
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Grading Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div id="header-placeholder"></div>
 
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
-    
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li>Artificial Intelligence Grading Assistant</li>
-        </ul>
-    </nav>
+  <section class="hero-project">
+    <div class="hero-text">
+      <h1>Artificial Intelligence Grading Assistant</h1>
+      <p class="tldr">
+        TL;DR: Building an AI grading assistant to evaluate short-answer responses from Certified Admin exams—reducing grading time by 50% while maintaining a 95–99% accuracy match with human graders. The tool aims to provide consistent, contextual feedback to learners, handle complex inputs, and scale human effort across seven exams and 70+ unique questions.
+      </p>
+    </div>
+  </section>
 
+  <main class="timeline-layout">
+    <aside class="timeline-toc">
+      <ul>
+        <li><a href="#challenge">Challenge</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#my-role">My Role</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+    </aside>
 
-    <!-- Hero Section -->
-    <section class="hero-project">
-        <div class="hero-text">
-            <h1>Artificial Intelligence Grading Assistant</h1>
-            <p class="tldr">TL;DR: Building an AI grading assistant to evaluate short-answer responses from Certified Admin exams—reducing grading time by 50% while maintaining a 95–99% accuracy match with human graders. The tool aims to provide consistent, contextual feedback to learners, handle complex inputs, and scale human effort across seven exams and 70+ unique questions.</p>
+    <section class="timeline">
+      <div class="timeline-item" id="challenge">
+        <div class="timeline-content fade-in">
+          <h2>Challenge</h2>
+          <p>Certified Admin exams included over 70 unique short-answer questions across seven different assessments, each requiring manual grading. This process was time-consuming, inconsistent across graders, and difficult to scale.</p>
+          <p>Ensuring contextual, personalized feedback was also challenging due to vague, overly detailed, or partially correct responses from learners of varying backgrounds.</p>
         </div>
+      </div>
+
+      <div class="timeline-item" id="solution">
+        <div class="timeline-content fade-in">
+          <h2>Solution</h2>
+          <h3>AI-Powered Grading Engine</h3>
+          <ul>
+            <li>Trained on course materials, answer keys, and company-specific context.</li>
+            <li>Handles vague, nuanced, and over-detailed answers.</li>
+            <li>Excludes biased or incorrect historical data from training.</li>
+          </ul>
+          <h3>Feedback Generator</h3>
+          <ul>
+            <li>Generates precise, supportive feedback (e.g., "missing concept," "good structure, incomplete logic").</li>
+            <li>Encourages learning without pass/fail bias.</li>
+          </ul>
+          <h3>Evaluation Pipeline</h3>
+          <ul>
+            <li>Uses blind comparison against human graders to refine model accuracy.</li>
+            <li>Implements rubric-based scoring aligned with SME validation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="my-role">
+        <div class="timeline-content fade-in">
+          <h2>My Role</h2>
+          <ul>
+            <li>Led project design and development from ideation to pilot testing.</li>
+            <li>Authored custom prompt architecture and validation scripts.</li>
+            <li>Ran blind testing with SMEs and iterated based on feedback.</li>
+            <li>Designed rollout and data governance framework.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="tools">
+        <div class="timeline-content fade-in">
+          <h2>Tools & Technologies</h2>
+          <ul>
+            <li><strong>Development:</strong> Python, OpenAI GPT-4</li>
+            <li><strong>Integration:</strong> Skilljar (pending), JSON schema</li>
+            <li><strong>Evaluation:</strong> SME blind scoring, feedback loop design</li>
+            <li><strong>Collaboration:</strong> Git, Google Sheets, Slack</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="impact">
+        <div class="timeline-content fade-in">
+          <h2>Impact</h2>
+          <ul>
+            <li><strong>50% reduction</strong> in manual grading time</li>
+            <li><strong>95–99% agreement</strong> with human graders</li>
+            <li><strong>Consistent, high-quality learner feedback</strong> delivered across all responses</li>
+            <li><strong>Scalable solution</strong> for 70+ questions across 7 certification exams</li>
+            <li>Strategic roadmap for future rollout and ethical AI expansion</li>
+          </ul>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Main Content -->
-    <main class="project-container">
-        <section class="project">
-						<p>
-							To improve the efficiency and consistency of grading Certified Admin exams, I’m building an AI-powered tool that evaluates short-answer responses across 70+ questions from seven exams. The goal is to reduce manual grading time by 50% while maintaining a 95–99% agreement rate with human graders. The tool uses proprietary software trained on course materials, pre-scored responses, and company-specific context to assess responses and deliver accurate, context-aware feedback.
-						</p>            
-						<p>
-							This system is designed to handle a variety of real-world scenarios: vague or overly detailed responses, nuanced industry-specific answers, and learners with different levels of experience. It also avoids common AI pitfalls by not learning from incorrect or partially correct historical data. By running AI evaluations alongside human graders and comparing results, we’re able to refine the tool’s accuracy and reliability before expanding its use. Success is being measured through grading speed, accuracy, feedback quality, and overall user satisfaction from both graders and learners.
-						</p>
-						<p>
-							The project is moving through multiple phases: prototyping, pilot testing with blind comparisons, application development for scaled grading, and eventual integration with Skilljar (pending feasibility). We’re also evaluating the broader implications of AI in education, including ethical considerations and potential expansion to other training areas. If successful, this tool will not only streamline grading but also elevate the overall certification experience for global learners.
-						</p>
+  <div id="footer-placeholder"></div>
 
-        </section>
-    </main>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
-
-    <script>
-        // Include the header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        // Include the footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-    </script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
