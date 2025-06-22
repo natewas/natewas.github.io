@@ -1141,4 +1141,29 @@ html {
       padding-left: 0;
     }
   }
-    
+  .timeline-toc ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .timeline-toc li {
+    margin-bottom: 1.2rem;
+  }
+  
+  .timeline-toc a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    gap: 0.5rem;
+  }
+  
+  .toc-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+  
