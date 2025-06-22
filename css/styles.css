@@ -1107,15 +1107,15 @@ html {
   /* Sticky top nav bar */
   .sticky-nav {
     position: sticky;
-    top: 0;
+    top: 80px; /* Push below main header */
     background: #fff;
-    z-index: 1000;
+    z-index: 900;
     padding: 1em;
     display: flex;
     gap: 1em;
     border-bottom: 1px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
   }
+  
   
   .sticky-nav a {
     text-decoration: none;
@@ -1125,6 +1125,8 @@ html {
   
   /* Scroll offset to account for sticky nav */
   h2 {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 160px; /* main nav + sticky nav height */
   }
+  
+  
   

@@ -124,6 +124,25 @@
           document.getElementById('footer-placeholder').innerHTML = data;
         });
     </script>
+    <script>
+        const sections = document.querySelectorAll('.proj-header-section');
+      
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              sections.forEach(section => {
+                section.style.display = section === entry.target ? 'block' : 'none';
+              });
+            }
+          });
+        }, {
+          root: null,
+          threshold: 0.6 // section must be mostly in view
+        });
+      
+        sections.forEach(section => observer.observe(section));
+      </script>
+      
   </body>
   
 </html>
