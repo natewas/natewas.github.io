@@ -868,12 +868,12 @@ body {
     }
 }
 
-.project ul {
+.timeline ul {
     list-style: none;
     padding-left: 1.5rem;
 }
 
-.project li::marker {
+.timeline li::marker {
     content: "• ";
     color: #66B032; /* Your accent color */
     font-weight: bold;
