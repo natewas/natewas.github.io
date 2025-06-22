@@ -38,11 +38,9 @@
   <main>
     <div class="project-container">
       <!-- Project Slider Section -->
-      <section class="slider-container">
-        <button class="nav-arrow left">&#8592;</button>
-      
-        <div class="slider-wrapper">
-          <div class="slide" id="challenge">
+      <section class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
             <h2>Challenge</h2>
             <p>MasterControl Academy offers 750+ English-language eLearning courses, but lacked a scalable localization process. The existing manual workflow took 38–60 minutes per course and left key components untranslated, including:</p>
             <ul>
@@ -52,22 +50,66 @@
             </ul>
             <p>These limitations created barriers for non-native speakers and posed compliance risks in regulated global markets.</p>
           </div>
+        </div>
       
-          <!-- Other slides go here... -->
-      
-          <div class="slide" id="impact">
-            <h2>Impact</h2>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h2>Solution</h2>
+            <h3>Custom Utility Development</h3>
             <ul>
-              <li><strong>96 courses localized</strong>, scaling to 750+</li>
-              <li><strong>Up to 80% reduction</strong> in localization time</li>
-              <li><strong>Automated full course translation</strong></li>
-              <li><strong>Adopted globally</strong> as the standard</li>
+              <li>Extracts all course text—including .vtt video captions—from SCORM packages.</li>
+              <li>Converts content into structured JSON for translation.</li>
+              <li>Uses SmartCat’s CLI to batch-translate into 15 target languages.</li>
+              <li>Reintegrates content back into SCORM with LMS compatibility.</li>
+            </ul>
+            <h3>Full Ecosystem Translation</h3>
+            <ul>
+              <li>Catalog pages and metadata</li>
+              <li>Learning paths and UI navigation</li>
+              <li>Multimedia captions and embedded instructional content</li>
+            </ul>
+            <h3>Quality Control Loop</h3>
+            <p>SME feedback ensures accurate and contextually relevant translations.</p>
+          </div>
+        </div>
+      
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h2>My Role</h2>
+            <ul>
+              <li>Owned end-to-end system design and deployment</li>
+              <li>Developed SCORM-to-JSON utility in Python</li>
+              <li>Integrated SmartCat CLI with LMS</li>
+              <li>Worked with global stakeholders for validation</li>
             </ul>
           </div>
         </div>
       
-        <button class="nav-arrow right">&#8594;</button>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h2>Tools & Technologies</h2>
+            <ul>
+              <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM</li>
+              <li><strong>Authoring:</strong> Articulate Rise</li>
+              <li><strong>LMS:</strong> Skilljar</li>
+              <li><strong>Versioning:</strong> Git</li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h2>Impact</h2>
+            <ul>
+              <li><strong>96 courses localized</strong>, scaling to 750+</li>
+              <li><strong>Up to 80% reduction</strong> in localization time</li>
+              <li><strong>Full automation</strong> of translation and reintegration</li>
+              <li><strong>Global adoption</strong> of this localization system</li>
+            </ul>
+          </div>
+        </div>
       </section>
+      
       
   
     </div>
