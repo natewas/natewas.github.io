@@ -1129,4 +1129,8 @@ html {
   }
   
   
+  .proj-header-section {
+    min-height: 80vh;
+    padding-top: 2rem;
+  }
   
