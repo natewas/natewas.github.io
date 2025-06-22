@@ -1158,12 +1158,4 @@ html {
     color: #333;
     gap: 0.5rem;
   }
-  
-  .toc-icon {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 2;
-  }
-  
+    
