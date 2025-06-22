@@ -7,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-56E5DC1BR1');
     </script>
 
@@ -19,38 +18,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
     <title>Localization Program and Translation Automation</title>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching footer:', error);
-            });
-    });
-</script>
-
 </head>
 <body>
 
@@ -65,33 +32,78 @@
         </ul>
     </nav>
 
-
     <!-- Hero Section -->
     <section class="hero-project">
         <div class="hero-text">
             <h1>Localization Program</h1>
-
-            <p class="tldr">TL;DR: Designing a scalable, automated translation system to make MasterControl Academy content accessible in 15 languages. Currently translating 96 courses, with a vision for seamless, fully translated learning experiences—from catalog pages to multimedia content. The goal? Reduce manual effort, ensure compliance, and enhance customer success in global markets.</p>
+            <p class="tldr">
+                TL;DR: I designed and built an automated localization system to make MasterControl Academy course content available in 15 languages. The solution integrates a custom pre- and post-processing utility that parses SCORM packages, leverages SmartCat’s command-line interface (CLI) for translation, and reinserts the content—enabling full course localization (text, UI, captions, and media) within 24 hours. The result: drastically reduced manual effort, improved compliance, and a scalable foundation for global training success.
+            </p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="project-container">
         <section class="project">
+            <h2>Challenge</h2>
             <p>
-MasterControl Academy houses 750+ English-language courses, but no automated translation system is in place, making localization slow and resource-intensive. The current manual process takes 38-60 minutes per course, leaving videos untranslated, links redirecting to English content, and searchability issues that hinder non-native speakers.
+                MasterControl Academy offers 750+ English-language eLearning courses, but lacked a scalable localization process. The existing manual workflow took 38–60 minutes per course and left key components untranslated, including:
             </p>
+            <ul>
+                <li>Video captions remaining in English.</li>
+                <li>Internal navigation and links redirecting to untranslated content.</li>
+                <li>Poor searchability for non-English terms.</li>
+            </ul>
+            <p>These limitations created barriers for non-native speakers and posed compliance risks in regulated global markets.</p>
+
+            <h2>Solution</h2>
+            <p>I developed an automated localization pipeline that processes and reintegrates translated course content with minimal human intervention. Key components included:</p>
+
+            <h3>Custom Utility Development</h3>
+            <ul>
+                <li>Extracts all course text—including <code>.vtt</code> video captions—from SCORM packages.</li>
+                <li>Converts content into structured JSON for translation.</li>
+                <li>Uses SmartCat’s CLI to batch-translate course materials into 15 target languages.</li>
+                <li>Reintegrates translated assets into the SCORM package, preserving structure, functionality, and LMS compatibility.</li>
+            </ul>
+
+            <h3>Full Ecosystem Translation</h3>
+            <p>The system localizes not just core course content, but also:</p>
+            <ul>
+                <li>Catalog pages and associated metadata.</li>
+                <li>Learning paths and UI-level navigation.</li>
+                <li>Multimedia captions and embedded instructional content.</li>
+            </ul>
+
+            <h3>Quality Control Loop</h3>
             <p>
-
-
-To solve this, we’re implementing a fully automated translation system that will process content updates within 24 hours of English course modifications. The system will support 90-95% translation accuracy, ensuring a seamless learning journey from login to course completion—including catalog pages, learning paths, and multimedia assets.
+                A feedback process with regional SMEs ensures high-quality, contextually relevant translations. Version control is built into the utility, enabling efficient iteration and refinement.
             </p>
-            <p>
 
-By leveraging SmartCat, Articulate, and MasterControl’s internal translation workflows, we will streamline content localization while meeting compliance requirements and boosting customer adoption in non-English-speaking markets. A structured feedback loop will also allow for continuous improvements, ensuring high-quality, regionally relevant training experiences.
-        </p>
-        <p>
-This initiative will eliminate operational bottlenecks, increase training accessibility, and reinforce MasterControl’s global market leadership in regulatory learning solutions.    </p>
+            <h2>My Role</h2>
+            <ul>
+                <li>Owned the end-to-end design, development, and deployment of the localization program.</li>
+                <li>Designed the automation workflow and system architecture.</li>
+                <li>Developed the custom SCORM-to-JSON utility using Python.</li>
+                <li>Integrated SmartCat CLI with our LMS and authoring pipeline.</li>
+                <li>Collaborated with global stakeholders to validate and test localized outputs.</li>
+            </ul>
+
+            <h2>Tools & Technologies</h2>
+            <ul>
+                <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
+                <li><strong>Authoring:</strong> Articulate Rise</li>
+                <li><strong>LMS:</strong> Skilljar</li>
+                <li><strong>Collaboration & Versioning:</strong> Git</li>
+            </ul>
+
+            <h2>Impact</h2>
+            <ul>
+                <li><strong>96 courses localized</strong> to date, with plans to scale to 750+.</li>
+                <li><strong>Up to 80% reduction</strong> in localization time per course.</li>
+                <li><strong>Automated translation of all course elements</strong>, including <code>.vtt</code> video captions and navigation components.</li>
+                <li><strong>Adopted as the global localization standard</strong> for MasterControl Academy.</li>
+            </ul>
         </section>
     </main>
 
@@ -99,14 +111,12 @@ This initiative will eliminate operational bottlenecks, increase training access
     <div id="footer-placeholder"></div>
 
     <script>
-        // Include the header
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-placeholder').innerHTML = data;
             });
 
-        // Include the footer
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
