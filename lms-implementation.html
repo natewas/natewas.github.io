@@ -1,109 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
-    <script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-56E5DC1BR1');
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&display=swap" rel="stylesheet">
-    <title>LMS Implementation</title>
-    <script>
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-            
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching footer:', error);
-            });
-    </script>
+  </script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>natewasden.com | Portfolio</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=2">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LMS Implementation</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div id="header-placeholder"></div>
 
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
-    
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li>LMS Implementation</li>
-        </ul>
-    </nav>
+  <nav class="breadcrumbs">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li>LMS Implementation</li>
+    </ul>
+  </nav>
 
+  <section class="hero-project">
+    <div class="hero-text">
+      <h1>LMS Implementation</h1>
+      <p class="tldr">
+        TL;DR: Built a learning system for 300,000+ users. Automated 1,000+ hours of manual tasks, wrote global theme code, and remapped 15,000 links. Basically, I turned a logistical nightmare into a scalable, user-friendly dream.
+      </p>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero-project">
-        <div class="hero-text">
-            <h1>LMS Implementation</h1>
-            <p class="tldr">TL;DR: Built a learning system for 300,000+ users. Automated 1,000+ hours of manual tasks, wrote global theme code, and remapped 15,000 links. Basically, I turned a logistical nightmare into a scalable, user-friendly dream.</p>
+  <main class="timeline-layout">
+    <aside class="timeline-toc">
+      <ul>
+        <li><a href="#challenge">
+          <svg class="toc-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Challenge</a></li>
+        <li><a href="#solution">
+          <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 0-6"/><path d="M4.6 15a1.7 1.7 0 0 1 0-6"/><path d="M12 3v2m0 14v2m9-9h-2M5 12H3"/></svg>
+          Solution</a></li>
+        <li><a href="#my-role">
+          <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg>
+          My Role</a></li>
+        <li><a href="#tools">
+          <svg class="toc-icon" viewBox="0 0 24 24"><path d="M14.7 6.3l3 3"/><path d="M12 2l2 2-6 6-2-2L12 2zM2 20h20"/><path d="M5 20v-3h14v3"/></svg>
+          Tools</a></li>
+        <li><a href="#impact">
+          <svg class="toc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+          Impact</a></li>
+      </ul>
+    </aside>
+
+    <section class="timeline">
+      <div class="timeline-item" id="challenge">
+        <div class="timeline-content fade-in">
+          <h2>Challenge</h2>
+          <p>We needed to deliver a learning platform for more than 300,000 users that was flexible, scalable, and modern. Legacy infrastructure, outdated links, and manual course administration posed massive challenges. Thousands of links in 1,000+ courses needed to be updated, and the migration required alignment across stakeholders and business units.</p>
         </div>
+      </div>
+
+      <div class="timeline-item" id="solution">
+        <div class="timeline-content fade-in">
+          <h2>Solution</h2>
+          <ul>
+            <li>Used Python and Selenium to build automation that remapped over 15,000 URLs.</li>
+            <li>Developed and deployed 50+ new LMS pages and migrated learning paths.</li>
+            <li>Wrote a unified global theme to ensure visual and functional consistency.</li>
+            <li>Designed wireframes in Adobe XD with feedback loops from stakeholders.</li>
+            <li>Built front/back-end enhancements using HTML, CSS, JavaScript, and Node.js.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="my-role">
+        <div class="timeline-content fade-in">
+          <h2>My Role</h2>
+          <ul>
+            <li>Led the end-to-end LMS implementation strategy and execution.</li>
+            <li>Wrote automation scripts, global theme code, and front-end templates.</li>
+            <li>Collaborated with product and engineering to resolve platform limitations.</li>
+            <li>Created user documentation and conducted pilot testing and rollout.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="tools">
+        <div class="timeline-content fade-in">
+          <h2>Tools & Technologies</h2>
+          <ul>
+            <li><strong>Automation:</strong> Python, Selenium</li>
+            <li><strong>Front-End:</strong> HTML, CSS, JavaScript</li>
+            <li><strong>Back-End:</strong> Node.js</li>
+            <li><strong>Design:</strong> Adobe XD</li>
+            <li><strong>Data/Reporting:</strong> Skilljar, DOMO</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item" id="impact">
+        <div class="timeline-content fade-in">
+          <h2>Impact</h2>
+          <ul>
+            <li><strong>1,000+ hours saved</strong> through automation of link mapping and testing.</li>
+            <li><strong>300,000+ users served</strong> by the new platform.</li>
+            <li><strong>75% reduction</strong> in manual overhead for course maintenance.</li>
+            <li><strong>Consistent UX/UI</strong> across 50+ pages with reusable components.</li>
+            <li><strong>+65 NPS</strong> from pilot feedback and ongoing usage surveys.</li>
+          </ul>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Main Content -->
-    <main class="project-container">
-        <section class="project">
-            <p>
-                I led the implementation and launch of a new learning management system (LMS) designed to provide an invaluable educational platform for over 300,000 sysadmins, end users, partners, and employees. The project involved remapping and updating hyperlinks across 1,000+ courses to ensure seamless access to resources. To streamline this process, I developed automation tools using Python and Selenium, saving more than 1000 hours and significant effort during the transition.
-            </p>
-            <p>
-                In addition to managing content migration, I developed and maintained over 50 web pages and wrote the global theme code used across the domain, creating a cohesive and user-friendly experience. I also designed wireframes in Adobe XD to incorporate stakeholder feedback and conducted pilot testing to ensure the platform met user needs. To enhance functionality, I built front- and back-end solutions using HTML, CSS, JavaScript, and Node.js, enabling users to quickly find and navigate relevant training resources.
-            </p>
-            <p>
-                This project showcased my ability to deliver impactful educational tools, automate complex workflows, and design scalable, user-centric solutions that deliver exceptional value to customers.
-            </p>
-        </section>
-    </main>
+  <div id="footer-placeholder"></div>
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
 
-    <script>
-        // Include the header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        // Include the footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-    </script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    faders.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
