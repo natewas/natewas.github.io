@@ -1090,3 +1090,7 @@ main {
     font-style: italic;
   }
   
+  h2 {
+    margin-top:0px;
+
+  }
