@@ -1098,3 +1098,33 @@ main {
     margin-bottom:2rem;
 
   }
+
+  /* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Sticky top nav bar */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1000;
+    padding: 1em;
+    display: flex;
+    gap: 1em;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .sticky-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Scroll offset to account for sticky nav */
+  h2 {
+    scroll-margin-top: 100px;
+  }
+  

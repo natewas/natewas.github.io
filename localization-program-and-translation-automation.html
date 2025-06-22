@@ -25,118 +25,105 @@
 </head>
 <body>
 
-    <!-- Header Placeholder -->
-    <div id="header-placeholder"></div>
-    
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li>Localization Program and Translation Automation</li>
-        </ul>
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+      <a href="#challenge">Challenge</a>
+      <a href="#solution">Solution</a>
+      <a href="#my-role">My Role</a>
+      <a href="#tools">Tools</a>
+      <a href="#impact">Impact</a>
     </nav>
-
+  
     <!-- Hero Section -->
     <section class="hero-project">
-        <div class="hero-text">
-            <h1>Localization Program</h1>
-            <p class="tldr">
-                TL;DR: I designed and built an automated localization system to make MasterControl Academy course content available in 15 languages. The solution integrates a custom pre- and post-processing utility that parses SCORM packages, leverages SmartCat’s command-line interface (CLI) for translation, and reinserts the content—enabling full course localization (text, UI, captions, and media) within 24 hours. The result: drastically reduced manual effort, improved compliance, and a scalable foundation for global training success.
-            </p>
-        </div>
+      <div class="hero-text">
+        <h1>Localization Program</h1>
+        <p class="tldr">
+          TL;DR: I designed and built an automated localization system to make MasterControl Academy course content available in 15 languages...
+        </p>
+      </div>
     </section>
-
+  
     <!-- Main Content -->
     <main>
-        <div class="project-container">
+      <div class="project-container">
         <section class="project">
-            <div class="proj-header-section">
-            <h2>Challenge</h2>
-            <p>
-                MasterControl Academy offers 750+ English-language eLearning courses, but lacked a scalable localization process. The existing manual workflow took 38–60 minutes per course and left key components untranslated, including:
-            </p>
+  
+          <div class="proj-header-section">
+            <h2 id="challenge">Challenge</h2>
+            <p>MasterControl Academy offers 750+ English-language eLearning courses...</p>
             <ul>
-                <li>Video captions remaining in English.</li>
-                <li>Internal navigation and links redirecting to untranslated content.</li>
-                <li>Poor searchability for non-English terms.</li>
+              <li>Video captions remaining in English.</li>
+              <li>Internal navigation and links redirecting to untranslated content.</li>
+              <li>Poor searchability for non-English terms.</li>
             </ul>
-            <p>These limitations created barriers for non-native speakers and posed compliance risks in regulated global markets.</p>
-              </div>
-              <div class="proj-header-section">
-
-            <h2>Solution</h2>
-            <p>I developed an automated localization pipeline that processes and reintegrates translated course content with minimal human intervention. Key components included:</p>
-
+          </div>
+  
+          <div class="proj-header-section">
+            <h2 id="solution">Solution</h2>
+            <p>I developed an automated localization pipeline...</p>
+  
             <h3>Custom Utility Development</h3>
             <ul>
-                <li>Extracts all course text—including <code>.vtt</code> video captions—from SCORM packages.</li>
-                <li>Converts content into structured JSON for translation.</li>
-                <li>Uses SmartCat’s CLI to batch-translate course materials into 15 target languages.</li>
-                <li>Reintegrates translated assets into the SCORM package, preserving structure, functionality, and LMS compatibility.</li>
+              <li>Extracts all course text—including <code>.vtt</code> video captions—from SCORM packages.</li>
+              <li>Converts content into structured JSON for translation.</li>
+              <li>Uses SmartCat’s CLI...</li>
+              <li>Reintegrates translated assets...</li>
             </ul>
-
+  
             <h3>Full Ecosystem Translation</h3>
             <p>The system localizes not just core course content, but also:</p>
             <ul>
-                <li>Catalog pages and associated metadata.</li>
-                <li>Learning paths and UI-level navigation.</li>
-                <li>Multimedia captions and embedded instructional content.</li>
+              <li>Catalog pages and metadata.</li>
+              <li>Learning paths and UI navigation.</li>
+              <li>Multimedia captions and content.</li>
             </ul>
-
+  
             <h3>Quality Control Loop</h3>
-            <p>
-                A feedback process with regional SMEs ensures high-quality, contextually relevant translations. Version control is built into the utility, enabling efficient iteration and refinement.
-            </p>
-              </div>
-              <div class="proj-header-section">
-            <h2>My Role</h2>
+            <p>A feedback process with SMEs ensures high-quality translations...</p>
+          </div>
+  
+          <div class="proj-header-section">
+            <h2 id="my-role">My Role</h2>
             <ul>
-                <li>Owned the end-to-end design, development, and deployment of the localization program.</li>
-                <li>Designed the automation workflow and system architecture.</li>
-                <li>Developed the custom SCORM-to-JSON utility using Python.</li>
-                <li>Integrated SmartCat CLI with our LMS and authoring pipeline.</li>
-                <li>Collaborated with global stakeholders to validate and test localized outputs.</li>
+              <li>Owned end-to-end design, development, and deployment.</li>
+              <li>Created the automation workflow...</li>
             </ul>
-              </div>
-              <div class="proj-header-section">
-
-            <h2>Tools & Technologies</h2>
+          </div>
+  
+          <div class="proj-header-section">
+            <h2 id="tools">Tools & Technologies</h2>
             <ul>
-                <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
-                <li><strong>Authoring:</strong> Articulate Rise</li>
-                <li><strong>LMS:</strong> Skilljar</li>
-                <li><strong>Collaboration & Versioning:</strong> Git</li>
+              <li><strong>Development:</strong> Python, SmartCat CLI, JSON...</li>
+              <li><strong>Authoring:</strong> Articulate Rise</li>
+              <li><strong>LMS:</strong> Skilljar</li>
+              <li><strong>Versioning:</strong> Git</li>
             </ul>
-              </div>
-              <div class="proj-header-section">
-
-            <h2>Impact</h2>
+          </div>
+  
+          <div class="proj-header-section">
+            <h2 id="impact">Impact</h2>
             <ul>
-                <li><strong>96 courses localized</strong> to date, with plans to scale to 750+.</li>
-                <li><strong>Up to 80% reduction</strong> in localization time per course.</li>
-                <li><strong>Automated translation of all course elements</strong>, including <code>.vtt</code> video captions and navigation components.</li>
-                <li><strong>Adopted as the global localization standard</strong> for MasterControl Academy.</li>
+              <li><strong>96 courses localized</strong>, scaling to 750+.</li>
+              <li><strong>Up to 80% time reduction</strong> per course.</li>
+              <li><strong>Automated translation of all elements</strong>.</li>
             </ul>
-            </div>
-        </div>
+          </div>
+  
         </section>
+      </div>
     </main>
-
-    <!-- Footer Placeholder -->
+  
+    <!-- Optional Footer -->
     <div id="footer-placeholder"></div>
-
+  
     <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            });
-
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('footer-placeholder').innerHTML = data;
+        });
     </script>
-</body>
+  </body>
+  
 </html>
