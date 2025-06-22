@@ -1134,34 +1134,23 @@ html {
   }
   
   /* Navigation bar below hero */
-  .sticky-nav {
-    position: sticky;
-    top: 80px; /* adjust if your header is taller */
-    background: #fff;
-    z-index: 900;
-    padding: 1em;
-    display: flex;
-    gap: 1em;
-    border-bottom: 1px solid #ddd;
-  }
-  
   .slider-container {
     position: relative;
-    overflow: hidden;
-    background: #f6f8e0; /* match your current section color */
-    padding: 2rem 1rem;
-    height: auto;
+    background: #f6f8e0;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
   
   .slider-wrapper {
-    display: flex;
-    transition: transform 0.5s ease;
     width: 100%;
+    max-width: 800px;
   }
   
   .slide {
-    min-width: 100%;
-    flex-shrink: 0;
+    width: 100%;
     padding: 2rem;
     box-sizing: border-box;
     background: white;
@@ -1175,9 +1164,6 @@ html {
   }
   
   .nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background: #333;
     color: white;
     border: none;
@@ -1186,6 +1172,13 @@ html {
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;
+    flex-shrink: 0;
+  }
+  
+  .nav-arrow:disabled {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
   }
   
   .nav-arrow.left {

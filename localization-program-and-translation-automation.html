@@ -32,88 +32,42 @@
     </div>
   </section>
 
-  <!-- Section Navigation -->
-  <nav class="sticky-nav">
-    <a href="#challenge">Challenge</a>
-    <a href="#solution">Solution</a>
-    <a href="#my-role">My Role</a>
-    <a href="#tools">Tools</a>
-    <a href="#impact">Impact</a>
-  </nav>
+
 
   <!-- Main Content -->
   <main>
     <div class="project-container">
       <!-- Project Slider Section -->
-<section class="slider-container">
-    <div class="slider-wrapper">
-  
-      <div class="slide" id="challenge">
-        <h2>Challenge</h2>
-        <p>MasterControl Academy offers 750+ English-language eLearning courses...</p>
-        <ul>
-          <li>Video captions remaining in English.</li>
-          <li>Internal navigation and links redirecting to untranslated content.</li>
-          <li>Poor searchability for non-English terms.</li>
-        </ul>
-      </div>
-  
-      <div class="slide" id="solution">
-        <h2>Solution</h2>
-        <p>I developed an automated localization pipeline...</p>
-        <h3>Custom Utility Development</h3>
-        <ul>
-          <li>Extracts .vtt video captions from SCORM packages</li>
-          <li>Converts content into structured JSON</li>
-          <li>Uses SmartCat’s CLI for translation</li>
-          <li>Reintegrates translated assets</li>
-        </ul>
-        <h3>Full Ecosystem Translation</h3>
-        <ul>
-          <li>Catalog pages and metadata</li>
-          <li>Learning paths and UI navigation</li>
-          <li>Multimedia captions and embedded content</li>
-        </ul>
-        <h3>Quality Control Loop</h3>
-        <p>SME feedback ensures quality and context relevance</p>
-      </div>
-  
-      <div class="slide" id="my-role">
-        <h2>My Role</h2>
-        <ul>
-          <li>Owned end-to-end system design</li>
-          <li>Developed SCORM-to-JSON utility in Python</li>
-          <li>Integrated SmartCat CLI with LMS</li>
-          <li>Collaborated globally for validation/testing</li>
-        </ul>
-      </div>
-  
-      <div class="slide" id="tools">
-        <h2>Tools & Technologies</h2>
-        <ul>
-          <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
-          <li><strong>Authoring:</strong> Articulate Rise</li>
-          <li><strong>LMS:</strong> Skilljar</li>
-          <li><strong>Collaboration:</strong> Git</li>
-        </ul>
-      </div>
-  
-      <div class="slide" id="impact">
-        <h2>Impact</h2>
-        <ul>
-          <li><strong>96 courses localized</strong>, scaling to 750+</li>
-          <li><strong>Up to 80% reduction</strong> in localization time</li>
-          <li><strong>Automated full course translation</strong></li>
-          <li><strong>Adopted globally</strong> as the standard</li>
-        </ul>
-      </div>
-  
-    </div>
-  
-    <!-- Navigation Arrows -->
-    <button class="nav-arrow left">&#8592;</button>
-    <button class="nav-arrow right">&#8594;</button>
-  </section>
+      <section class="slider-container">
+        <button class="nav-arrow left">&#8592;</button>
+      
+        <div class="slider-wrapper">
+          <div class="slide" id="challenge">
+            <h2>Challenge</h2>
+            <p>MasterControl Academy offers 750+ English-language eLearning courses...</p>
+            <ul>
+              <li>Video captions remaining in English.</li>
+              <li>Internal navigation and links redirecting to untranslated content.</li>
+              <li>Poor searchability for non-English terms.</li>
+            </ul>
+          </div>
+      
+          <!-- Other slides go here... -->
+      
+          <div class="slide" id="impact">
+            <h2>Impact</h2>
+            <ul>
+              <li><strong>96 courses localized</strong>, scaling to 750+</li>
+              <li><strong>Up to 80% reduction</strong> in localization time</li>
+              <li><strong>Automated full course translation</strong></li>
+              <li><strong>Adopted globally</strong> as the standard</li>
+            </ul>
+          </div>
+        </div>
+      
+        <button class="nav-arrow right">&#8594;</button>
+      </section>
+      
   
     </div>
   </main>
@@ -138,31 +92,39 @@
       .catch(error => console.error('Error loading footer:', error));
 
 
-    const slides = document.querySelectorAll('.slide');
-    const nextBtn = document.querySelector('.nav-arrow.right');
-    const prevBtn = document.querySelector('.nav-arrow.left');
-    let currentIndex = 0;
-  
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
+  const slides = document.querySelectorAll('.slide');
+  const nextBtn = document.querySelector('.nav-arrow.right');
+  const prevBtn = document.querySelector('.nav-arrow.left');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    // Hide arrows at bounds
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slides.length - 1;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+      showSlide(currentIndex);
     }
-  
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
       showSlide(currentIndex);
-    });
-  
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
-    });
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      showSlide(currentIndex);
-    });
-   
-  </script>
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentIndex);
+  });
+</script>
+
 </body>
 </html>
