@@ -1052,31 +1052,53 @@ html {
       padding: 1.5rem 1rem;
     }
   }
-  
-  .timeline {
-    position: relative;
-    margin: 4rem auto;
-    padding: 2rem 1rem;
-    max-width: 800px;
-    border-left: 3px solid #ccc;
+  /* Layout */
+.timeline-layout {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f6f8e0;
   }
   
+  /* Sticky TOC */
+  .timeline-toc {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    padding-left: 1rem;
+    min-width: 150px;
+  }
+  
+  .timeline-toc ul {
+    list-style: none;
+    padding: 0;
+    font-weight: bold;
+  }
+  
+  .timeline-toc a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+    transition: color 0.2s ease;
+  }
+  
+  .timeline-toc a:hover {
+    color: #0077cc;
+  }
+  
+  /* Timeline */
+  .timeline {
+    position: relative;
+    flex: 1;
+    border-left: 3px solid #ccc;
+    padding-left: 3rem;
+  }
+  
+  /* Vertical line centered */
   .timeline-item {
     position: relative;
     margin-bottom: 3rem;
-    padding-left: 2rem;
-  }
-  
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    top: 0.5rem;
-    left: -0.55rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: #333;
-    border-radius: 50%;
-    z-index: 1;
   }
   
   .timeline-content {
@@ -1084,30 +1106,36 @@ html {
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
   
   .timeline-content h2 {
     margin-top: 0;
-    color: #1a1a1a;
   }
   
-  .timeline-content ul {
-    margin-top: 0.5rem;
-    padding-left: 1.2rem;
+  /* Fade in when active */
+  .timeline-content.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   
-  @media screen and (max-width: 600px) {
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .timeline-layout {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .timeline-toc {
+      position: static;
+      margin-bottom: 2rem;
+    }
+  
     .timeline {
       border-left: none;
       padding-left: 0;
     }
-  
-    .timeline-item::before {
-      display: none;
-    }
-  
-    .timeline-item {
-      padding-left: 0;
-    }
   }
-  
+    

@@ -35,85 +35,87 @@
 
 
   <!-- Main Content -->
-  <main>
-    <div class="project-container">
-      <!-- Project Slider Section -->
-      <section class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h2>Challenge</h2>
-            <p>MasterControl Academy offers 750+ English-language eLearning courses, but lacked a scalable localization process. The existing manual workflow took 38–60 minutes per course and left key components untranslated, including:</p>
-            <ul>
-              <li>Video captions remaining in English.</li>
-              <li>Internal navigation and links redirecting to untranslated content.</li>
-              <li>Poor searchability for non-English terms.</li>
-            </ul>
-            <p>These limitations created barriers for non-native speakers and posed compliance risks in regulated global markets.</p>
-          </div>
-        </div>
-      
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h2>Solution</h2>
-            <h3>Custom Utility Development</h3>
-            <ul>
-              <li>Extracts all course text—including .vtt video captions—from SCORM packages.</li>
-              <li>Converts content into structured JSON for translation.</li>
-              <li>Uses SmartCat’s CLI to batch-translate into 15 target languages.</li>
-              <li>Reintegrates content back into SCORM with LMS compatibility.</li>
-            </ul>
-            <h3>Full Ecosystem Translation</h3>
-            <ul>
-              <li>Catalog pages and metadata</li>
-              <li>Learning paths and UI navigation</li>
-              <li>Multimedia captions and embedded instructional content</li>
-            </ul>
-            <h3>Quality Control Loop</h3>
-            <p>SME feedback ensures accurate and contextually relevant translations.</p>
-          </div>
-        </div>
-      
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h2>My Role</h2>
-            <ul>
-              <li>Owned end-to-end system design and deployment</li>
-              <li>Developed SCORM-to-JSON utility in Python</li>
-              <li>Integrated SmartCat CLI with LMS</li>
-              <li>Worked with global stakeholders for validation</li>
-            </ul>
-          </div>
-        </div>
-      
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h2>Tools & Technologies</h2>
-            <ul>
-              <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM</li>
-              <li><strong>Authoring:</strong> Articulate Rise</li>
-              <li><strong>LMS:</strong> Skilljar</li>
-              <li><strong>Versioning:</strong> Git</li>
-            </ul>
-          </div>
-        </div>
-      
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h2>Impact</h2>
-            <ul>
-              <li><strong>96 courses localized</strong>, scaling to 750+</li>
-              <li><strong>Up to 80% reduction</strong> in localization time</li>
-              <li><strong>Full automation</strong> of translation and reintegration</li>
-              <li><strong>Global adoption</strong> of this localization system</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      
-      
+  <main class="timeline-layout">
+    <!-- TOC Sidebar -->
+    <aside class="timeline-toc">
+      <ul>
+        <li><a href="#challenge">Challenge</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#my-role">My Role</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+    </aside>
   
-    </div>
+    <!-- Timeline Content -->
+    <section class="timeline">
+      <div class="timeline-item" id="challenge">
+        <div class="timeline-content fade-in">
+          <h2>Challenge</h2>
+          <p>MasterControl Academy offers 750+ English-language eLearning courses, but lacked a scalable localization process...</p>
+          <ul>
+            <li>Video captions remaining in English.</li>
+            <li>Internal navigation and links redirecting to untranslated content.</li>
+            <li>Poor searchability for non-English terms.</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="timeline-item" id="solution">
+        <div class="timeline-content fade-in">
+          <h2>Solution</h2>
+          <h3>Custom Utility Development</h3>
+          <ul>
+            <li>Extracts .vtt captions from SCORM</li>
+            <li>Converts content to structured JSON</li>
+            <li>Uses SmartCat CLI</li>
+            <li>Reintegrates content into SCORM</li>
+          </ul>
+          <h3>Full Ecosystem Translation</h3>
+          <ul>
+            <li>Catalog pages, UI paths</li>
+            <li>Multimedia captions</li>
+          </ul>
+          <h3>Quality Control Loop</h3>
+          <p>SME review ensures contextual accuracy</p>
+        </div>
+      </div>
+  
+      <div class="timeline-item" id="my-role">
+        <div class="timeline-content fade-in">
+          <h2>My Role</h2>
+          <ul>
+            <li>Owned system design</li>
+            <li>Built Python utility</li>
+            <li>Integrated SmartCat CLI</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="timeline-item" id="tools">
+        <div class="timeline-content fade-in">
+          <h2>Tools & Technologies</h2>
+          <ul>
+            <li><strong>Dev:</strong> Python, JSON, SCORM</li>
+            <li><strong>LMS:</strong> Skilljar</li>
+            <li><strong>Versioning:</strong> Git</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="timeline-item" id="impact">
+        <div class="timeline-content fade-in">
+          <h2>Impact</h2>
+          <ul>
+            <li><strong>96 courses localized</strong></li>
+            <li><strong>80% time savings</strong></li>
+            <li><strong>Global standardization</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
+  
 
   <!-- Footer -->
   <div id="footer-placeholder"></div>
@@ -134,40 +136,21 @@
       })
       .catch(error => console.error('Error loading footer:', error));
 
+  const faders = document.querySelectorAll('.fade-in');
 
-  const slides = document.querySelectorAll('.slide');
-  const nextBtn = document.querySelector('.nav-arrow.right');
-  const prevBtn = document.querySelector('.nav-arrow.left');
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-
-    // Hide arrows at bounds
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === slides.length - 1;
-  }
-
-  nextBtn.addEventListener('click', () => {
-    if (currentIndex < slides.length - 1) {
-      currentIndex++;
-      showSlide(currentIndex);
-    }
+  }, {
+    threshold: 0.2
   });
 
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      showSlide(currentIndex);
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex);
-  });
+  faders.forEach(el => observer.observe(el));
 </script>
+
 
 </body>
 </html>
