@@ -171,7 +171,7 @@ body {
 
 /* Hero Section */
 .hero-project {
-    background-color: #92C591;
+    background-color: #C0DEC0;
     padding: 3rem 1rem;
     text-align: center;
     color: #0A3409;
@@ -290,8 +290,8 @@ body {
     font-size: 0.85rem;
     margin: 1rem 1rem;
     padding: 0rem 1rem;
-    /*background-color: #f7f7f7;
-    border: 1px solid #ddd;*/
+    background-color: #C0DEC0;
+    border: 1px solid #ddd;
     border-radius: 5px;
     font-style:italic;
 }
