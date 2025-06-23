@@ -273,8 +273,9 @@ ul {
 
 .project-card-content h3 {
     font-size: 1.25rem;
-    color: #2c3e50;
+    color: #0A3409;
     margin-bottom: 0.75rem;
+    line-height:1.3em;
 }
 
 .project-card-content p {
