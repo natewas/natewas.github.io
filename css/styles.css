@@ -1174,3 +1174,7 @@ html {
     margin-bottom:0;
     font-weight:bold;
   }
+
+  p {
+    margin-top:0;
+  }
