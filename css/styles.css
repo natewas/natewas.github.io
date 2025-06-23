@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-      font-family: "lato-regular", sans-serif;
+      font-family: "roboto-regular", sans-serif;
       font-optical-sizing: auto;
       margin-top:0 !important;
       /*font-weight: <weight>;
@@ -9,7 +9,7 @@ body {
 }
 
 .tldr {
-    font-family: "lato-regular", sans-serif;
+    font-family: "roboto-regular", sans-serif;
     font-weight: 300;
     font-style: italic;
     font-size:1rem;
@@ -52,7 +52,7 @@ ul {
 .navbar .logo {
     font-size: 1.5rem;
     font-weight: bold;
-      font-family: "lato-regular", sans-serif;
+      font-family: "roboto-regular", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
@@ -153,7 +153,7 @@ ul {
 /* General Styles */
 body {
     margin: 0;
-      font-family: "lato-regular", sans-serif;
+      font-family: "roboto-regular", sans-serif;
   font-weight: 400;
   font-style: normal;
     line-height: 1.6;
@@ -605,7 +605,7 @@ button:hover {
 
 #contact h1 {
     text-align: center;
-    font-family: "lato-regular", sans-serif;
+    font-family: "roboto-regular", sans-serif;
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -896,7 +896,7 @@ main {
     font-style: normal;
   }
   
-  .lato-regular {
+  .roboto-regular {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -926,7 +926,7 @@ main {
     font-style: italic;
   }
   
-  .lato-regular-italic {
+  .roboto-regular-italic {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: italic;
@@ -1177,3 +1177,12 @@ html {
 
   
 
+
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
