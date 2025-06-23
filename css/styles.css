@@ -8,7 +8,7 @@ body {
 }
 
 .tldr {
-    font-family: "Lato", serif;
+    font-family: "lato-regular", serif;
     font-weight: 300;
     font-style: italic;
     font-size:1rem;
@@ -51,7 +51,7 @@ ul {
 .navbar .logo {
     font-size: 1.5rem;
     font-weight: bold;
-      font-family: "Lato", serif;
+      font-family: "lato-regular", serif;
   font-weight: 700;
   font-style: normal;
 }
@@ -604,7 +604,7 @@ button:hover {
 
 #contact h1 {
     text-align: center;
-    font-family: "Lato", serif;
+    font-family: "lato-regular", serif;
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1rem;
