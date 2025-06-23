@@ -157,7 +157,7 @@ body {
   font-style: normal;
     line-height: 1.6;
     color: #0A3409;
-    background-color: #C0DEC0;
+    background-color: #E8F3E8;
 }
 
 /* Hero Section */
@@ -171,7 +171,7 @@ body {
 
 /* Hero Section */
 .hero-project {
-    background-color: #C0DEC0;
+    background-color: #E8F3E8;
     padding: 3rem 1rem;
     /*text-align: center;*/
     color: #0A3409;
@@ -1057,7 +1057,7 @@ html {
     display: flex;
     gap: 2rem;
     padding: 2rem;
-    background-color: #E8F3E8;
+    background-color: #C0DEC0;
     justify-content:center;
   }
   
