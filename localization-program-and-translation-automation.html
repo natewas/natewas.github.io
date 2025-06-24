@@ -250,63 +250,61 @@
 
   <!-- Script to Load Header/Footer -->
   <script>
+    // Header/footer loading + intersection observer
     fetch('header.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error loading header:', error));
-
+  
     fetch('footer.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
       })
       .catch(error => console.error('Error loading footer:', error));
-
-  const faders = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  
+    const faders = document.querySelectorAll('.fade-in');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
     });
-  }, {
-    threshold: 0.2
-  });
-
-  faders.forEach(el => observer.observe(el));
-
-
-
-  // Modal Zoom
-  const modal = document.getElementById("image-modal");
-  const modalImg = document.getElementById("modal-image");
-  const closeBtn = document.querySelector(".close-modal");
-
-  // Open modal on image click
-  document.querySelectorAll('.zoom-image img').forEach(img => {
-    img.addEventListener('click', () => {
-      modal.style.display = "block";
-      modalImg.src = img.src;
-      modalImg.alt = img.alt;
+  
+    faders.forEach(el => observer.observe(el));
+  
+    // ✅ Wait for DOM to be ready before accessing modal elements
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("modal-image");
+      const closeBtn = document.querySelector(".close-modal");
+  
+      document.querySelectorAll('.zoom-image img').forEach(img => {
+        img.addEventListener('click', () => {
+          modal.style.display = "block";
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+        });
+      });
+  
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+      });
+  
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
     });
-  });
-
-  // Close modal
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = "none";
-  });
-
-  // Close modal on outside click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-
-</script>
+  </script>
+  
 
 <!-- Image Modal -->
 <div id="image-modal" class="image-modal">
