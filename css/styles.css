@@ -1255,3 +1255,44 @@ html {
     z-index: 2;
   }
   
+  /* Modal base styles */
+.image-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85); /* Dark overlay */
+    text-align: center;
+  }
+  
+  /* Modal Image */
+  .image-modal .project-modal-content {
+    margin: auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Close Button */
+  .image-modal .close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .image-modal .close-modal:hover {
+    color: #ccc;
+  }
+  
