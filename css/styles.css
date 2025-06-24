@@ -1197,3 +1197,9 @@ html {
   .button-wrapper {
     text-align: center;
   }
+
+  .resume-button {
+    background-color: #305A30;
+    border-radius: 75px;
+
+  }
