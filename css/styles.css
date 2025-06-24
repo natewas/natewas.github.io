@@ -1218,7 +1218,8 @@ html {
   .project-image-gallery {
     padding: 3rem 2rem;
     background-color: #f9f9f9;
-    text-align: center;
+    max-width: 800px;
+    margin:auto;
   }
   
   .gallery-title {
