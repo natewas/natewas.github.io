@@ -1157,8 +1157,10 @@ html {
   
   h3 {
     font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-size:.9em;
+    font-size: 1.25rem;
+    color: #0A3409;
+    margin-bottom: 0.75rem;
+    line-height:1.3em;
   }
   h2 {
     font-family: "Roboto", sans-serif;
