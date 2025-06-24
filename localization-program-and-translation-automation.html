@@ -60,19 +60,20 @@
 
   </section>
   <section class="project-image-gallery">
-    <h2 class="gallery-title">Project Images</h2>
-    <div class="project-grid">
-      <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/language-plan.jpg" alt="Overview of localization plan">
+    <h2 class="gallery-title">Project images</h2>
+    <div class="gallery-grid">
+      <div class="zoom-image">
+        <img src="images/language-plan.jpg" alt="Project screenshot - language plan" />
       </div>
-      <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/program.png" alt="Workflow diagram">
+      <div class="zoom-image">
+        <img src="images/workflow.jpg" alt="Project screenshot - workflow" />
       </div>
-      <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/workflow.jpg" alt="Program output">
+      <div class="zoom-image">
+        <img src="images/program.png" alt="Project screenshot - program running" />
       </div>
     </div>
   </section>
+  
   
 
 
@@ -226,59 +227,19 @@
 
   faders.forEach(el => observer.observe(el));
 
-  function openModal(project) {
-    console.log('Opening modal for project:', project);
-    const modal = document.getElementById('modal');
-    const modalGallery = document.getElementById('modal-gallery');
+// Toggle zoom on image click
+document.querySelectorAll('.zoom-image').forEach(imageWrapper => {
+  imageWrapper.addEventListener('click', () => {
+    // Remove zoom from others
+    document.querySelectorAll('.zoom-image').forEach(img => {
+      if (img !== imageWrapper) img.classList.remove('zoomed');
+    });
 
-    // Clear previous content
-    modalGallery.innerHTML = '';
-
-    const basePath = `./images/${project}/`;
-    const totalImages = 10;
-    let imagesFound = false;
-
-    for (let i = 1; i <= totalImages; i++) {
-        const imageSrc = `${basePath}img${i}.jpg`;
-        const img = document.createElement('img');
-        img.src = imageSrc;
-        img.alt = `${project} image`;
-
-        img.onload = () => {
-            modalGallery.appendChild(img);
-            imagesFound = true;
-        };
-
-        img.onerror = () => {
-            if (!imagesFound) {
-                modalGallery.innerHTML = '<p>No images found for this project.</p>';
-            }
-        };
-    }
-
-    modal.style.display = 'flex';
-  }
-
-  function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-  }
-
-  window.onclick = function (event) {
-      const modal = document.getElementById('modal');
-      if (event.target === modal) {
-          closeModal();
-      }
-  };
-
+    // Toggle zoom for this image
+    imageWrapper.classList.toggle('zoomed');
+  });
+});
 </script>
-
-<!-- Modal Structure -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <div id="modal-gallery" class="modal-gallery"></div>
-  </div>
-</div>
 
 </body>
 </html>
