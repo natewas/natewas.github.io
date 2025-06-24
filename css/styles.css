@@ -1307,3 +1307,24 @@ html {
       opacity: 1;
     }
   }
+
+  @keyframes zoomInModal {
+    from {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .project-modal-content {
+    animation: zoomInModal 0.3s ease-out;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-modal-content:hover {
+    transform: scale(1.02);
+  }
+  
