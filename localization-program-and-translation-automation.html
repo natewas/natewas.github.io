@@ -227,18 +227,7 @@
 
   faders.forEach(el => observer.observe(el));
 
-// Toggle zoom on image click
-document.querySelectorAll('.zoom-image').forEach(imageWrapper => {
-  imageWrapper.addEventListener('click', () => {
-    // Remove zoom from others
-    document.querySelectorAll('.zoom-image').forEach(img => {
-      if (img !== imageWrapper) img.classList.remove('zoomed');
-    });
 
-    // Toggle zoom for this image
-    imageWrapper.classList.toggle('zoomed');
-  });
-});
 
   // Modal Zoom
   const modal = document.getElementById("image-modal");
