@@ -1322,6 +1322,8 @@ html {
   .project-modal-content {
     animation: zoomInModal 0.3s ease-out;
     transition: transform 0.3s ease;
+    cursor: grab;
+    touch-action: none;
   }
   
   .project-modal-content:hover {
