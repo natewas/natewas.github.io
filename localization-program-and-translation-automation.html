@@ -50,24 +50,21 @@
     </nav>
 
   <!-- Hero Section -->
-  <section class="hero-project">
-    <div class="hero-text">
-      <h1>Localization Program</h1>
-      <p class="tldr">
-        Summary: I designed and built an automated localization system to make MasterControl Academy course content available in 15 languages. The solution integrates a custom pre- and post-processing utility that parses SCORM packages, leverages SmartCat’s command-line interface (CLI) for translation, and reinserts the content—enabling full course localization (text, UI, captions, and media) within 24 hours. The result: drastically reduced manual effort, improved compliance, and a scalable foundation for global training success.
-    </p>
-    </div>
-
-  </section>
   <section class="project-image-gallery">
     <h2 class="gallery-title">Project images</h2>
     <div class="gallery-grid">
-      <img src="images/language-plan.jpg" alt="Project screenshot - language plan" />
-      <img src="images/workflow.jpg" alt="Project screenshot - workflow" />
-      <img src="images/program.png" alt="Project screenshot - program running" />
-      <!-- Add or remove images as needed -->
+      <div class="zoom-image">
+        <img src="images/language-plan.jpg" alt="Project screenshot - language plan" />
+      </div>
+      <div class="zoom-image">
+        <img src="images/workflow.jpg" alt="Project screenshot - workflow" />
+      </div>
+      <div class="zoom-image">
+        <img src="images/program.png" alt="Project screenshot - program running" />
+      </div>
     </div>
   </section>
+  
 
 
   <!-- Main Content -->
@@ -219,6 +216,20 @@
   });
 
   faders.forEach(el => observer.observe(el));
+
+    // Toggle zoom on image click
+  document.querySelectorAll('.zoom-image').forEach(imageWrapper => {
+    imageWrapper.addEventListener('click', () => {
+      // Remove zoom from others
+      document.querySelectorAll('.zoom-image').forEach(img => {
+        if (img !== imageWrapper) img.classList.remove('zoomed');
+      });
+
+      // Toggle zoom for this image
+      imageWrapper.classList.toggle('zoomed');
+    });
+  });
+
 </script>
 
 

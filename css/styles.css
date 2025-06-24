@@ -1228,13 +1228,34 @@ html {
     color: #0A3409;
   }
   
-  .gallery-grid {
+/* Zoomable image gallery styles */
+.gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     max-width: 1000px;
     margin: 0 auto;
   }
+  
+  .zoom-image {
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .zoom-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .zoom-image.zoomed img {
+    transform: scale(1.5);
+    z-index: 2;
+  }
+  
   
   .gallery-grid img {
     width: 100%;
