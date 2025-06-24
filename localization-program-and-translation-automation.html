@@ -63,13 +63,13 @@
     <h2 class="gallery-title">Project Images</h2>
     <div class="project-grid">
       <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/img1.webp" alt="Overview of localization plan">
+        <img src="images/localization/language-plan.jpg" alt="Overview of localization plan">
       </div>
       <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/img2.webp" alt="Workflow diagram">
+        <img src="images/localization/program.png" alt="Workflow diagram">
       </div>
       <div class="project-card" onclick="openModal('localization')">
-        <img src="images/localization/img3.webp" alt="Program output">
+        <img src="images/localization/workflow.jpg" alt="Program output">
       </div>
     </div>
   </section>
@@ -239,7 +239,7 @@
     let imagesFound = false;
 
     for (let i = 1; i <= totalImages; i++) {
-        const imageSrc = `${basePath}img${i}.webp`;
+        const imageSrc = `${basePath}img${i}.jpg`;
         const img = document.createElement('img');
         img.src = imageSrc;
         img.alt = `${project} image`;
