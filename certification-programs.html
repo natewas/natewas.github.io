@@ -47,6 +47,14 @@
       </p>
     </div>
   </section>
+  <section class="project-image-gallery">
+    <h2 class="gallery-title">Project images</h2>
+    <div class="gallery-grid">
+      <div class="zoom-image">
+        <img src="images/certifications/certification-ia.jpg" alt="Project screenshot - information architecture" />
+      </div>
+
+  </section>
 
   <main class="timeline-layout">
     <aside class="timeline-toc">
@@ -130,20 +138,82 @@
   <div id="footer-placeholder"></div>
 
   <script>
+    // Header/footer loading + intersection observer
     fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  
     fetch('footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
-
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  
     const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
+  
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
-    }, { threshold: 0.2 });
+    }, {
+      threshold: 0.2
+    });
+  
     faders.forEach(el => observer.observe(el));
+  
+    // ✅ Wait for DOM to be ready before accessing modal elements
+    document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById("image-modal");
+  const modalImg = document.getElementById("modal-image");
+  const closeBtn = document.querySelector(".close-modal");
+  let panzoomInstance = null;
+
+  document.querySelectorAll('.zoom-image img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+
+      // Wait for image to load before enabling panzoom
+      modalImg.onload = () => {
+        if (panzoomInstance) panzoomInstance.dispose(); // reset previous
+        panzoomInstance = Panzoom(modalImg, {
+          maxScale: 5,
+          contain: 'outside'
+        });
+
+        modalImg.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+      };
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
   </script>
+    
+  
+  <!-- Image Modal -->
+  <div id="image-modal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <img class="project-modal-content" id="modal-image" alt="Enlarged project image">
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@9.4.0/dist/panzoom.min.js"></script>
+  
 </body>
 </html>
