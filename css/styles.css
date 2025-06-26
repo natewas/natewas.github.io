@@ -175,7 +175,12 @@ ul {
     color: #0A3409;
 }
 
-
+.zoom-image img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
 .hero-image {
     width: 100%;
