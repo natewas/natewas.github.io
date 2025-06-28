@@ -17,7 +17,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Intelligence Education</title>
+  <title>Business Intelligence Role-Specific Learning Paths</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -27,13 +27,13 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li>Business Intelligence Education</li>
+        <li>Business Intelligence Role-Specific Learning Paths</li>
     </ul>
   </nav>
 
   <section class="hero-project">
     <div class="hero-text">
-      <h1>Business Intelligence Education</h1>
+      <h1>Business Intelligence Role-Specific Learning Paths</h1>
       <p class="tldr">
         Summary: Created 15 microlearning courses in Rise 360 to help customers (and internal employees) transition to a new BI tool. Simplified complex data concepts for both analysts and low-access end users. Delivered content, SME reviews, and publication—within a 3-week sprint.
       </p>
