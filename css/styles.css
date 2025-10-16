@@ -105,7 +105,7 @@ ul {
     background-color: #305A30;     /* Background color */
     color: white;               /* Text color */
     font-size: 1rem;            /* Font size */
-    border-radius: 75px;         /* Rounded corners (optional) */
+    /*border-radius:  75px;         /* Rounded corners (optional) */
     border: none;               /* Remove border */
     cursor: pointer;            /* Change cursor to pointer on hover */
     transition: background 0.3s ease; /* Smooth hover effect */
@@ -136,7 +136,7 @@ ul {
     background-color: #fff;
     padding: 1.5rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -176,7 +176,7 @@ ul {
 }
 
 .zoom-image img {
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     width: 100%;
     height: auto;
     display: block;
@@ -207,7 +207,7 @@ ul {
     padding: 0 1rem;
     background: #F0F7D4;
     /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
-    border-radius: 8px;
+    /*border-radius:  8px;*/
 }
 
 .project {
@@ -267,7 +267,7 @@ ul {
     background: white;
     padding: 1.5rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer; /* Indicate image is clickable */
@@ -299,7 +299,7 @@ ul {
     padding: 0rem 1rem;
     /*background-color: #C0DEC0;*/
     /*border: 1px solid #ddd;*/
-    /*border-radius: 5px;*/
+    /*/*border-radius:  5px;*/
     font-style:italic;
 }
 
@@ -405,7 +405,7 @@ ul {
     background: #f9f9f9;
     padding: 1.5rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
@@ -493,7 +493,7 @@ html, body {
     background: white;
     padding: 1rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -509,7 +509,7 @@ html, body {
     /*height: auto; /* Maintain aspect ratio */
     max-height: 375px; /* Optional: constrain the maximum height */
     object-fit: cover; /* Ensure the image fills the area proportionally */
-    border-radius: 8px; /* Optional: rounded corners for a polished look */
+    /*border-radius:  8px; /* Optional: rounded corners for a polished look */*/
 }
 
 /* Modal Styles */
@@ -530,7 +530,7 @@ html, body {
 .modal-content {
     /*background: white;*/
     padding: 20px;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     max-width: 45%; /* Maximum width for modal */
     max-height: 90%; /* Maximum height for modal */
     display: flex;
@@ -551,7 +551,7 @@ html, body {
 .modal-gallery img {
     max-width: 100%; /* Fit image within grid cell */
     height: auto;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     /*cursor: pointer; /* Indicate image is clickable */
     /*transition: transform 0.2s ease;*/
 }
@@ -579,9 +579,10 @@ html, body {
     height: auto;
     max-height: 80vh; /* Ensure the image fits within the viewport */
     margin-bottom: 10px;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 button {
     padding: 10px 15px;
@@ -589,7 +590,7 @@ button {
     border: none;
     background: #0073e6;
     color: white;
-    border-radius: 5px;
+    /*border-radius:  5px;*/
     cursor: pointer;
     user-select: none; /* Prevent text selection */
 }
@@ -604,7 +605,7 @@ button:hover {
     margin: 2rem auto;
     padding: 2rem;
     background: white;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
@@ -648,7 +649,7 @@ input, textarea {
     font-size: 1rem;
     padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    /*border-radius:  5px;*/
     color: #333;
     font-family: "Roboto", sans-serif;
 }
@@ -676,7 +677,7 @@ label {
     color: #fff;
     background-color: #0073e6;
     text-decoration: none;
-    border-radius: 5px;
+    /*border-radius:  5px;*/
     transition: background-color 0.3s ease;
     margin-top:30px;
 }
@@ -696,7 +697,7 @@ label {
 .selfie img {
     max-width: 300px; /* Adjust image size */
     height: auto;
-    border-radius: 3px;
+    /*border-radius:  3px;*/
 }
 
 .written {
@@ -803,7 +804,7 @@ label {
         height: auto;
         padding: 1rem;
         font-size: 1.1rem;
-        border-radius: 75px;
+        /*border-radius:  75px;*/
     }
 
     .breadcrumbs {
@@ -1003,7 +1004,7 @@ html {
     padding: 2rem;
     box-sizing: border-box;
     background: white;
-    border-radius: 12px;
+    /*border-radius:  12px;*/
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     display: none;
   }
@@ -1018,7 +1019,7 @@ html {
     border: none;
     padding: 0.75rem 1rem;
     font-size: 1.5rem;
-    border-radius: 50%;
+    /*border-radius:  50%;*/
     cursor: pointer;
     z-index: 10;
     flex-shrink: 0;
@@ -1102,7 +1103,7 @@ html {
   .timeline-content {
     background: white;
     padding: 1.5rem;
-    border-radius: 5px;
+    /*border-radius:  5px;*/
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transform: translateY(20px);
     opacity: 0;
@@ -1220,7 +1221,7 @@ html {
 
   .resume-button {
     background-color: #305A30;
-    border-radius: 75px;
+    /*border-radius:  75px;*/
   }
 
   .project-image-gallery {
@@ -1246,7 +1247,7 @@ html {
   
   .zoom-image {
     overflow: hidden;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     position: relative;
@@ -1283,7 +1284,7 @@ html {
   .image-modal .project-modal-content {
     max-width: 90%;
     max-height: 80vh;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.3s ease;
   }
@@ -1355,7 +1356,7 @@ html {
   .image-modal .project-modal-content {
     max-width: 90%;
     max-height: 80vh;
-    border-radius: 8px;
+    /*border-radius:  8px;*/
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.3s ease;
   }
