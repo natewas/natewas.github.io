@@ -169,7 +169,7 @@ ul {
 
 /* Hero Section */
 .hero-project {
-    background-color: #E8F3E8;
+    /*background-color: #E8F3E8;*/
     padding: 3rem 1rem 1rem;
     /*text-align: center;*/
     color: #0A3409;
@@ -239,7 +239,7 @@ ul {
 /* Project Grid Section */
 .project-grid-section {
     /*padding: 2rem 1rem;*/
-    background-color: #E8F3E8;
+    /*background-color: #E8F3E8;*/
     text-align: left;
     margin-bottom:5rem;
 }
@@ -1226,7 +1226,7 @@ html {
 
   .project-image-gallery {
     padding: 0 3rem 5rem;
-    background-color: #E8F3E8;
+    /*background-color: #E8F3E8;*/
     max-width: 800px;
     margin:auto;
   }
