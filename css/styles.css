@@ -1408,6 +1408,9 @@ html {
   border-radius: 12px;
   max-width: 420px;
   background: #fafafa;
+  font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size:1rem;
 }
 
 .form-row { 
@@ -1418,8 +1421,9 @@ html {
 }
 
 .form-row label {
-  font-weight: 600;
-  font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size:1rem;
 }
 
 .select {
@@ -1435,7 +1439,10 @@ html {
   align-items: baseline;
   gap: 0.5rem;
   margin-top: 0.4rem;
-  font-size: 1.1rem;
+  
+  font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size:1rem;
 }
 
 .price-label { 
