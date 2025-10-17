@@ -170,6 +170,63 @@ function closeModal() {
 
     </script>
 
+<script>
+  // 1) Detect “shop” based on your breadcrumbs
+  function isShopContext() {
+    const bc = document.querySelector('.breadcrumbs');
+    if (!bc) return false;
+
+    // Check visible text
+    if ((bc.textContent || '').toLowerCase().includes('shop')) return true;
+
+    // Check hrefs that contain "shop" (case-insensitive)
+    return !!bc.querySelector('a[href*="shop" i]');
+  }
+
+  // 2) Swap the logo when header is present
+  function setLogoForContext() {
+    const logoLink = document.querySelector('.logo a');
+    if (!logoLink) return;
+
+    if (isShopContext()) {
+      // Text version:
+      // logoLink.textContent = 'wasdenwoodworks';
+
+      // Image/SVG version (recommended):
+      logoLink.innerHTML = '<img src="/images/logo-shop.svg" alt="Wasden Woodworks">';
+    } else {
+      logoLink.textContent = 'natewasden';
+    }
+  }
+
+  // 3) Load header, mount, then run the swap
+  (function loadHeader() {
+    const mount = document.getElementById('header-placeholder');
+    if (!mount) return;
+
+    fetch('/header.html')
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        // If .logo is already there, do it now…
+        if (document.querySelector('.logo a')) {
+          setLogoForContext();
+        } else {
+          // …otherwise observe just in case header injects more async DOM
+          const obs = new MutationObserver(() => {
+            if (document.querySelector('.logo a')) {
+              setLogoForContext();
+              obs.disconnect();
+            }
+          });
+          obs.observe(mount, { childList: true, subtree: true });
+        }
+      })
+      .catch(err => console.error('Error loading header:', err));
+  })();
+</script>
+
 
     <div id="footer-placeholder"></div>
 
