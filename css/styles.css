@@ -1459,7 +1459,7 @@ html {
 .buy-buttons{
 
     display: inline-flex;       /* Ensures buttons behave like block elements */
-    width: 75%;               /* Set the same width for all buttons */
+    width: 100%;               /* Set the same width for all buttons */
     height: 50px;               /* Set the same height for all buttons */
     text-align: center;         /* Centers the text inside the button */
     /*line-height: 50px;*/          /* Vertically aligns the text (matches height) */
