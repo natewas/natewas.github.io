@@ -1388,3 +1388,8 @@ html {
       opacity: 1;
     }
   }
+
+    .product-img {
+    width: 30%;
+    height: auto; /* keeps proportions */
+  }
