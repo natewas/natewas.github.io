@@ -1433,7 +1433,7 @@ html {
   font-size: 1rem;
   background: #fff;
   font-family: "Roboto", sans-serif;
-    font-weight: 700;
+    font-weight: 300;
     font-size:1rem;
 }
 
@@ -1449,7 +1449,7 @@ html {
 }
 
 .price-label { 
-  color: #666; 
+  color: #305A30; 
 }
 
 #price-value { 
