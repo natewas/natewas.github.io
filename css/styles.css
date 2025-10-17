@@ -177,7 +177,7 @@ ul {
 
 .zoom-image img {
     /*border-radius:  8px;*/
-    width: 100%;
+    /*width: 100%;*/
     height: auto;
     display: block;
 }
@@ -1254,7 +1254,7 @@ html {
   }
   
   .zoom-image img {
-    width: 100%;
+    /*width: 100%;*/
     height: auto;
     transition: transform 0.3s ease-in-out;
   }
