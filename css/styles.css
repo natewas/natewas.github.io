@@ -1422,7 +1422,7 @@ html {
 
 .form-row label {
   font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: 700;
     font-size:1rem;
 }
 
@@ -1432,6 +1432,9 @@ html {
   border-radius: 10px;
   font-size: 1rem;
   background: #fff;
+  font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size:1rem;
 }
 
 .price-row {
