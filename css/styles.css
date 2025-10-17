@@ -1464,7 +1464,7 @@ html {
     text-align: center;         /* Centers the text inside the button */
     /*line-height: 50px;*/          /* Vertically aligns the text (matches height) */
     padding: 0;                 /* Remove extra padding */
-    margin: 2rem 2rem 1rem 0rem;             /* Add some spacing between buttons */
+    margin: 2rem 0rem 1rem 0rem;             /* Add some spacing between buttons */
     background-color: #305A30;     /* Background color */
     color: white;               /* Text color */
     font-size: 1rem;            /* Font size */
