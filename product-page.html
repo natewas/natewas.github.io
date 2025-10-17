@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-56E5DC1BR1');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>End-grain cutting boards</title>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+
+
+</head>
+
+<body>
+  <!-- Site Header -->
+  <div id="header-placeholder"></div>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li>Localization Program</li>
+        </ul>
+    </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-project">
+    <div class="hero-text">
+      <h1>Localization Program</h1>
+      <p class="tldr">
+        Summary: I designed and built an automated localization system to make 750 courses available in 15 languages. The solution integrates a custom pre- and post-processing utility that parses SCORM packages, leverages SmartCat’s command-line interface (CLI) for translation, and reinserts the content, enabling full course localization (text, UI, captions, and media) within 24 hours. The result: drastically reduced manual effort, improved compliance, and a scalable foundation for global training success.
+    </p>
+    </div>
+
+  </section>
+  <section class="project-image-gallery">
+    <h2 class="gallery-title">End-grain cutting boards</h2>
+    <div class="gallery-grid">
+      <div class="zoom-image">
+        <img src="images/localization/language-plan.jpg" alt="Project screenshot - language plan" />
+      </div>
+      <div class="zoom-image">
+        <img src="images/localization/workflow.jpg" alt="Project screenshot - workflow" />
+      </div>
+      <div class="zoom-image">
+        <img src="images/localization/program.png" alt="Project screenshot - program running" />
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+  
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Script to Load Header/Footer -->
+  <script>
+    // Header/footer loading + intersection observer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading header:', error));
+  
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  
+    const faders = document.querySelectorAll('.fade-in');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+  
+    faders.forEach(el => observer.observe(el));
+  
+    // ✅ Wait for DOM to be ready before accessing modal elements
+    document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById("image-modal");
+  const modalImg = document.getElementById("modal-image");
+  const closeBtn = document.querySelector(".close-modal");
+  let panzoomInstance = null;
+
+  document.querySelectorAll('.zoom-image img').forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+
+      // Wait for image to load before enabling panzoom
+      modalImg.onload = () => {
+        if (panzoomInstance) panzoomInstance.dispose(); // reset previous
+        panzoomInstance = Panzoom(modalImg, {
+          maxScale: 5,
+          contain: 'outside'
+        });
+
+        modalImg.parentElement.addEventListener('wheel', panzoomInstance.zoomWithWheel);
+      };
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+  </script>
+  
+
+<!-- Image Modal -->
+<div id="image-modal" class="image-modal">
+  <span class="close-modal">&times;</span>
+  <img class="project-modal-content" id="modal-image" alt="Enlarged project image">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@9.4.0/dist/panzoom.min.js"></script>
+
+</body>
+</html>
+
+  
