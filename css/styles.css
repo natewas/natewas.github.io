@@ -1393,3 +1393,11 @@ html {
     width: 30%;
     height: auto; /* keeps proportions */
   }
+
+  .prod-desc {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size:1rem;
+    margin-top:0;
+  }
