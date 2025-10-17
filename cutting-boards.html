@@ -59,6 +59,35 @@
         <p class="prod-desc">
           The intricate assembly process — cutting, rotating, and rejoining each block — creates the distinctive checkerboard patterns that make every board one of a kind. The result is a durable, visually stunning, and professional-grade surface that elevates any kitchen.
       </p>
+            <!-- Product options -->
+      <div class="product-options">
+        <div class="form-row">
+          <label for="species">Species</label>
+          <select id="species" class="select">
+            <option value="" selected disabled>Choose species</option>
+            <option value="maple">Hard Maple</option>
+            <option value="walnut">Black Walnut</option>
+            <option value="cherry">Cherry</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="size">Size</label>
+          <select id="size" class="select">
+            <option value="" selected disabled>Choose size</option>
+            <option value="12x8">12" × 8"</option>
+            <option value="16x12">16" × 12"</option>
+            <option value="18x14">18" × 14"</option>
+          </select>
+        </div>
+
+        <!-- Live price -->
+        <div class="price-row" aria-live="polite" aria-atomic="true">
+          <span class="price-label">Price:</span>
+          <span id="price-value">—</span>
+        </div>
+      </div>
+
       <div class="hero-buttons">
         <!--<a href="solutions.html" class="btn">Solutions</a>-->
         <a href="https://buy.stripe.com/6oU8wO43fdJ3bEm70I4Vy00" class="btn">Buy</a>
@@ -158,6 +187,44 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@9.4.0/dist/panzoom.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Example pricing matrix. Adjust to your real prices.
+  // Prices are USD for (species × size).
+  const PRICES = {
+    maple:  { "12x8": 80,  "16x12": 120, "18x14": 160 },
+    walnut: { "12x8": 95,  "16x12": 145, "18x14": 190 },
+    cherry: { "12x8": 90,  "16x12": 135, "18x14": 175 }
+  };
+
+  const speciesEl = document.getElementById('species');
+  const sizeEl = document.getElementById('size');
+  const priceEl = document.getElementById('price-value');
+
+  const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+  function updatePrice() {
+    const s = speciesEl.value;
+    const z = sizeEl.value;
+
+    if (!s || !z) {
+      priceEl.textContent = '—';
+      return;
+    }
+
+    const price = PRICES?.[s]?.[z];
+    priceEl.textContent = (typeof price === 'number') ? fmt.format(price) : '—';
+  }
+
+  speciesEl?.addEventListener('change', updatePrice);
+  sizeEl?.addEventListener('change', updatePrice);
+
+  // Initialize once (useful if you preselect defaults later)
+  updatePrice();
+});
+</script>
+
 
 </body>
 </html>

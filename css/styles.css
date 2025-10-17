@@ -1400,3 +1400,48 @@ html {
     font-size:1rem;
     margin-top:0;
   }
+
+  .product-options {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  max-width: 420px;
+  background: #fafafa;
+}
+
+.form-row { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.35rem; 
+  margin-bottom: 0.9rem; 
+}
+
+.form-row label {
+  font-weight: 600;
+  font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
+.select {
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.price-label { 
+  color: #666; 
+}
+
+#price-value { 
+  font-weight: 700; 
+}
