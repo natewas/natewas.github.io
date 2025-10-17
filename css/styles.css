@@ -1455,3 +1455,23 @@ html {
 #price-value { 
   font-weight: 700; 
 }
+
+.buy-buttons{
+
+    display: inline-flex;       /* Ensures buttons behave like block elements */
+    width: 75%;               /* Set the same width for all buttons */
+    height: 50px;               /* Set the same height for all buttons */
+    text-align: center;         /* Centers the text inside the button */
+    /*line-height: 50px;*/          /* Vertically aligns the text (matches height) */
+    padding: 0;                 /* Remove extra padding */
+    margin: 1.5rem;             /* Add some spacing between buttons */
+    background-color: #305A30;     /* Background color */
+    color: white;               /* Text color */
+    font-size: 1rem;            /* Font size */
+    /*border-radius:  75px;         /* Rounded corners (optional) */
+    border: none;               /* Remove border */
+    cursor: pointer;            /* Change cursor to pointer on hover */
+    transition: background 0.3s ease; /* Smooth hover effect */
+    align-items:center;
+    justify-content: center;  /* Centers text horizontally */
+}
