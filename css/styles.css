@@ -852,7 +852,7 @@ label {
 
 @media screen and (max-width: 768px) {
     .hero-project {
-        padding: 2rem 1rem;
+        /*padding: 2rem 1rem;*/
     }
 
     .hero-text h1 {
