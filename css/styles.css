@@ -720,43 +720,37 @@ label {
 
 /*Added 03-27-25*/
 /* Hide menu initially on mobile */
+/* Base header */
+.navbar {
+  display:flex; justify-content:space-between; align-items:center;
+  background:#0A3409; color:#fff; padding:1rem 2rem;
+  position:relative; z-index:1000;
+}
+
+/* Desktop defaults */
+#nav-menu ul { display:flex; gap:1rem; }
+.menu-toggle { display:none; }         /* hidden on desktop */
+
+/* Hamburger styling */
+.menu-toggle { 
+  flex-direction:column; gap:6px; cursor:pointer; border:0; background:transparent;
+}
+.menu-toggle .bar { width:28px; height:3px; background:#fff; display:block; }
+
+/* Mobile behavior */
 @media screen and (max-width: 768px) {
-    #nav-menu {
-        display: none; /* Hide nav menu by default */
-        flex-direction: column;
-        width: 100%;
-        background-color: #333;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 0;
-        margin: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    }
+  .menu-toggle { display:flex; }       /* <-- visible on mobile */
 
-    /* Show menu when the "show" class is added */
-    #nav-menu.show {
-        display: flex; /* Show the menu */
-        opacity: 1;
-        visibility: visible;
-    }
-
-    /* Make sure the hamburger icon shows */
-
+  #nav-menu {
+    display:none; opacity:0; visibility:hidden;
+    position:absolute; left:0; top:100%;
+    width:100%; background:#333; margin:0; padding:0.5rem 1rem;
+    flex-direction:column; transition:opacity .2s ease, visibility .2s ease;
+  }
+  #nav-menu.show { display:flex; opacity:1; visibility:visible; }
+  #nav-menu ul { display:flex; flex-direction:column; gap:0.75rem; }
 }
-    .menu-toggle {
-      display:none;                  /* shown in mobile query */
-      flex-direction:column;
-      gap:6px;
-      cursor:pointer;
-    }
-.menu-toggle .bar {
-  width:28px;
-  height:3px;
-  background:#fff;
-}
+
 
 /* 4-13 additions - Mobile responsiveness */
 @media screen and (max-width: 480px) {
