@@ -605,9 +605,7 @@ button {
     user-select: none; /* Prevent text selection */
 }
 
-button:hover {
-    background: #005bb5;
-}
+
 
 /* Contact Section */
 #contact {
