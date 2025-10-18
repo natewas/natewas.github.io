@@ -94,5 +94,46 @@
                 console.error('Error fetching footer:', error);
             });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1) Inject header
+  fetch('/header.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Header load failed: ' + r.status);
+      return r.text();
+    })
+    .then(html => {
+      const mount = document.getElementById('header-placeholder');
+      mount.innerHTML = html;
+
+      // 2) Wire hamburger AFTER injection (query inside the mount)
+      const menuToggle = mount.querySelector('#menu-toggle');
+      const navMenu    = mount.querySelector('#nav-menu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          const open = navMenu.classList.toggle('show');
+          menuToggle.setAttribute('aria-expanded', String(open));
+        });
+      } else {
+        console.error('Header injected but toggle/menu not found');
+      }
+    })
+    .catch(err => console.error(err));
+
+  // 3) Inject footer (optional)
+  fetch('/footer.html')
+    .then(r => {
+      if (!r.ok) throw new Error('Footer load failed: ' + r.status);
+      return r.text();
+    })
+    .then(html => {
+      const mount = document.getElementById('footer-placeholder');
+      if (mount) mount.innerHTML = html;
+    })
+    .catch(err => console.error(err));
+});
+</script>
+
 </body>
 </html>
