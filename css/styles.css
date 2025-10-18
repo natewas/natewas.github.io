@@ -32,13 +32,23 @@ ul {
 }
 
 /* Navbar */
-.navbar {
+/*.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #0A3409;
     color: white;
     padding: 1rem 2rem;
+}*/
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#0A3409;
+  color:#fff;
+  padding:1rem 2rem;
+  position: relative;            /* so absolute menu positions under it */
+  z-index: 1000;                 /* keeps it above content */
 }
 
 .card-title {
@@ -734,11 +744,19 @@ label {
     }
 
     /* Make sure the hamburger icon shows */
-    .menu-toggle {
-        display: flex; /* Show the hamburger icon */
-    }
-}
 
+}
+    .menu-toggle {
+      display:none;                  /* shown in mobile query */
+      flex-direction:column;
+      gap:6px;
+      cursor:pointer;
+    }
+.menu-toggle .bar {
+  width:28px;
+  height:3px;
+  background:#fff;
+}
 
 /* 4-13 additions - Mobile responsiveness */
 @media screen and (max-width: 480px) {
