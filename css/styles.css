@@ -1225,7 +1225,7 @@ html {
   }
 
   .project-image-gallery {
-    padding: 0 3rem 5rem;
+    /*padding: 0 3rem 5rem;*/
     /*background-color: #E8F3E8;*/
     max-width: 800px;
     margin:auto;
