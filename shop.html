@@ -55,33 +55,7 @@
     <!-- Placeholder for the header -->
    <div id="header-placeholder"></div>
 
-<script>
-  // Inject header fragment
-  fetch('/header.html')
-    .then(r => r.text())
-    .then(html => {
-      const mount = document.getElementById('header-placeholder');
-      mount.innerHTML = html;
 
-      // Wire up hamburger AFTER injection
-      const toggle = mount.querySelector('#menu-toggle');
-      const menu = mount.querySelector('#nav-menu');
-      toggle?.addEventListener('click', () => {
-        const open = menu.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
-
-      // Optional: swap logo based on breadcrumbs
-      const bc = document.querySelector('.breadcrumbs');
-      const isShop = !!bc && (
-        (bc.textContent || '').toLowerCase().includes('shop') ||
-        bc.querySelector('a[href*="shop" i], li:has(a[href*="shop" i])')
-      );
-      const logoLink = mount.querySelector('.logo a');
-      if (logoLink) logoLink.innerHTML = isShop ? 'wasdenwoodworks' : 'natewasden';
-    })
-    .catch(err => console.error('Error loading header:', err));
-</script>
 
 
     <nav class="breadcrumbs">
