@@ -15,14 +15,14 @@ const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] // or use global styles
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Step 1
+  // Step 1: envelope size
   envelopeSize: 'A7' | '10' | 'A2' = 'A7';
 
   // Step 3: settings
-  fontSize = '12';                // PDF font size in pt
+  fontSize = '12';                // pt
   alignment: 'center' | 'left' = 'center';
   lineSpacing = '1.5';
   fontFamily = 'Helvetica';
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   // CSV file
   csvFile: File | null = null;
 
-  // Preview styles (bound with [ngStyle])
+  // Preview styles
   envelopePreviewStyles: { [k: string]: string } = {};
   recipientStyles: { [k: string]: string } = {};
   returnAddressStyles: { [k: string]: string } = {};
@@ -47,7 +47,6 @@ export class AppComponent implements OnInit {
     this.updateLivePreview();
   }
 
-  // Called when size/font/alignment/etc change
   onSettingsChange(): void {
     this.updateLivePreview();
   }
@@ -60,9 +59,9 @@ export class AppComponent implements OnInit {
   // === Live preview (ported from updateLivePreview) ===
   private updateLivePreview(): void {
     const envelopeSizes: Record<string, { width: number; height: number }> = {
-      A7: { width: 696, height: 504 },  // 5.25 x 7.25
-      '10': { width: 912, height: 396 },// #10
-      A2: { width: 552, height: 420 }   // 4.375 x 5.75
+      A7: { width: 696, height: 504 },   // A7 Envelope
+      '10': { width: 912, height: 396 }, // #10
+      A2: { width: 552, height: 420 }    // A2
     };
 
     const size = envelopeSizes[this.envelopeSize];
@@ -71,11 +70,10 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    // Preview container size
     this.envelopePreviewStyles = {
       width: `${size.width}px`,
       height: `${size.height}px`,
-      position: 'relative' // make sure absolutely positioned children work
+      position: 'relative'
     };
 
     const fontSizePt = parseInt(this.fontSize, 10);
@@ -84,7 +82,6 @@ export class AppComponent implements OnInit {
     const previewWidth = size.width;
     const previewHeight = size.height;
 
-    // Recipient styles
     const recipient: { [k: string]: string } = {
       'font-size': `${fontSizePx}px`,
       'font-family': this.fontFamily,
@@ -93,22 +90,21 @@ export class AppComponent implements OnInit {
     };
 
     if (this.alignment === 'center') {
-      recipient.left = '50%';
-      recipient.transform = 'translateX(-50%)';
+      recipient['left'] = '50%';
+      recipient['transform'] = 'translateX(-50%)';
       recipient['text-align'] = 'center';
     } else {
       const textXOffset = previewWidth / 2 - 50;
-      recipient.left = `${textXOffset}px`;
-      recipient.transform = 'none';
+      recipient['left'] = `${textXOffset}px`;
+      recipient['transform'] = 'none';
       recipient['text-align'] = 'left';
     }
 
     const baseOffset = previewHeight / 2 - fontSizePx * 1.5;
-    recipient.top = `${baseOffset}px`;
+    recipient['top'] = `${baseOffset}px`;
 
     this.recipientStyles = recipient;
 
-    // Return address styles
     const returnFontSizePx = Math.round((fontSizePt - 2) * POINT_TO_PIXEL);
     this.returnAddressStyles = {
       position: 'absolute',
@@ -141,11 +137,9 @@ export class AppComponent implements OnInit {
   }
 
   formatRecipientAddress(): string {
-    // You were using placeholder text in the HTML; keeping that behavior.
     const name = 'Recipient Name';
     const street = 'Street Address';
     const cityLine = 'City, State ZIP';
-
     return [name, street, cityLine].join('<br>');
   }
 

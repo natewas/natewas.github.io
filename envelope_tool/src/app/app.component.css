@@ -1,0 +1,962 @@
+/* Global Styles */
+body {
+   font-family: "Lato", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: <weight>;
+      font-style: normal;
+      font-variation-settings:
+        "wdth" 100;
+}
+
+.tldr {
+    font-family: "Lato", serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size:1rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2C3E50;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.card-title {
+    margin-top: 2.5rem; /* Adds space above each step */
+    margin-bottom: 0.75rem; /* Keeps titles readable */
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Adds space between each input field */
+}
+
+.btn {
+    margin-top: 1rem; /* Adds space above the button */
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+      font-family: "Lato", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar a {
+    color: white;
+    /*font-weight: bold;*/
+}
+
+/* Hero Section */
+.hero {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    /*padding: 5rem 2rem;*/
+    margin-top:2rem;
+    /*margin-bottom:100px;*/
+    align-content:center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+    display: inline-flex;       /* Ensures buttons behave like block elements */
+    width: 250px;               /* Set the same width for all buttons */
+    height: 75px;               /* Set the same height for all buttons */
+    text-align: center;         /* Centers the text inside the button */
+    /*line-height: 50px;*/          /* Vertically aligns the text (matches height) */
+    padding: 0;                 /* Remove extra padding */
+    margin: 1.5rem;             /* Add some spacing between buttons */
+    background-color: #333;     /* Background color */
+    color: white;               /* Text color */
+    font-size: 1rem;            /* Font size */
+    border-radius: 75px;         /* Rounded corners (optional) */
+    border: none;               /* Remove border */
+    cursor: pointer;            /* Change cursor to pointer on hover */
+    transition: background 0.3s ease; /* Smooth hover effect */
+    align-items:center;
+    justify-content: center;  /* Centers text horizontally */
+
+}
+
+.hero-buttons .btn:hover {
+    background-color: #555;     /* Darker background on hover */
+}
+
+
+/* Section Styles */
+.section {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.portfolio-grid, .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.portfolio-item, .product-item {
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: #2C3E50;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Timeline Section */
+.timeline-section {
+    background-color: #f8f8f8;
+    padding: 3rem 2rem;
+    text-align: left;
+}
+
+.timeline-title {
+
+    text-align:center;
+}
+
+.timeline-section h2 {
+    color: #2C3E50;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Lato", serif;
+    font-weight: 700;
+    font-style: normal;
+        font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align:center;
+}
+
+/* Timeline Container */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    border-left: 3px solid #333;
+}
+
+/* Timeline Items */
+.timeline-item {
+    position: relative;
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item h3 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item .timeline-date {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.timeline-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Timeline Line and Dots */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: #333;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid #333;
+    border-radius: 50%;
+}
+
+/* General Styles */
+body {
+    margin: 0;
+      font-family: "Lato", serif;
+  font-weight: 400;
+  font-style: normal;
+    line-height: 1.6;
+    color: #2C3E50;
+    background-color: #f9f9f9;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    /*margin-top:100px;*/
+}
+
+/* Hero Section */
+.hero-project {
+    position: relative;
+    width: 100%;
+    min-height: 200px; /* Allows the section to grow */
+    overflow: hidden;
+}
+
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #2C3E50;
+    text-align: center;
+    /*text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);*/
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Project Page Styles */
+.project-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    margin-bottom:7rem;
+    padding: 0 1rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.project {
+    padding: 2rem;
+}
+
+.project p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.project-hero-image {
+    background-color:#333;
+    width:100%;
+    height:200px;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding:25px;
+}
+
+/* Project Grid Section */
+.project-grid-section {
+    /*padding: 2rem 1rem;*/
+    background-color: #f9f9f9;
+    text-align: left;
+    margin-bottom:5rem;
+}
+
+.project-grid-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align:center;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card-content h3 {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+}
+
+.project-card-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Breadcrumbs Styles */
+.breadcrumbs {
+    font-size: 0.85rem;
+    margin: 1rem 1rem;
+    padding: 0rem 1rem;
+    /*background-color: #f7f7f7;
+    border: 1px solid #ddd;*/
+    border-radius: 5px;
+    font-style:italic;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+.breadcrumbs li {
+    display: inline; /* Ensures breadcrumbs are inline */
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs li:last-child {
+    color: #555;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+/* Separator for breadcrumbs */
+.breadcrumbs ul li + li::before {
+    content: " > ";
+    color: #999; /* Light gray color for separator */
+    margin: 0;
+}
+
+/* Hero Section */
+.hero-about {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, #333, #555);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-about .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-about .hero-text p {
+    font-size: 1.2rem;
+}
+
+/* About Page Container */
+.about-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 1rem;
+    margin-top:0;
+}
+
+/* Biography Section */
+.biography h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.biography p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills {
+    margin-top: 4rem;
+    text-align: left;
+}
+
+.skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust item width */
+    gap: 1.5rem; /* Space between grid items */
+    margin: 2rem auto; /* Center the grid and add spacing */
+    max-width: 1000px; /* Prevent the grid from stretching too wide */
+}
+
+
+.skill-item {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: flex; /* Align content inside */
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; /* Ensure consistent height */
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust for smaller screens */
+        gap: 1rem; /* Reduce spacing */
+    }
+}
+
+
+/* Fun Facts Section */
+.fun-facts {
+    margin-top: 2rem;
+}
+
+.fun-facts h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.fun-facts ul {
+    list-style: disc;
+    margin-left: 2rem;
+    color: #555;
+}
+
+.fun-facts li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+/* Timeline Section */
+.timeline-section {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.timeline {
+    border-left: 3px solid #0073e6;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.timeline-year {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-year h3 {
+    font-size: 1.5rem;
+    color: #0073e6;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-events {
+    margin-left: 1rem;
+}
+
+.timeline-event {
+    background: #f7f7f7;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+    flex: 1; /* Pushes the footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-placeholder {
+    margin-top: auto;
+}
+
+
+/* Dot for Each Event */
+.timeline-event::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #0073e6;
+    border-radius: 50%;
+    position: absolute;
+    left: -25px;
+    top: 15px;
+}
+/* Project Grid Section */
+.project-grid-section {
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom:4rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+} 
+
+.in-progress-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.project-card-content img {
+    width: 100%; /* Make the image width fill the container */
+    /*height: auto; /* Maintain aspect ratio */
+    max-height: 375px; /* Optional: constrain the maximum height */
+    object-fit: cover; /* Ensure the image fills the area proportionally */
+    border-radius: 8px; /* Optional: rounded corners for a polished look */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport height */
+}
+
+.modal-content {
+    /*background: white;*/
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 45%; /* Maximum width for modal */
+    max-height: 90%; /* Maximum height for modal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.modal-gallery {
+    /*display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 10px; /* Space between images */
+    width: 100%; /* Full width for grid */
+    justify-items: center;
+}
+
+.modal-gallery img {
+    max-width: 100%; /* Fit image within grid cell */
+    height: auto;
+    border-radius: 8px;
+    /*cursor: pointer; /* Indicate image is clickable */
+    /*transition: transform 0.2s ease;*/
+}
+/*
+.modal-gallery img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+/*}*/
+
+
+.close {
+    position: absolute;
+    /*top: 10px;
+    right: 20px;*/
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none; /* Prevent selection of the close button */
+}
+
+/* Expanded Image Styles */
+.expanded-img {
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    max-height: 80vh; /* Ensure the image fits within the viewport */
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    background: #3f3f3f;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+        display: inline-flex;       /* Ensures buttons behave like block elements */
+    width: 250px;               /* Set the same width for all buttons */
+    height: 50px;               /* Set the same height for all buttons */
+    text-align: center;         /* Centers the text inside the button */
+    /*line-height: 50px;*/          /* Vertically aligns the text (matches height) */
+    padding: 0;                 /* Remove extra padding */
+    background-color: #333;     /* Background color */
+    color: white;               /* Text color */
+    font-size: 1rem;            /* Font size */
+    border-radius: 75px;         /* Rounded corners (optional) */
+    border: none;               /* Remove border */
+    cursor: pointer;            /* Change cursor to pointer on hover */
+    transition: background 0.3s ease; /* Smooth hover effect */
+    align-items:center;
+    justify-content: center;  /* Centers text horizontally */
+
+}
+
+button:hover {
+    background: #005bb5;
+}
+
+/* Contact Section */
+#contact {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#contact h1 {
+    text-align: center;
+    font-family: "Lato", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2C3E50;
+}
+
+#contact p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+input, textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    margin-bottom: 1rem; /* Add spacing between elements */
+}
+
+.project-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #2C3E50;
+    padding: 8px 0; /* Adjust padding */
+}
+
+/* Target selects inside project-container */
+.project-container select {
+    width: 100%;  /* Makes dropdowns full width */
+    padding: 10px;  /* Adds spacing inside */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Ensure labels and selects are inside .form-group */
+.project-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Spacing between label and select */
+    margin-bottom: 1rem;
+}
+
+
+.main-container {
+    display: flex;  /* Use flex instead of inline-flex */
+    justify-content: center; /* Center it horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 50px; /* Space between form & preview */
+    max-width: 1200px; /* Ensures content doesn't stretch too much */
+    margin: 0 auto; /* Centers the whole container */
+}
+
+.project-container {
+    flex: 1;  /* Makes it take equal width */
+    width: 800px;  /* Prevents excessive stretching */
+}
+
+
+
+
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensure it's above everything */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Push everything below fixed navbar */
+body {
+    padding-top: 60px; /* Adjust to match navbar height */
+}
+.hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;  /* Extra spacing to avoid overlap */
+    background-color: #f8f8f8;  /* Light background for visibility */
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;  /* Ensure spacing below H1 */
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 50px auto 0;  /* Added margin at the top to prevent overlap */
+}
+
+/* Envelope Preview Container */
+.envelope {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border: 2px solid #ddd;
+    position: relative;
+    font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Recipient Address */
+.recipient {
+    position: absolute;
+    bottom: 80px; /* Adjust based on PDF offsets */
+    left: 80px; /* ✅ Adjusted to match PDF left margin */
+    text-align: left;
+    font-size: 16px;
+    color:#000000;
+}
+
+
+/* Return Address */
+.return-address {
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    display: none; /* Hidden until user enables "Include Return Address" */
+}
+.preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Adds space between title and preview */
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.envelope-preview {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border: 2px solid #ddd;
+    background-color: white;
+}
+
