@@ -87,68 +87,72 @@
 
       <!-- Return Address Section -->
       <h2 class="card-title">Return Address</h2>
-      <label for="includeReturn">
-        <input
-          type="checkbox"
-          id="includeReturn"
-          name="includeReturn"
-          [(ngModel)]="includeReturn"
-          (ngModelChange)="onSettingsChange()"
-        >
-        Include Return Address?
-      </label>
+<label for="includeReturn">
+  <input
+    type="checkbox"
+    id="includeReturn"
+    name="includeReturn"
+    [(ngModel)]="includeReturn"
+  >
+  Include Return Address?
+</label>
 
-      <div id="returnAddressFields" *ngIf="includeReturn">
-        <label for="returnName">Name:</label>
-        <input
-          type="text"
-          id="returnName"
-          class="form-group"
-          placeholder="John Doe"
-          [(ngModel)]="returnName"
-          name="returnName"
-        >
+<div id="returnAddressFields" *ngIf="includeReturn">
+  <label for="returnName">Name:</label>
+  <input
+    type="text"
+    id="returnName"
+    class="form-group"
+    placeholder="John Doe"
+    [(ngModel)]="returnName"
+    name="returnName"
+  >
 
-        <label for="returnStreet">Street Address:</label>
-        <input
-          type="text"
-          id="returnStreet"
-          class="form-group"
-          placeholder="123 Main St"
-          [(ngModel)]="returnStreet"
-          name="returnStreet"
-        >
+  <label for="returnStreet">Street Address:</label>
+  <input
+    type="text"
+    id="returnStreet"
+    class="form-group"
+    placeholder="123 Main St"
+    [(ngModel)]="returnStreet"
+    name="returnStreet"
+  >
 
-        <label for="returnCity">City:</label>
-        <input
-          type="text"
-          id="returnCity"
-          class="form-group"
-          placeholder="New York"
-          [(ngModel)]="returnCity"
-          name="returnCity"
-        >
+  <label for="returnCity">City:</label>
+  <input
+    type="text"
+    id="returnCity"
+    class="form-group"
+    placeholder="New York"
+    [(ngModel)]="returnCity"
+    name="returnCity"
+  >
 
-        <label for="returnState">State:</label>
-        <input
-          type="text"
-          id="returnState"
-          class="form-group"
-          placeholder="NY"
-          [(ngModel)]="returnState"
-          name="returnState"
-        >
+  <label for="returnState">State:</label>
+  <input
+    type="text"
+    id="returnState"
+    class="form-group"
+    placeholder="NY"
+    [(ngModel)]="returnState"
+    name="returnState"
+  >
 
-        <label for="returnZIP">ZIP Code:</label>
-        <input
-          type="text"
-          id="returnZIP"
-          class="form-group"
-          placeholder="10001"
-          [(ngModel)]="returnZIP"
-          name="returnZIP"
-        >
-      </div>
+  <label for="returnZIP">ZIP Code:</label>
+  <input
+    type="text"
+    id="returnZIP"
+    class="form-group"
+    placeholder="10001"
+    [(ngModel)]="returnZIP"
+    name="returnZIP"
+  >
+
+
+</div>
+
+
+
 
       <h2 class="card-title">Step 4: Generate PDF</h2>
       <button class="btn" (click)="onGeneratePdf()">
@@ -159,27 +163,48 @@
 
   <!-- Right Side: Live Preview -->
   <div class="preview-container">
-    <h2 class="preview-title">Live Preview</h2>
-    <div class="envelope-preview" [ngStyle]="envelopePreviewStyles">
+  <h2 class="preview-title">Live Preview</h2>
+  <div class="envelope-preview" [ngStyle]="envelopePreviewStyles">
 
-      <!-- Return Address Preview -->
-      <div
-        id="returnAddress"
-        class="preview-text return-address"
-        *ngIf="includeReturn"
-        [ngStyle]="returnAddressStyles"
-        [innerHTML]="formatReturnAddress() || 'Return Address'"
-      ></div>
-
-      <!-- Recipient Preview -->
-      <div
-        id="recipient"
-        class="preview-text recipient"
-        [ngStyle]="recipientStyles"
-        [innerHTML]="formatRecipientAddress()"
-      ></div>
-
-    </div>
+    <!-- Return Address Preview -->
+    <!-- Return Address Preview -->
+<div
+  id="returnAddress"
+  class="preview-text return-address"
+  *ngIf="includeReturn"
+  [ngStyle]="returnAddressStyles"
+>
+  <!-- Name -->
+  <div *ngIf="returnName; else namePlaceholder">
+    {{ returnName }}
   </div>
+  <ng-template #namePlaceholder>
+    <div>Return Address</div>
+  </ng-template>
+
+  <!-- Street -->
+  <div *ngIf="returnStreet">
+    {{ returnStreet }}
+  </div>
+
+  <!-- City, State ZIP -->
+  <div *ngIf="returnCity || returnState || returnZIP">
+  {{ returnCity }}<span *ngIf="returnCity && (returnState || returnZIP)">, </span>{{ returnState }}<span *ngIf="returnState && returnZIP"> </span>{{ returnZIP }}
+</div>
+
+</div>
+
+
+    <!-- Recipient Preview -->
+    <div
+      id="recipient"
+      class="preview-text recipient"
+      [ngStyle]="recipientStyles"
+      [innerHTML]="formatRecipientAddress()"
+    ></div>
+
+  </div>
+</div>
+
 
 </div>

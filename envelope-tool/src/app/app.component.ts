@@ -106,35 +106,20 @@ export class AppComponent implements OnInit {
     this.recipientStyles = recipient;
 
     const returnFontSizePx = Math.round((fontSizePt - 2) * POINT_TO_PIXEL);
-    this.returnAddressStyles = {
+      this.returnAddressStyles = {
       position: 'absolute',
       left: '40px',
       top: '35px',
-      'font-size': `${returnFontSizePx}px`
-    };
+      'font-size': `${returnFontSizePx}px`,
+      'font-family': this.fontFamily,          // 🔹 match selected font
+      'line-height': `${lineSpacingNum}em`,    // 🔹 optional: match line spacing
+};
+
   }
 
   // === Text formatting for preview ===
 
-  formatReturnAddress(): string {
-    const lines: string[] = [];
-
-    if (this.returnName)   { lines.push(this.returnName); }
-    if (this.returnStreet) { lines.push(this.returnStreet); }
-
-    const cityStateZip = [
-      this.returnCity,
-      this.returnState ? `${this.returnState}${this.returnZIP ? ' ' + this.returnZIP : ''}` : this.returnZIP
-    ]
-      .filter(Boolean)
-      .join(', ');
-
-    if (cityStateZip) {
-      lines.push(cityStateZip);
-    }
-
-    return lines.join('<br>');
-  }
+  
 
   formatRecipientAddress(): string {
     const name = 'Recipient Name';
