@@ -871,7 +871,9 @@ input, textarea {
 }
 
 /* Push everything below fixed navbar */
-
+body {
+    padding-top: 60px; /* Adjust to match navbar height */
+}
 .hero {
     width: 100%;
     display: flex;
@@ -935,7 +937,7 @@ input, textarea {
     position: absolute;
     top: 20px;
     left: 30px;
-    display: none; /* Hidden until user enables "Include Return Address" */
+    /*display: none; /* Hidden until user enables "Include Return Address" */
 }
 .preview-container {
     display: flex;
