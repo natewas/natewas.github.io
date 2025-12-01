@@ -841,7 +841,7 @@ input, textarea {
     gap: 24px;
     align-items: center;         /* center the children horizontally */
     justify-content: flex-start;
-    margin: 0 auto 40px;
+    /*margin: 0 auto 40px;*/
     max-width: 1200px;
     width: 100%;
 }
