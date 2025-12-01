@@ -5,8 +5,9 @@ import { FormsModule } from '@angular/forms';
 const API_BASE_URL =
   window.location.hostname === 'localhost' ||
   window.location.hostname === '127.0.0.1'
-    ? 'http://127.0.0.1:5001'
-    : `http://${window.location.hostname}:5001`;
+    ? 'http://127.0.0.1:5001'   // ✅ dev: Angular dev server → FastAPI
+    : '/envelope_tool/api';     // ✅ prod: same-origin path behind Apache
+
 
 const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
 
