@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pandas
+reportlab
+requests
+python-multipart
+pdf2image
+Pillow
