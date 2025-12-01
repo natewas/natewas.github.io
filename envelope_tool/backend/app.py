@@ -147,14 +147,46 @@ async def generate_preview(
             text_x = width / 2 - 50
             draw_text = c.drawString
 
+        # Recipient preview
         draw_text(text_x, text_y + spacing_multiplier, "Recipient Name")
         draw_text(text_x, text_y, "Street Address")
         draw_text(text_x, text_y - spacing_multiplier, "City, State ZIP")
 
+        # Return address preview (smaller font, matching line spacing behavior)
         if include_return.lower() == "true":
-            c.drawString(40, height - 40, return_name or "Your Name")
-            c.drawString(40, height - 60, return_street or "123 Main St")
-            c.drawString(40, height - 80, f"{return_city or 'City'}, {return_state or 'State'} {return_zip or '00000'}")
+            return_font_size = max(font_size - 2, 6)
+            c.setFont(font_family, return_font_size)
+
+            # line spacing scales with font size (same as CSS: line-height * font-size)
+            return_spacing = line_spacing * 14 * (return_font_size / float(font_size))
+
+            ry = height - 40  # start near top-left
+
+            # Name
+            c.drawString(40, ry, (return_name or "Your Name").strip())
+            ry -= return_spacing
+
+            # Street
+            c.drawString(40, ry, (return_street or "123 Main St").strip())
+            ry -= return_spacing
+
+            # City, State ZIP
+            city_parts = []
+            if return_city:
+                city_parts.append(return_city.strip())
+            if return_state:
+                # add comma after city if both present
+                if city_parts:
+                    city_parts[-1] = city_parts[-1] + ","
+                city_parts.append(return_state.strip())
+            if return_zip:
+                city_parts.append(return_zip.strip())
+
+            city_line = " ".join(city_parts) or "City, State ZIP"
+            c.drawString(40, ry, city_line)
+
+            # reset font back to main size for anything else
+            c.setFont(font_family, font_size)
 
         c.save()  # ✅ Ensure PDF is completely written before conversion
 
@@ -250,14 +282,39 @@ async def upload_csv(
         print(f"❌ Unexpected Error: {str(e)}")  # Debugging log
         return JSONResponse(status_code=500, content={"error": str(e)})
 
-def generate_pdf(data, filename, envelope_size, font_size, font_family, alignment, line_spacing, include_return,
-                 return_name, return_street, return_city, return_state, return_zip):
+def generate_pdf(
+    data,
+    filename,
+    envelope_size,
+    font_size,
+    font_family,
+    alignment,
+    line_spacing,
+    include_return,
+    return_name,
+    return_street,
+    return_city,
+    return_state,
+    return_zip
+):
     width, height = ENVELOPE_SIZES.get(envelope_size, ENVELOPE_SIZES["A7"])
     c = canvas.Canvas(filename, pagesize=landscape((width, height)))
 
     print(f"🎯 Using font: {font_family} with size {font_size}pt")  # Debugging
 
+    # make sure these are numeric
+    try:
+        font_size = int(font_size)
+    except ValueError:
+        font_size = 12
+
+    try:
+        line_spacing = float(line_spacing)
+    except ValueError:
+        line_spacing = 1.5
+
     for index, (_, row) in enumerate(data.iterrows()):
+        # --- Recipient address ---
         try:
             c.setFont(font_family, font_size)
         except Exception as e:
@@ -265,7 +322,8 @@ def generate_pdf(data, filename, envelope_size, font_size, font_family, alignmen
             c.setFont("Helvetica", font_size)
 
         text_y = height / 2
-        spacing_multiplier = line_spacing * 12
+        # use same 14 “magic number” as the preview so spacing matches
+        spacing_multiplier = line_spacing * 14
 
         if alignment == "center":
             text_x = width / 2
@@ -276,20 +334,59 @@ def generate_pdf(data, filename, envelope_size, font_size, font_family, alignmen
 
         draw_text(text_x, text_y + spacing_multiplier, str(row["Recipient Name"]))
         draw_text(text_x, text_y, str(row["Street Address"]))
-        draw_text(text_x, text_y - spacing_multiplier, f"{str(row['City'])}, {str(row['State'])} {str(row['ZIP'])}")
+        draw_text(
+            text_x,
+            text_y - spacing_multiplier,
+            f"{str(row['City'])}, {str(row['State'])} {str(row['ZIP'])}"
+        )
 
+        # --- Return address (smaller font, same line-spacing behavior as preview) ---
         if include_return.lower() == "true":
-            c.drawString(40, height - 40, return_name)
-            c.drawString(40, height - 60, return_street)
-            c.drawString(40, height - 80, f"{return_city}, {return_state} {return_zip}")
+            return_font_size = max(font_size - 2, 6)
 
-        if index < len(data) - 1:
-            c.showPage()
+            try:
+                c.setFont(font_family, return_font_size)
+            except Exception:
+                c.setFont("Helvetica", return_font_size)
+
+            # scale spacing with font size just like in /preview
+            return_spacing = line_spacing * 14 * (return_font_size / float(font_size))
+            ry = height - 40  # start near top-left
+
+            # Name
+            c.drawString(40, ry, (return_name or "Your Name").strip())
+            ry -= return_spacing
+
+            # Street
+            c.drawString(40, ry, (return_street or "123 Main St").strip())
+            ry -= return_spacing
+
+            # City, State ZIP
+            city_parts = []
+            if return_city:
+                city_parts.append(return_city.strip())
+            if return_state:
+                if city_parts:
+                    # add comma after city if both are present
+                    city_parts[-1] = city_parts[-1] + ","
+                city_parts.append(return_state.strip())
+            if return_zip:
+                city_parts.append(return_zip.strip())
+
+            city_line = " ".join(city_parts) or "City, State ZIP"
+            c.drawString(40, ry, city_line)
+
+            # reset back to recipient font
             try:
                 c.setFont(font_family, font_size)
             except Exception:
                 c.setFont("Helvetica", font_size)
 
+        # --- new page if more rows ---
+        if index < len(data) - 1:
+            c.showPage()
+
     c.save()
+
 
 
