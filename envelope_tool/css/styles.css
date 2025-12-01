@@ -870,9 +870,7 @@ input, textarea {
 }
 
 /* Push everything below fixed navbar */
-body {
-    padding-top: 60px; /* Adjust to match navbar height */
-}
+
 .hero {
     width: 100%;
     display: flex;
