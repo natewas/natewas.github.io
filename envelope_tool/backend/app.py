@@ -302,6 +302,9 @@ async def upload_csv(
         pdf_filename = f"{uuid.uuid4()}.pdf"
         pdf_path = os.path.join(PDF_DIR, pdf_filename)
 
+         pdf_filename = f"{uuid.uuid4()}.pdf"
+        pdf_path = os.path.join(PDF_DIR, pdf_filename)
+
         generate_pdf(
             df,
             pdf_path,
@@ -310,8 +313,8 @@ async def upload_csv(
             font_family,
             alignment,
             line_spacing,
-            include_return_flag,       # <-- bool now
-            match_return_flag,         # <-- bool now
+            include_return_flag,   # bool
+            match_return_flag,     # bool
             return_name,
             return_street,
             return_city,
@@ -347,7 +350,7 @@ def generate_pdf(
 
     print(f"🎯 Using font: {font_family} with size {font_size}pt")  # Debugging
 
-    # make sure these are numeric
+    # normalize numeric inputs
     try:
         font_size = int(font_size)
     except ValueError:
@@ -359,7 +362,7 @@ def generate_pdf(
         line_spacing = 1.5
 
     for index, (_, row) in enumerate(data.iterrows()):
-        # --- Recipient address ---
+        # Recipient
         try:
             c.setFont(font_family, font_size)
         except Exception as e:
@@ -367,7 +370,6 @@ def generate_pdf(
             c.setFont("Helvetica", font_size)
 
         text_y = height / 2
-        # Match CSS-style spacing: line_spacing * font_size (in points)
         spacing_multiplier = line_spacing * font_size
 
         if alignment == "center":
@@ -385,13 +387,11 @@ def generate_pdf(
             f"{str(row['City'])}, {str(row['State'])} {str(row['ZIP'])}"
         )
 
-        # --- Return address (respects match_return_font_size) ---
+        # Return address
         if include_return:
             if match_return_font_size:
-                # exactly match the recipient font size
-                return_font_size = font_size
+                return_font_size = font_size        # 🔹 EXACT match
             else:
-                # slightly smaller, like before
                 return_font_size = max(font_size - 2, 6)
 
             try:
@@ -399,19 +399,15 @@ def generate_pdf(
             except Exception:
                 c.setFont("Helvetica", return_font_size)
 
-            # line spacing scaled with return font size
             return_spacing = line_spacing * return_font_size
-            ry = height - 40  # start near top-left
+            ry = height - 40
 
-            # Name
             c.drawString(40, ry, (return_name or "Your Name").strip())
             ry -= return_spacing
 
-            # Street
             c.drawString(40, ry, (return_street or "123 Main St").strip())
             ry -= return_spacing
 
-            # City, State ZIP
             city_parts = []
             if return_city:
                 city_parts.append(return_city.strip())
@@ -425,14 +421,14 @@ def generate_pdf(
             city_line = " ".join(city_parts) or "City, State ZIP"
             c.drawString(40, ry, city_line)
 
-            # reset back to recipient font for the next things / pages
+            # reset font for next page / anything else
             try:
                 c.setFont(font_family, font_size)
             except Exception:
                 c.setFont("Helvetica", font_size)
 
-        # --- new page if more rows ---
         if index < len(data) - 1:
             c.showPage()
 
     c.save()
+
