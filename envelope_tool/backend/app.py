@@ -15,6 +15,12 @@ from pdf2image import convert_from_path  # ✅ Required for Live Preview Image C
 # ✅ Define FastAPI app
 app = FastAPI()
 
+def _as_bool(value) -> bool:
+    """Robust string/primitive -> bool converter."""
+    if value is None:
+        return False
+    return str(value).strip().lower() in {"true", "1", "yes", "on"}
+
 # ✅ Enable CORS
 app.add_middleware(
     CORSMiddleware,
@@ -233,7 +239,12 @@ async def upload_csv(
 ):
     try:
         print(f"✅ Received File: {file.filename}")  # Debugging log
-        print(f"✅ Size: {size}, Font: {font_family}, Font Size: {font_size}, Alignment: {alignment}, Line Spacing: {line_spacing}, Include Return: {include_return}")
+        print(
+            f"✅ Size: {size}, Font: {font_family}, Font Size: {font_size}, "
+            f"Alignment: {alignment}, Line Spacing: {line_spacing}, "
+            f"Include Return: {include_return}, "
+            f"Match Return Font Size: {match_return_font_size}"
+        )
 
         # Read and validate CSV
         df = pd.read_csv(file.file)
@@ -244,8 +255,11 @@ async def upload_csv(
         # Ensure required columns exist
         required_columns = {"Recipient Name", "Street Address", "City", "State", "ZIP"}
         if not required_columns.issubset(set(df.columns)):
-            print(f"❌ CSV is missing required columns!")
-            return JSONResponse(status_code=400, content={"error": "CSV is missing required columns!"})
+            print("❌ CSV is missing required columns!")
+            return JSONResponse(
+                status_code=400,
+                content={"error": "CSV is missing required columns!"}
+            )
 
         # Convert line_spacing to float
         try:
@@ -264,13 +278,21 @@ async def upload_csv(
             print("⚠️ Invalid font size, resetting to default 12")
             font_size = 12  
 
+        # Convert flags to real booleans
+        include_return_flag = _as_bool(include_return)
+        match_return_flag = _as_bool(match_return_font_size)
+
+        print(f"🔍 include_return_flag={include_return_flag}, match_return_flag={match_return_flag}")
+
         # Validate return address fields
-        if include_return.lower() == "true":
+        if include_return_flag:
             if not all([return_name, return_street, return_city, return_state, return_zip]):
                 print("❌ Missing required return address fields!")
                 return JSONResponse(
                     status_code=400,
-                    content={"error": "All return address fields must be filled if 'Include Return Address' is checked."}
+                    content={
+                        "error": "All return address fields must be filled if 'Include Return Address' is checked."
+                    }
                 )
 
         # ✅ Register and use the correct font
@@ -288,8 +310,8 @@ async def upload_csv(
             font_family,
             alignment,
             line_spacing,
-            include_return,
-            match_return_font_size,
+            include_return_flag,       # <-- bool now
+            match_return_flag,         # <-- bool now
             return_name,
             return_street,
             return_city,
@@ -297,12 +319,12 @@ async def upload_csv(
             return_zip,
         )
 
-
         return {"preview_url": f"/static/generated_pdfs/{pdf_filename}"}
 
     except Exception as e:
         print(f"❌ Unexpected Error: {str(e)}")  # Debugging log
         return JSONResponse(status_code=500, content={"error": str(e)})
+
 
 def generate_pdf(
     data,
@@ -312,8 +334,8 @@ def generate_pdf(
     font_family,
     alignment,
     line_spacing,
-    include_return,
-    match_return_font_size,
+    include_return: bool,
+    match_return_font_size: bool,
     return_name,
     return_street,
     return_city,
@@ -348,7 +370,6 @@ def generate_pdf(
         # Match CSS-style spacing: line_spacing * font_size (in points)
         spacing_multiplier = line_spacing * font_size
 
-
         if alignment == "center":
             text_x = width / 2
             draw_text = c.drawCentredString
@@ -364,11 +385,13 @@ def generate_pdf(
             f"{str(row['City'])}, {str(row['State'])} {str(row['ZIP'])}"
         )
 
-        # --- Return address (smaller font, same line-spacing behavior as preview) ---
-                if include_return.lower() == "true":
-            if match_return_font_size.lower() == "true":
+        # --- Return address (respects match_return_font_size) ---
+        if include_return:
+            if match_return_font_size:
+                # exactly match the recipient font size
                 return_font_size = font_size
             else:
+                # slightly smaller, like before
                 return_font_size = max(font_size - 2, 6)
 
             try:
@@ -376,9 +399,8 @@ def generate_pdf(
             except Exception:
                 c.setFont("Helvetica", return_font_size)
 
-            # scale spacing with font size just like in /preview
+            # line spacing scaled with return font size
             return_spacing = line_spacing * return_font_size
-
             ry = height - 40  # start near top-left
 
             # Name
@@ -395,7 +417,6 @@ def generate_pdf(
                 city_parts.append(return_city.strip())
             if return_state:
                 if city_parts:
-                    # add comma after city if both are present
                     city_parts[-1] = city_parts[-1] + ","
                 city_parts.append(return_state.strip())
             if return_zip:
@@ -404,7 +425,7 @@ def generate_pdf(
             city_line = " ".join(city_parts) or "City, State ZIP"
             c.drawString(40, ry, city_line)
 
-            # reset back to recipient font
+            # reset back to recipient font for the next things / pages
             try:
                 c.setFont(font_family, font_size)
             except Exception:
@@ -415,6 +436,3 @@ def generate_pdf(
             c.showPage()
 
     c.save()
-
-
-
