@@ -8,9 +8,6 @@ const API_BASE_URL =
     ? 'http://127.0.0.1:5001'
     : 'https://natewas-github-io-1.onrender.com';
 
-
-
-
 const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
 
 @Component({
@@ -21,7 +18,7 @@ const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // loading state for cold-start UX (optional, but used in onGeneratePdf)
+  // loading state for cold-start UX (used in onGeneratePdf)
   isLoading = false;
   loadingMessage = '';
 
@@ -41,6 +38,9 @@ export class AppComponent implements OnInit {
   returnCity = '';
   returnState = '';
   returnZIP = '';
+
+  // Match return font size to recipient
+  matchReturnFontSize = false;
 
   // CSV file
   csvFile: File | null = null;
@@ -112,21 +112,24 @@ export class AppComponent implements OnInit {
 
     this.recipientStyles = recipient;
 
-    const returnFontSizePx = Math.round((fontSizePt - 2) * POINT_TO_PIXEL);
-      this.returnAddressStyles = {
+    // Return address font size:
+    // - default: slightly smaller than recipient
+    // - if matchReturnFontSize is true: same size as recipient
+    const returnFontSizePt = this.matchReturnFontSize
+      ? fontSizePt
+      : Math.max(fontSizePt - 2, 6);
+
+    const returnFontSizePx = Math.round(returnFontSizePt * POINT_TO_PIXEL);
+
+    this.returnAddressStyles = {
       position: 'absolute',
       left: '40px',
       top: '35px',
       'font-size': `${returnFontSizePx}px`,
-      'font-family': this.fontFamily,          // 🔹 match selected font
-      'line-height': `${lineSpacingNum}em`,    // 🔹 optional: match line spacing
-};
-
+      'font-family': this.fontFamily,
+      'line-height': `${lineSpacingNum}em`,
+    };
   }
-
-  // === Text formatting for preview ===
-
-  
 
   formatRecipientAddress(): string {
     const name = 'Recipient Name';
@@ -134,8 +137,6 @@ export class AppComponent implements OnInit {
     const cityLine = 'City, State ZIP';
     return [name, street, cityLine].join('<br>');
   }
-
-  // === PDF generation (ported from uploadCSV) ===
 
   async onGeneratePdf(): Promise<void> {
     if (!this.csvFile) {
@@ -147,13 +148,14 @@ export class AppComponent implements OnInit {
     this.loadingMessage = '';
 
     const formData = new FormData();
-    formData.append('file', this.csvFile as File);  // csvFile is guaranteed by the check above
+    formData.append('file', this.csvFile as File);
     formData.append('size', this.envelopeSize);
     formData.append('font_size', this.fontSize);
     formData.append('alignment', this.alignment);
     formData.append('line_spacing', this.lineSpacing);
     formData.append('font_family', this.fontFamily);
     formData.append('include_return', String(this.includeReturn));
+    formData.append('match_return_font_size', String(this.matchReturnFontSize));
     formData.append('return_name', this.returnName || '');
     formData.append('return_street', this.returnStreet || '');
     formData.append('return_city', this.returnCity || '');
@@ -176,14 +178,12 @@ export class AppComponent implements OnInit {
     };
 
     try {
-      // First try
       const result = await attemptUpload();
       window.open(`${API_BASE_URL}${result.preview_url}`, '_blank');
-         } catch (firstError) {
+    } catch (firstError) {
       console.warn('❗ First attempt failed. Retrying after delay...', firstError);
       this.loadingMessage = 'Waking up server... please wait...';
 
-      // Retry after delay (cold start)
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       try {
@@ -197,6 +197,5 @@ export class AppComponent implements OnInit {
       this.isLoading = false;
       this.loadingMessage = '';
     }
-  }  // <-- end of onGeneratePdf
-}    // <-- end of AppComponent
-
+  }
+}

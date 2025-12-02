@@ -155,6 +155,17 @@
     [(ngModel)]="returnZIP"
     name="returnZIP"
   >
+    <label for="matchReturnFontSize" class="inline-checkbox">
+    <input
+      type="checkbox"
+      id="matchReturnFontSize"
+      name="matchReturnFontSize"
+      [(ngModel)]="matchReturnFontSize"
+      (ngModelChange)="onSettingsChange()"
+    >
+    Make return address match recipient address font size
+  </label>
+
 
 
 </div>

@@ -104,6 +104,7 @@ async def generate_preview(
     line_spacing: str = Form(...),
     font_family: str = Form(...),
     include_return: str = Form(...),
+    match_return_font_size: str = Form("false"),
     return_name: str = Form(None),
     return_street: str = Form(None),
     return_city: str = Form(None),
@@ -156,12 +157,16 @@ async def generate_preview(
 
         # Return address preview (smaller font, matching line spacing behavior)
         if include_return.lower() == "true":
-            return_font_size = max(font_size - 2, 6)
+            if match_return_font_size.lower() == "true":
+                return_font_size = font_size
+            else:
+                return_font_size = max(font_size - 2, 6)
+
             c.setFont(font_family, return_font_size)
 
-            # line spacing scales with font size (same as CSS: line-height * font-size)
             # line spacing scales with font size (same idea as CSS: line-height * font-size)
             return_spacing = line_spacing * return_font_size
+
 
             ry = height - 40  # start near top-left
 
@@ -219,6 +224,7 @@ async def upload_csv(
     line_spacing: str = Form(...),
     font_family: str = Form(...),
     include_return: str = Form(...),
+    match_return_font_size: str = Form("false"),
     return_name: str = Form(None),
     return_street: str = Form(None),
     return_city: str = Form(None),
@@ -275,9 +281,22 @@ async def upload_csv(
         pdf_path = os.path.join(PDF_DIR, pdf_filename)
 
         generate_pdf(
-            df, pdf_path, size, font_size, font_family, alignment, line_spacing, include_return,
-            return_name, return_street, return_city, return_state, return_zip
+            df,
+            pdf_path,
+            size,
+            font_size,
+            font_family,
+            alignment,
+            line_spacing,
+            include_return,
+            match_return_font_size,
+            return_name,
+            return_street,
+            return_city,
+            return_state,
+            return_zip,
         )
+
 
         return {"preview_url": f"/static/generated_pdfs/{pdf_filename}"}
 
@@ -294,11 +313,12 @@ def generate_pdf(
     alignment,
     line_spacing,
     include_return,
+    match_return_font_size,
     return_name,
     return_street,
     return_city,
     return_state,
-    return_zip
+    return_zip,
 ):
     width, height = ENVELOPE_SIZES.get(envelope_size, ENVELOPE_SIZES["A7"])
     c = canvas.Canvas(filename, pagesize=landscape((width, height)))
@@ -345,8 +365,11 @@ def generate_pdf(
         )
 
         # --- Return address (smaller font, same line-spacing behavior as preview) ---
-        if include_return.lower() == "true":
-            return_font_size = max(font_size - 2, 6)
+                if include_return.lower() == "true":
+            if match_return_font_size.lower() == "true":
+                return_font_size = font_size
+            else:
+                return_font_size = max(font_size - 2, 6)
 
             try:
                 c.setFont(font_family, return_font_size)
@@ -354,8 +377,8 @@ def generate_pdf(
                 c.setFont("Helvetica", return_font_size)
 
             # scale spacing with font size just like in /preview
-            # scale spacing with font size just like in /preview
             return_spacing = line_spacing * return_font_size
+
             ry = height - 40  # start near top-left
 
             # Name
