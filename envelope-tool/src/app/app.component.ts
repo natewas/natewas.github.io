@@ -21,6 +21,10 @@ const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  // loading state for cold-start UX (optional, but used in onGeneratePdf)
+  isLoading = false;
+  loadingMessage = '';
+
   // Step 1: envelope size
   envelopeSize: 'A7' | '10' | 'A2' = 'A7';
 
@@ -139,44 +143,60 @@ export class AppComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
+    this.loadingMessage = '';
+
     const formData = new FormData();
-    formData.append('file', this.csvFile);
+    formData.append('file', this.csvFile as File);  // csvFile is guaranteed by the check above
     formData.append('size', this.envelopeSize);
     formData.append('font_size', this.fontSize);
     formData.append('alignment', this.alignment);
     formData.append('line_spacing', this.lineSpacing);
     formData.append('font_family', this.fontFamily);
     formData.append('include_return', String(this.includeReturn));
+    formData.append('return_name', this.returnName || '');
+    formData.append('return_street', this.returnStreet || '');
+    formData.append('return_city', this.returnCity || '');
+    formData.append('return_state', this.returnState || '');
+    formData.append('return_zip', this.returnZIP || '');
 
-    if (this.includeReturn) {
-      formData.append('return_name', this.returnName.trim());
-      formData.append('return_street', this.returnStreet.trim());
-      formData.append('return_city', this.returnCity.trim());
-      formData.append('return_state', this.returnState.trim());
-      formData.append('return_zip', this.returnZIP.trim());
-    }
+    const uploadUrl = `${API_BASE_URL}/upload`;
 
-    try {
-      const response = await fetch(`${API_BASE_URL}/upload`, {
+    const attemptUpload = async () => {
+      const response = await fetch(uploadUrl, {
         method: 'POST',
         body: formData
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('❌ Server error response:', errorText);
         throw new Error(`Server error: ${response.status}`);
       }
 
-      const result = await response.json();
-      if (result.preview_url) {
+      return response.json() as Promise<{ preview_url: string }>;
+    };
+
+    try {
+      // First try
+      const result = await attemptUpload();
+      window.open(`${API_BASE_URL}${result.preview_url}`, '_blank');
+         } catch (firstError) {
+      console.warn('❗ First attempt failed. Retrying after delay...', firstError);
+      this.loadingMessage = 'Waking up server... please wait...';
+
+      // Retry after delay (cold start)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      try {
+        const result = await attemptUpload();
         window.open(`${API_BASE_URL}${result.preview_url}`, '_blank');
-      } else {
-        alert('PDF generation failed. Please check your file.');
+      } catch (finalError) {
+        console.error('❌ Error uploading file:', finalError);
+        alert('The server took too long to respond. Please try again.');
       }
-    } catch (error) {
-      console.error('❌ Error uploading file:', error);
-      alert('Failed to upload. Check console for details.');
+    } finally {
+      this.isLoading = false;
+      this.loadingMessage = '';
     }
-  }
-}
+  }  // <-- end of onGeneratePdf
+}    // <-- end of AppComponent
+
