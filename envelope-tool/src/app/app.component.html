@@ -24,7 +24,12 @@
       </select>
 
       <h2 class="card-title">Step 2: Upload CSV File</h2>
-      <p>Download and populate the template .csv.</p>
+      <p>
+        Download and populate the template .csv:
+        <a href="sample-data.csv" download="envelope-template.csv">
+          Download template CSV
+        </a>
+      </p>
 
       <input
         type="file"
@@ -33,6 +38,7 @@
         class="form-group"
         (change)="onFileSelected($event)"
       >
+
 
       <h2 class="card-title">Step 3: Select Settings</h2>
 
