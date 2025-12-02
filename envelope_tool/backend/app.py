@@ -138,7 +138,9 @@ async def generate_preview(
         c.setFont(font_family, font_size)
 
         text_y = height / 2
-        spacing_multiplier = line_spacing * 14
+        # Match CSS-style spacing: line_spacing * font_size (in points)
+        spacing_multiplier = line_spacing * font_size
+
 
         if alignment == "center":
             text_x = width / 2
@@ -158,7 +160,8 @@ async def generate_preview(
             c.setFont(font_family, return_font_size)
 
             # line spacing scales with font size (same as CSS: line-height * font-size)
-            return_spacing = line_spacing * 14 * (return_font_size / float(font_size))
+            # line spacing scales with font size (same idea as CSS: line-height * font-size)
+            return_spacing = line_spacing * return_font_size
 
             ry = height - 40  # start near top-left
 
@@ -322,8 +325,9 @@ def generate_pdf(
             c.setFont("Helvetica", font_size)
 
         text_y = height / 2
-        # use same 14 “magic number” as the preview so spacing matches
-        spacing_multiplier = line_spacing * 14
+        # Match CSS-style spacing: line_spacing * font_size (in points)
+        spacing_multiplier = line_spacing * font_size
+
 
         if alignment == "center":
             text_x = width / 2
@@ -350,7 +354,8 @@ def generate_pdf(
                 c.setFont("Helvetica", return_font_size)
 
             # scale spacing with font size just like in /preview
-            return_spacing = line_spacing * 14 * (return_font_size / float(font_size))
+            # scale spacing with font size just like in /preview
+            return_spacing = line_spacing * return_font_size
             ry = height - 40  # start near top-left
 
             # Name
