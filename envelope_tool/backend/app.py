@@ -55,34 +55,80 @@ ENVELOPE_SIZES = {
 # ✅ Built-in ReportLab fonts
 BUILT_IN_FONTS = {"Helvetica", "Times-Roman", "Courier"}
 
+FONT_CACHE = {}
+
+
 # ✅ Download & Register Google Fonts
 
-def download_google_font(font_name):
-    """Download a font from Google Fonts repository if not available locally."""
+def download_google_font(font_name: str) -> str:
+    """
+    Ensure a font is available for ReportLab:
+    - use built-in fonts directly
+    - reuse previously registered fonts from cache
+    - reuse a .ttf in FONT_DIR if already downloaded
+    - otherwise, download from Google Fonts GitHub and register
+    Returns the *registered* ReportLab font name.
+    """
+    if not font_name:
+        return "Helvetica"
+
+    # 1) Built-in fonts: use as-is
     if font_name in BUILT_IN_FONTS:
         print(f"✅ Using built-in font: {font_name}")
         return font_name
 
+    # 2) Already in cache
+    if font_name in FONT_CACHE:
+        return FONT_CACHE[font_name]
+
+    safe_name = font_name.replace(" ", "").replace("[wght]", "").replace("-", "")
+    font_folder = font_name.lower().replace(" ", "")
+
+    # 3) Check if we already have a .ttf on disk
+    try:
+        for fname in os.listdir(FONT_DIR):
+            if fname.lower().startswith(font_folder):
+                existing_path = os.path.join(FONT_DIR, fname)
+                try:
+                    pdfmetrics.registerFont(TTFont(safe_name, existing_path))
+                    FONT_CACHE[font_name] = safe_name
+                    print(f"✅ Reused existing font file: {existing_path}")
+                    return safe_name
+                except Exception as e:
+                    print(f"⚠️ Failed to register existing font file {existing_path}: {e}")
+                    break  # fall through to download
+    except FileNotFoundError:
+        os.makedirs(FONT_DIR, exist_ok=True)
+
+    # 4) Try downloading from Google Fonts GitHub (what you already had, slightly cleaned)
     font_variants = [
-        f"{font_name.replace(' ', '')}-Regular.ttf",
-        f"{font_name.replace(' ', '').lower()}-Regular.ttf",
-        f"{font_name.replace(' ', '')}-VariableFont_wght.ttf",
-        f"{font_name.replace(' ', '')}[wght].ttf"
+        f"{font_folder}-Regular.ttf",
+        f"{font_folder}-variablefont_wght.ttf",
+        f"{font_folder}[wght].ttf",
     ]
 
-    font_path = None
     font_repos = ["ofl", "apache", "ufl", "ttf"]
 
+    font_path = None
+
     for repo in font_repos:
-        for font_variant in font_variants:
-            font_url = f"https://github.com/google/fonts/raw/main/{repo}/{font_name.lower().replace(' ', '')}/{font_variant}"
-            response = requests.get(font_url)
+        for variant in font_variants:
+            font_url = (
+                f"https://github.com/google/fonts/raw/main/"
+                f"{repo}/{font_folder}/{variant}"
+            )
+            print(f"🔍 Trying font URL: {font_url}")
+            try:
+                response = requests.get(font_url)
+            except Exception as e:
+                print(f"⚠️ Error requesting {font_url}: {e}")
+                continue
 
             if response.status_code == 200:
-                font_path = os.path.join(FONT_DIR, font_variant)
+                font_path = os.path.join(FONT_DIR, variant)
                 with open(font_path, "wb") as f:
                     f.write(response.content)
-                print(f"✅ Downloaded font: {font_variant} → {font_path}")
+                print(f"✅ Downloaded font: {variant} → {font_path}")
                 break
         if font_path:
             break
@@ -91,15 +137,39 @@ def download_google_font(font_name):
         print(f"⚠️ Font download failed: {font_name}, defaulting to Helvetica")
         return "Helvetica"
 
-    clean_font_name = font_name.replace(" ", "").replace("[wght]", "").replace("-", "")
-
     try:
-        pdfmetrics.registerFont(TTFont(clean_font_name, font_path))
-        print(f"✅ Registered font in ReportLab: {clean_font_name}")
-        return clean_font_name
+        pdfmetrics.registerFont(TTFont(safe_name, font_path))
+        FONT_CACHE[font_name] = safe_name
+        print(f"✅ Registered font in ReportLab: {safe_name}")
+        return safe_name
     except Exception as e:
         print(f"❌ Font registration failed, defaulting to Helvetica: {e}")
         return "Helvetica"
+
+def register_local_font(font_name: str, filename: str) -> str:
+    """
+    Register a local .ttf in the fonts/ directory and return
+    the ReportLab font name to use.
+    """
+    safe_name = font_name.replace(" ", "")
+    font_path = os.path.join(FONT_DIR, filename)
+
+    if not os.path.exists(font_path):
+        print(f"❌ Local font file not found: {font_path}")
+        return "Helvetica"
+
+    try:
+        pdfmetrics.registerFont(TTFont(safe_name, font_path))
+        FONT_CACHE[font_name] = safe_name
+        print(f"✅ Registered local font: {safe_name} from {font_path}")
+        return safe_name
+    except Exception as e:
+        print(f"❌ Failed to register local font {font_path}: {e}")
+        return "Helvetica"
+
+    if font_name == "My Custom Font":
+        return register_local_font(font_name, "MyCustomFont.ttf")
+
 
 
 @app.post("/preview")

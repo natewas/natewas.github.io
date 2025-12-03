@@ -29,7 +29,20 @@ export class AppComponent implements OnInit {
   fontSize = '12';                // pt
   alignment: 'center' | 'left' = 'center';
   lineSpacing = '1.5';
-  fontFamily = 'Helvetica';
+
+   availableFonts = [
+      { label: 'Helvetica (built-in)', value: 'Helvetica' },
+      { label: 'Times (built-in)', value: 'Times-Roman' },
+      { label: 'Courier (built-in)', value: 'Courier' },
+
+      { label: 'Roboto', value: 'Roboto' },
+      { label: 'Open Sans', value: 'Open Sans' },
+      { label: 'Lato', value: 'Lato' },
+      { label: 'Poppins', value: 'Poppins' },
+      { label: 'Merriweather', value: 'Merriweather' },
+    ];
+
+    fontFamily = 'Helvetica';
 
   // Return address
   includeReturn = false;

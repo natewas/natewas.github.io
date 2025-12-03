@@ -42,40 +42,75 @@
 
       <h2 class="card-title">Step 3: Select Settings</h2>
 
-      <label for="fontSize">Choose Font Size:</label>
-      <select
-        id="fontSize"
-        name="fontSize"
-        [(ngModel)]="fontSize"
-        (ngModelChange)="onSettingsChange()"
-      >
-        <option value="10">Small</option>
-        <option value="12">Medium</option>
-        <option value="16">Large</option>
-      </select>
+      <h2 class="card-title">Step 3: Select Settings</h2>
 
-      <label for="alignment">Text Alignment:</label>
-      <select
-        id="alignment"
-        name="alignment"
-        [(ngModel)]="alignment"
-        (ngModelChange)="onSettingsChange()"
-      >
-        <option value="center">Centered</option>
-        <option value="left">Left-Aligned</option>
-      </select>
+<!-- ✅ NEW font family dropdown (keep this) -->
+<label for="font-family">Font family</label>
+<select
+  id="font-family"
+  [(ngModel)]="fontFamily"
+  (change)="onSettingsChange()"
+>
+  <option *ngFor="let font of availableFonts" [value]="font.value">
+    {{ font.label }}
+  </option>
+</select>
 
-      <label for="lineSpacing">Line Spacing:</label>
-      <select
-        id="lineSpacing"
-        name="lineSpacing"
-        [(ngModel)]="lineSpacing"
-        (ngModelChange)="onSettingsChange()"
-      >
-        <option value="1.2">Tight</option>
-        <option value="1.5">Normal</option>
-        <option value="2.0">Loose</option>
-      </select>
+<!--
+<label for="fontSize">Choose Font Size:</label>
+<select
+  id="fontSize"
+  name="fontSize"
+  [(ngModel)]="fontSize"
+  (ngModelChange)="onSettingsChange()"
+>
+  <option value="10">Small</option>
+  <option value="12">Medium</option>
+  <option value="16">Large</option>
+</select>
+-->
+
+<label for="alignment">Text Alignment:</label>
+<select
+  id="alignment"
+  name="alignment"
+  [(ngModel)]="alignment"
+  (ngModelChange)="onSettingsChange()"
+>
+  <option value="center">Centered</option>
+  <option value="left">Left-Aligned</option>
+</select>
+
+<label for="lineSpacing">Line Spacing:</label>
+<select
+  id="lineSpacing"
+  name="lineSpacing"
+  [(ngModel)]="lineSpacing"
+  (ngModelChange)="onSettingsChange()"
+>
+  <option value="1.2">Tight</option>
+  <option value="1.5">Normal</option>
+  <option value="2.0">Loose</option>
+</select>
+
+<!-- ❌ OLD font dropdown (comment this out or delete it)
+<label for="fontFamily">Choose a Font:</label>
+<select
+  id="fontFamily"
+  name="fontFamily"
+  [(ngModel)]="fontFamily"
+  (ngModelChange)="onSettingsChange()"
+>
+  <option value="Helvetica">Helvetica</option>
+  <option value="Times-Roman">Times New Roman</option>
+  <option value="Courier">Courier</option>
+  <option value="Lato">Lato</option>
+  <option value="Montserrat">Montserrat</option>
+  <option value="Noto Sans">Noto Sans</option>
+  <option value="Imperial Script">Imperial Script</option>
+</select>
+-->
+
 
       <label for="fontFamily">Choose a Font:</label>
       <select
