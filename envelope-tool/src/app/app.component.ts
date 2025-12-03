@@ -40,7 +40,11 @@ export class AppComponent implements OnInit {
       { label: 'Lato', value: 'Lato' },
       { label: 'Poppins', value: 'Poppins' },
       { label: 'Merriweather', value: 'Merriweather' },
+      { label: 'Montserrat', value: 'Montserrat' },
+      { label: 'Noto Sans', value: 'Noto Sans' },
+      { label: 'Imperial Script', value: 'Imperial Script' },
     ];
+
 
     fontFamily = 'Helvetica';
 

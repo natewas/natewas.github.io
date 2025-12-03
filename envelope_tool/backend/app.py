@@ -55,7 +55,53 @@ ENVELOPE_SIZES = {
 # ✅ Built-in ReportLab fonts
 BUILT_IN_FONTS = {"Helvetica", "Times-Roman", "Courier"}
 
-FONT_CACHE = {}
+# ✅ Cache for registered fonts
+FONT_CACHE: dict[str, str] = {}
+
+# ✅ Known Google Fonts → where they live in github.com/google/fonts
+FONT_SOURCES = {
+    # family name used in Angular / CSS → config for GitHub repo
+    "Lato": {
+        "repo": "ofl",
+        "folder": "lato",
+        "variants": ["Lato-Regular.ttf"],
+    },
+    "Poppins": {
+        "repo": "ofl",
+        "folder": "poppins",
+        "variants": ["Poppins-Regular.ttf"],
+    },
+    "Roboto": {
+        "repo": "apache",
+        "folder": "roboto",
+        "variants": ["Roboto-Regular.ttf"],
+    },
+    "Open Sans": {
+        "repo": "apache",
+        "folder": "opensans",
+        "variants": ["OpenSans-Regular.ttf"],
+    },
+    "Merriweather": {
+        "repo": "ofl",
+        "folder": "merriweather",
+        "variants": ["Merriweather-Regular.ttf"],
+    },
+    "Montserrat": {
+        "repo": "ofl",
+        "folder": "montserrat",
+        "variants": ["Montserrat-Regular.ttf"],
+    },
+    "Noto Sans": {
+        "repo": "ofl",
+        "folder": "notosans",
+        "variants": ["NotoSans-Regular.ttf"],
+    },
+    "Imperial Script": {
+        "repo": "ofl",
+        "folder": "imperialscript",
+        "variants": ["ImperialScript-Regular.ttf"],
+    },
+}
 
 
 # ✅ Download & Register Google Fonts
@@ -66,7 +112,7 @@ def download_google_font(font_name: str) -> str:
     - use built-in fonts directly
     - reuse previously registered fonts from cache
     - reuse a .ttf in FONT_DIR if already downloaded
-    - otherwise, download from Google Fonts GitHub and register
+    - otherwise, download from the Google Fonts GitHub repo and register
     Returns the *registered* ReportLab font name.
     """
     if not font_name:
@@ -77,66 +123,79 @@ def download_google_font(font_name: str) -> str:
         print(f"✅ Using built-in font: {font_name}")
         return font_name
 
-    # 2) Already in cache
+    # 2) Already cached
     if font_name in FONT_CACHE:
         return FONT_CACHE[font_name]
 
     safe_name = font_name.replace(" ", "").replace("[wght]", "").replace("-", "")
     font_folder = font_name.lower().replace(" ", "")
 
-    # 3) Check if we already have a .ttf on disk
-    try:
-        for fname in os.listdir(FONT_DIR):
-            if fname.lower().startswith(font_folder):
-                existing_path = os.path.join(FONT_DIR, fname)
-                try:
-                    pdfmetrics.registerFont(TTFont(safe_name, existing_path))
-                    FONT_CACHE[font_name] = safe_name
-                    print(f"✅ Reused existing font file: {existing_path}")
-                    return safe_name
-                except Exception as e:
-                    print(f"⚠️ Failed to register existing font file {existing_path}: {e}")
-                    break  # fall through to download
-    except FileNotFoundError:
-        os.makedirs(FONT_DIR, exist_ok=True)
+    # 3) Try to reuse a previously downloaded .ttf
+    os.makedirs(FONT_DIR, exist_ok=True)
+    for fname in os.listdir(FONT_DIR):
+        if fname.lower().startswith(font_folder):
+            existing_path = os.path.join(FONT_DIR, fname)
+            try:
+                pdfmetrics.registerFont(TTFont(safe_name, existing_path))
+                FONT_CACHE[font_name] = safe_name
+                print(f"✅ Reused existing font file: {existing_path}")
+                return safe_name
+            except Exception as e:
+                print(f"⚠️ Failed to register existing font file {existing_path}: {e}")
+                # fall through to downloading
 
-    # 4) Try downloading from Google Fonts GitHub (what you already had, slightly cleaned)
-    font_variants = [
-        f"{font_folder}-Regular.ttf",
-        f"{font_folder}-variablefont_wght.ttf",
-        f"{font_folder}[wght].ttf",
-    ]
+    # 4) Decide where to look on GitHub
 
-    font_repos = ["ofl", "apache", "ufl", "ttf"]
+    # If we have an explicit config, use that (fix for Roboto/Open Sans/etc.)
+    config = FONT_SOURCES.get(font_name)
+
+    if config:
+        repos = [config["repo"]]
+        folders = [config["folder"], f"{config['folder']}/static"]
+        variants = config["variants"]
+    else:
+        # Fallback heuristic for unknown fonts
+        repos = ["ofl", "apache", "ufl", "ttf"]
+        folders = [font_folder, f"{font_folder}/static"]
+        variants = [
+            f"{font_folder}-Regular.ttf",
+            f"{font_folder}-variablefont_wght.ttf",
+            f"{font_folder}[wght].ttf",
+        ]
 
     font_path = None
 
-    for repo in font_repos:
-        for variant in font_variants:
-            font_url = (
-                f"https://github.com/google/fonts/raw/main/"
-                f"{repo}/{font_folder}/{variant}"
-            )
-            print(f"🔍 Trying font URL: {font_url}")
-            try:
-                response = requests.get(font_url)
-            except Exception as e:
-                print(f"⚠️ Error requesting {font_url}: {e}")
-                continue
+    # 5) Try all repo/folder/variant combinations
+    for repo in repos:
+        for folder in folders:
+            for variant in variants:
+                font_url = (
+                    f"https://github.com/google/fonts/raw/main/"
+                    f"{repo}/{folder}/{variant}"
+                )
+                print(f"🔍 Trying font URL: {font_url}")
+                try:
+                    response = requests.get(font_url)
+                except Exception as e:
+                    print(f"⚠️ Error requesting {font_url}: {e}")
+                    continue
 
-            if response.status_code == 200:
-                font_path = os.path.join(FONT_DIR, variant)
-                with open(font_path, "wb") as f:
-                    f.write(response.content)
-                print(f"✅ Downloaded font: {variant} → {font_path}")
+                if response.status_code == 200:
+                    font_path = os.path.join(FONT_DIR, variant)
+                    with open(font_path, "wb") as f:
+                        f.write(response.content)
+                    print(f"✅ Downloaded font: {variant} → {font_path}")
+                    break
+            if font_path:
                 break
         if font_path:
             break
 
     if not font_path:
-        print(f"⚠️ Font download failed: {font_name}, defaulting to Helvetica")
+        print(f"⚠️ Font download failed for '{font_name}', defaulting to Helvetica")
         return "Helvetica"
 
+    # 6) Register with ReportLab
     try:
         pdfmetrics.registerFont(TTFont(safe_name, font_path))
         FONT_CACHE[font_name] = safe_name
@@ -145,6 +204,7 @@ def download_google_font(font_name: str) -> str:
     except Exception as e:
         print(f"❌ Font registration failed, defaulting to Helvetica: {e}")
         return "Helvetica"
+
 
 def register_local_font(font_name: str, filename: str) -> str:
     """
