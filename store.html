@@ -59,7 +59,7 @@
             background: #f5f5f5;
             border-radius: 12px 0 0 12px;
             overflow: hidden;
-            min-height: 320px;
+            min-height: 380px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -72,10 +72,10 @@
         }
 
         .pm-details-col {
-            padding: 2rem 1.75rem;
+            padding: 2.25rem 2rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .pm-close {
@@ -131,7 +131,7 @@
         .pm-selectors {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 1rem;
         }
 
         .pm-field {
@@ -171,7 +171,7 @@
         }
 
         .pm-buy-btn {
-            margin-top: auto;
+            margin-top: 0.75rem;
             display: block;
             width: 100%;
             padding: 0.85rem 1rem;
@@ -328,8 +328,8 @@
             ],
             sizes: [
                 { label: '50% Scale — 120mm³  ($25)', value: '50',  url: 'https://buy.stripe.com/eVqaEWarD48t9weacU4Vy03' },
-                { label: '75% Scale — 180mm³  ($70)', value: '75',  url: 'https://buy.stripe.com/dRm5kCdDP8oJbEmdp64Vy05' },
-                { label: '100% Scale — 240mm³ ($100)', value: '100', url: 'https://buy.stripe.com/28E5kCeHTgVf7o6bgY4Vy04' }
+                { label: '75% Scale — 180mm³  ($35)', value: '75',  url: 'https://buy.stripe.com/dRm5kCdDP8oJbEmdp64Vy05' },
+                { label: '100% Scale — 240mm³ ($50)', value: '100', url: 'https://buy.stripe.com/28E5kCeHTgVf7o6bgY4Vy04' }
             ],
             // Price shown is driven by the size selection; set a default display price
             defaultPrice: '$25 USD'
@@ -339,8 +339,8 @@
     // Price map per size (optional — updates the displayed price dynamically)
     const SIZE_PRICES = {
         '50':  '$25 USD',
-        '75':  '$70 USD',
-        '100': '$100 USD'
+        '75':  '$35 USD',
+        '100': '$50 USD'
     };
 
     let currentProduct = null;
