@@ -286,7 +286,8 @@
                 <div class="pm-selectors">
                     <div class="pm-field">
                         <label for="pm-color">Color</label>
-                        <select id="pm-color">
+                        <!-- onchange added so the buy link updates when color changes -->
+                        <select id="pm-color" onchange="updateBuyLink()">
                             <!-- populated by JS -->
                         </select>
                     </div>
@@ -324,27 +325,52 @@
             title:       'Airless Basketball',
             description: 'A 3D-printed airless basketball made with flexible PEBA filament. Designed to mimic the look and feel of a real basketball without needing inflation. Great for display or light use.',
             image:       '../images/airless-basketball.jpeg',
+            defaultPrice: '$25 USD',
+
             colors: [
-                { label: 'Yellow', value: 'yellow' },
+                { label: 'Blue',   value: 'blue'   },
                 { label: 'Orange', value: 'orange' },
-                { label: 'Black', value: 'black' },
-                { label: 'Blue', value: 'blue' }
+                { label: 'Yellow', value: 'yellow' },
+                { label: 'Black',  value: 'black'  }
             ],
+
             sizes: [
-                { label: '50% Scale — 120mm³  ($25)', value: '50',  url: 'https://buy.stripe.com/eVqaEWarD48t9weacU4Vy03' },
-                { label: '75% Scale — 180mm³  ($70)', value: '75',  url: 'https://buy.stripe.com/dRm5kCdDP8oJbEmdp64Vy05' },
-                { label: '100% Scale — 240mm³ ($100)', value: '100', url: 'https://buy.stripe.com/28E5kCeHTgVf7o6bgY4Vy04' }
+                { label: '50% Scale — 120mm³  ($25)', value: '50'  },
+                { label: '75% Scale — 180mm³  ($70)', value: '75'  },
+                { label: '100% Scale — 240mm³ ($100)', value: '100' }
             ],
-            // Price shown is driven by the size selection; set a default display price
-            defaultPrice: '$25 USD'
+
+            // Stripe payment links keyed by color then size
+            paymentLinks: {
+                blue: {
+                    '50':  'https://buy.stripe.com/4gM7sKfLXeN7fUC84M4Vy09',
+                    '75':  'https://buy.stripe.com/dRmfZgfLX7kF6k2eta4Vy0a',
+                    '100': 'https://buy.stripe.com/7sY00idDPawReQy84M4Vy0b'
+                },
+                orange: {
+                    '50':  'https://buy.stripe.com/5kQfZg0R38oJ4bU1Go4Vy06',
+                    '75':  'https://buy.stripe.com/bJe3cuczLgVf7o6bgY4Vy07',
+                    '100': 'https://buy.stripe.com/14A28qeHT48t5fYdp64Vy08'
+                },
+                yellow: {
+                    '50':  'https://buy.stripe.com/dRmcN42Zb5cx9wefxe4Vy0c',
+                    '75':  'https://buy.stripe.com/4gM9AS57j0Wh6k2acU4Vy0d',
+                    '100': 'https://buy.stripe.com/9B6dR82ZbbAV9weeta4Vy0e'
+                },
+                black: {
+                    '50':  'https://buy.stripe.com/28E6oG43ffRbgYG70I4Vy0f',
+                    '75':  'https://buy.stripe.com/00wcN4bvH7kFeQy98Q4Vy0g',
+                    '100': 'https://buy.stripe.com/bJe6oG6bn8oJgYGfxe4Vy0h'
+                }
+            }
         }
     };
 
-    // Price map per size (optional — updates the displayed price dynamically)
+    // Price per size value
     const SIZE_PRICES = {
         '50':  '$25 USD',
-        '75':  '$35 USD',
-        '100': '$50 USD'
+        '75':  '$70 USD',
+        '100': '$100 USD'
     };
 
     let currentProduct = null;
@@ -360,8 +386,8 @@
         img.alt = product.title;
 
         // Populate text
-        document.getElementById('pm-title-text').textContent = product.title;
-        document.getElementById('pm-price').textContent      = product.defaultPrice;
+        document.getElementById('pm-title-text').textContent  = product.title;
+        document.getElementById('pm-price').textContent       = product.defaultPrice;
         document.getElementById('pm-description').textContent = product.description;
 
         // Populate color dropdown
@@ -384,7 +410,7 @@
             sizeSel.appendChild(opt);
         });
 
-        // Set initial buy link
+        // Set initial buy link and price
         updateBuyLink();
 
         // Show modal
@@ -394,11 +420,15 @@
 
     function updateBuyLink() {
         if (!currentProduct) return;
-        const sizeVal = document.getElementById('pm-size').value;
-        const sizeObj = currentProduct.sizes.find(s => s.value === sizeVal);
-        if (sizeObj) {
-            document.getElementById('pm-buy-btn').href = sizeObj.url;
+        const colorVal = document.getElementById('pm-color').value;
+        const sizeVal  = document.getElementById('pm-size').value;
+
+        // Look up the correct Stripe URL for this color + size combination
+        const url = currentProduct.paymentLinks?.[colorVal]?.[sizeVal];
+        if (url) {
+            document.getElementById('pm-buy-btn').href = url;
         }
+
         // Update displayed price
         if (SIZE_PRICES[sizeVal]) {
             document.getElementById('pm-price').textContent = SIZE_PRICES[sizeVal];
