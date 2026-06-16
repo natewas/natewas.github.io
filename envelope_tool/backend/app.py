@@ -38,6 +38,10 @@ def home():
 PREVIEW_DIR = "static/previews"
 PDF_DIR = "static/generated_pdfs"
 FONT_DIR = "fonts"
+
+# ✅ Optional poppler path (needed on Windows where poppler isn't on PATH).
+# On Linux/Render, leave POPPLER_PATH unset so pdf2image finds it on PATH.
+POPPLER_PATH = os.environ.get("POPPLER_PATH") or None
 os.makedirs(PREVIEW_DIR, exist_ok=True)
 os.makedirs(PDF_DIR, exist_ok=True)
 os.makedirs(FONT_DIR, exist_ok=True)
@@ -227,10 +231,6 @@ def register_local_font(font_name: str, filename: str) -> str:
         print(f"❌ Failed to register local font {font_path}: {e}")
         return "Helvetica"
 
-    if font_name == "My Custom Font":
-        return register_local_font(font_name, "MyCustomFont.ttf")
-
-
 
 @app.post("/preview")
 async def generate_preview(
@@ -336,7 +336,7 @@ async def generate_preview(
 
         # ✅ Convert PDF to PNG
         try:
-            images = convert_from_path(preview_pdf, poppler_path=r"C:/poppler-24.08.0/Library/bin")  # ✅ Ensure poppler_path is set
+            images = convert_from_path(preview_pdf, poppler_path=POPPLER_PATH)  # poppler_path=None uses system PATH
             images[0].save(preview_png, "PNG")
         except Exception as e:
             print(f"❌ Error converting PDF to PNG: {str(e)}")
@@ -430,9 +430,6 @@ async def upload_csv(
 
         # ✅ Generate PDF
         pdf_filename = f"{uuid.uuid4()}.pdf"
-        pdf_path = os.path.join(PDF_DIR, pdf_filename)
-
-         pdf_filename = f"{uuid.uuid4()}.pdf"
         pdf_path = os.path.join(PDF_DIR, pdf_filename)
 
         generate_pdf(
@@ -561,4 +558,3 @@ def generate_pdf(
             c.showPage()
 
     c.save()
-
