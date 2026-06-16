@@ -232,6 +232,92 @@ def register_local_font(font_name: str, filename: str) -> str:
         return "Helvetica"
 
 
+# ✅ Shared single-envelope renderer.
+# Both /preview and generate_pdf call this, so the live preview is drawn by the
+# EXACT same code that produces the final PDF — they can no longer drift apart.
+def draw_envelope(
+    c,
+    width,
+    height,
+    *,
+    recipient_name,
+    recipient_street,
+    recipient_city_line,
+    font_family,
+    font_size,
+    alignment,
+    line_spacing,
+    include_return,
+    match_return_font_size,
+    return_name=None,
+    return_street=None,
+    return_city=None,
+    return_state=None,
+    return_zip=None,
+):
+    """Draw one envelope onto an existing ReportLab canvas `c`.
+
+    Assumes the canvas page size is already set. Does NOT call showPage()/save();
+    the caller controls pagination so this works for both a 1-page preview and a
+    multi-row batch.
+    """
+    # --- Recipient block ---
+    try:
+        c.setFont(font_family, font_size)
+    except Exception as e:
+        print(f"❌ Font {font_family} not found! Defaulting to Helvetica. Error: {e}")
+        font_family = "Helvetica"
+        c.setFont(font_family, font_size)
+
+    text_y = height / 2
+    spacing_multiplier = line_spacing * font_size
+
+    if alignment == "center":
+        text_x = width / 2
+        draw_text = c.drawCentredString
+    else:
+        text_x = width / 2 - 50
+        draw_text = c.drawString
+
+    draw_text(text_x, text_y + spacing_multiplier, recipient_name)
+    draw_text(text_x, text_y, recipient_street)
+    draw_text(text_x, text_y - spacing_multiplier, recipient_city_line)
+
+    # --- Return address block ---
+    if include_return:
+        if match_return_font_size:
+            return_font_size = font_size
+        else:
+            return_font_size = max(font_size - 2, 6)
+
+        try:
+            c.setFont(font_family, return_font_size)
+        except Exception:
+            c.setFont("Helvetica", return_font_size)
+
+        return_spacing = line_spacing * return_font_size
+        ry = height - 40
+
+        c.drawString(40, ry, (return_name or "Your Name").strip())
+        ry -= return_spacing
+
+        c.drawString(40, ry, (return_street or "123 Main St").strip())
+        ry -= return_spacing
+
+        city_parts = []
+        if return_city:
+            city_parts.append(return_city.strip())
+        if return_state:
+            if city_parts:
+                city_parts[-1] = city_parts[-1] + ","
+            city_parts.append(return_state.strip())
+        if return_zip:
+            city_parts.append(return_zip.strip())
+
+        city_line = " ".join(city_parts) or "City, State ZIP"
+        c.drawString(40, ry, city_line)
+
+
 @app.post("/preview")
 async def generate_preview(
     size: str = Form(...),
@@ -270,68 +356,28 @@ async def generate_preview(
         # ✅ Ensure Font is Available
         font_family = download_google_font(font_family)
 
-        # ✅ Generate PDF
+        # ✅ Generate PDF — uses the shared renderer so the preview matches the
+        # final PDF exactly. Placeholder recipient text by design.
         c = canvas.Canvas(preview_pdf, pagesize=landscape((width, height)))
-        c.setFont(font_family, font_size)
-
-        text_y = height / 2
-        # Match CSS-style spacing: line_spacing * font_size (in points)
-        spacing_multiplier = line_spacing * font_size
-
-
-        if alignment == "center":
-            text_x = width / 2
-            draw_text = c.drawCentredString
-        else:
-            text_x = width / 2 - 50
-            draw_text = c.drawString
-
-        # Recipient preview
-        draw_text(text_x, text_y + spacing_multiplier, "Recipient Name")
-        draw_text(text_x, text_y, "Street Address")
-        draw_text(text_x, text_y - spacing_multiplier, "City, State ZIP")
-
-        # Return address preview (smaller font, matching line spacing behavior)
-        if include_return.lower() == "true":
-            if match_return_font_size.lower() == "true":
-                return_font_size = font_size
-            else:
-                return_font_size = max(font_size - 2, 6)
-
-            c.setFont(font_family, return_font_size)
-
-            # line spacing scales with font size (same idea as CSS: line-height * font-size)
-            return_spacing = line_spacing * return_font_size
-
-
-            ry = height - 40  # start near top-left
-
-            # Name
-            c.drawString(40, ry, (return_name or "Your Name").strip())
-            ry -= return_spacing
-
-            # Street
-            c.drawString(40, ry, (return_street or "123 Main St").strip())
-            ry -= return_spacing
-
-            # City, State ZIP
-            city_parts = []
-            if return_city:
-                city_parts.append(return_city.strip())
-            if return_state:
-                # add comma after city if both present
-                if city_parts:
-                    city_parts[-1] = city_parts[-1] + ","
-                city_parts.append(return_state.strip())
-            if return_zip:
-                city_parts.append(return_zip.strip())
-
-            city_line = " ".join(city_parts) or "City, State ZIP"
-            c.drawString(40, ry, city_line)
-
-            # reset font back to main size for anything else
-            c.setFont(font_family, font_size)
-
+        draw_envelope(
+            c,
+            width,
+            height,
+            recipient_name="Recipient Name",
+            recipient_street="Street Address",
+            recipient_city_line="City, State ZIP",
+            font_family=font_family,
+            font_size=font_size,
+            alignment=alignment,
+            line_spacing=line_spacing,
+            include_return=_as_bool(include_return),
+            match_return_font_size=_as_bool(match_return_font_size),
+            return_name=return_name,
+            return_street=return_street,
+            return_city=return_city,
+            return_state=return_state,
+            return_zip=return_zip,
+        )
         c.save()  # ✅ Ensure PDF is completely written before conversion
 
         # ✅ Convert PDF to PNG
@@ -488,73 +534,29 @@ def generate_pdf(
     except ValueError:
         line_spacing = 1.5
 
-    for index, (_, row) in enumerate(data.iterrows()):
-        # Recipient
-        try:
-            c.setFont(font_family, font_size)
-        except Exception as e:
-            print(f"❌ Font {font_family} not found! Defaulting to Helvetica. Error: {e}")
-            c.setFont("Helvetica", font_size)
-
-        text_y = height / 2
-        spacing_multiplier = line_spacing * font_size
-
-        if alignment == "center":
-            text_x = width / 2
-            draw_text = c.drawCentredString
-        else:
-            text_x = width / 2 - 50
-            draw_text = c.drawString
-
-        draw_text(text_x, text_y + spacing_multiplier, str(row["Recipient Name"]))
-        draw_text(text_x, text_y, str(row["Street Address"]))
-        draw_text(
-            text_x,
-            text_y - spacing_multiplier,
-            f"{str(row['City'])}, {str(row['State'])} {str(row['ZIP'])}"
+    rows = list(data.iterrows())
+    for index, (_, row) in enumerate(rows):
+        draw_envelope(
+            c,
+            width,
+            height,
+            recipient_name=str(row["Recipient Name"]),
+            recipient_street=str(row["Street Address"]),
+            recipient_city_line=f"{row['City']}, {row['State']} {row['ZIP']}",
+            font_family=font_family,
+            font_size=font_size,
+            alignment=alignment,
+            line_spacing=line_spacing,
+            include_return=include_return,
+            match_return_font_size=match_return_font_size,
+            return_name=return_name,
+            return_street=return_street,
+            return_city=return_city,
+            return_state=return_state,
+            return_zip=return_zip,
         )
 
-        # Return address
-        if include_return:
-            if match_return_font_size:
-                return_font_size = font_size        # 🔹 EXACT match
-            else:
-                return_font_size = max(font_size - 2, 6)
-
-            try:
-                c.setFont(font_family, return_font_size)
-            except Exception:
-                c.setFont("Helvetica", return_font_size)
-
-            return_spacing = line_spacing * return_font_size
-            ry = height - 40
-
-            c.drawString(40, ry, (return_name or "Your Name").strip())
-            ry -= return_spacing
-
-            c.drawString(40, ry, (return_street or "123 Main St").strip())
-            ry -= return_spacing
-
-            city_parts = []
-            if return_city:
-                city_parts.append(return_city.strip())
-            if return_state:
-                if city_parts:
-                    city_parts[-1] = city_parts[-1] + ","
-                city_parts.append(return_state.strip())
-            if return_zip:
-                city_parts.append(return_zip.strip())
-
-            city_line = " ".join(city_parts) or "City, State ZIP"
-            c.drawString(40, ry, city_line)
-
-            # reset font for next page / anything else
-            try:
-                c.setFont(font_family, font_size)
-            except Exception:
-                c.setFont("Helvetica", font_size)
-
-        if index < len(data) - 1:
+        if index < len(rows) - 1:
             c.showPage()
 
     c.save()

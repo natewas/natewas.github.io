@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-const API_BASE_URL = 'https://natewas-github-io-1.onrender.com/';
+// No trailing slash — we add the leading slash on each route below.
+const API_BASE_URL = 'https://natewas-github-io-1.onrender.com';
 
-const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
+const PREVIEW_DEBOUNCE_MS = 400;
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ const POINT_TO_PIXEL = 1.33; // same as envelope_tool.js
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   // Step 1: envelope size
   envelopeSize: 'A7' | '10' | 'A2' = 'A7';
 
@@ -34,17 +35,27 @@ export class AppComponent implements OnInit {
   // CSV file
   csvFile: File | null = null;
 
-  // Preview styles
-  envelopePreviewStyles: { [k: string]: string } = {};
-  recipientStyles: { [k: string]: string } = {};
-  returnAddressStyles: { [k: string]: string } = {};
+  // Server-rendered preview state
+  previewImageUrl: string | null = null;
+  previewLoading = false;
+  previewError: string | null = null;
+
+  private previewDebounce: ReturnType<typeof setTimeout> | null = null;
+  // Monotonic counter so a slow response can't overwrite a newer one.
+  private previewSeq = 0;
 
   ngOnInit(): void {
-    this.updateLivePreview();
+    this.refreshServerPreview();
+  }
+
+  ngOnDestroy(): void {
+    if (this.previewDebounce) {
+      clearTimeout(this.previewDebounce);
+    }
   }
 
   onSettingsChange(): void {
-    this.updateLivePreview();
+    this.schedulePreview();
   }
 
   onFileSelected(event: Event): void {
@@ -52,94 +63,81 @@ export class AppComponent implements OnInit {
     this.csvFile = input.files && input.files[0] ? input.files[0] : null;
   }
 
-  // === Live preview (ported from updateLivePreview) ===
-  private updateLivePreview(): void {
-    const envelopeSizes: Record<string, { width: number; height: number }> = {
-      A7: { width: 696, height: 504 },   // A7 Envelope
-      '10': { width: 912, height: 396 }, // #10
-      A2: { width: 552, height: 420 }    // A2
-    };
+  // === Server-side live preview ===
+  // The backend renders the actual envelope PDF and returns it as a PNG, so what
+  // you see here is produced by the same code that generates the final PDF.
 
-    const size = envelopeSizes[this.envelopeSize];
-    if (!size) {
-      console.error('❌ Envelope size not recognized:', this.envelopeSize);
-      return;
+  private schedulePreview(): void {
+    if (this.previewDebounce) {
+      clearTimeout(this.previewDebounce);
     }
-
-    this.envelopePreviewStyles = {
-      width: `${size.width}px`,
-      height: `${size.height}px`,
-      position: 'relative'
-    };
-
-    const fontSizePt = parseInt(this.fontSize, 10);
-    const lineSpacingNum = parseFloat(this.lineSpacing);
-    const fontSizePx = Math.round(fontSizePt * POINT_TO_PIXEL);
-    const previewWidth = size.width;
-    const previewHeight = size.height;
-
-    const recipient: { [k: string]: string } = {
-      'font-size': `${fontSizePx}px`,
-      'font-family': this.fontFamily,
-      'line-height': `${lineSpacingNum}em`,
-      position: 'absolute'
-    };
-
-    if (this.alignment === 'center') {
-      recipient.left = '50%';
-      recipient.transform = 'translateX(-50%)';
-      recipient['text-align'] = 'center';
-    } else {
-      const textXOffset = previewWidth / 2 - 50;
-      recipient.left = `${textXOffset}px`;
-      recipient.transform = 'none';
-      recipient['text-align'] = 'left';
-    }
-
-    const baseOffset = previewHeight / 2 - fontSizePx * 1.5;
-    recipient.top = `${baseOffset}px`;
-
-    this.recipientStyles = recipient;
-
-    const returnFontSizePx = Math.round((fontSizePt - 2) * POINT_TO_PIXEL);
-    this.returnAddressStyles = {
-      position: 'absolute',
-      left: '40px',
-      top: '35px',
-      'font-size': `${returnFontSizePx}px`
-    };
+    this.previewDebounce = setTimeout(
+      () => this.refreshServerPreview(),
+      PREVIEW_DEBOUNCE_MS
+    );
   }
 
-  // === Text formatting for preview ===
+  private buildSettingsFormData(): FormData {
+    const fd = new FormData();
+    fd.append('size', this.envelopeSize);
+    fd.append('font_size', this.fontSize);
+    fd.append('alignment', this.alignment);
+    fd.append('line_spacing', this.lineSpacing);
+    fd.append('font_family', this.fontFamily);
+    fd.append('include_return', String(this.includeReturn));
+    fd.append('match_return_font_size', 'false');
 
-  formatReturnAddress(): string {
-    const lines: string[] = [];
-
-    if (this.returnName)   { lines.push(this.returnName); }
-    if (this.returnStreet) { lines.push(this.returnStreet); }
-
-    const cityStateZip = [
-      this.returnCity,
-      this.returnState ? `${this.returnState}${this.returnZIP ? ' ' + this.returnZIP : ''}` : this.returnZIP
-    ]
-      .filter(Boolean)
-      .join(', ');
-
-    if (cityStateZip) {
-      lines.push(cityStateZip);
+    if (this.includeReturn) {
+      fd.append('return_name', this.returnName.trim());
+      fd.append('return_street', this.returnStreet.trim());
+      fd.append('return_city', this.returnCity.trim());
+      fd.append('return_state', this.returnState.trim());
+      fd.append('return_zip', this.returnZIP.trim());
     }
-
-    return lines.join('<br>');
+    return fd;
   }
 
-  formatRecipientAddress(): string {
-    const name = 'Recipient Name';
-    const street = 'Street Address';
-    const cityLine = 'City, State ZIP';
-    return [name, street, cityLine].join('<br>');
+  async refreshServerPreview(): Promise<void> {
+    const seq = ++this.previewSeq;
+    this.previewLoading = true;
+    this.previewError = null;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/preview`, {
+        method: 'POST',
+        body: this.buildSettingsFormData()
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      // A newer request started while we were waiting — discard this result.
+      if (seq !== this.previewSeq) {
+        return;
+      }
+
+      if (result.preview_url) {
+        this.previewImageUrl = `${API_BASE_URL}${result.preview_url}`;
+      } else {
+        this.previewError = 'Preview failed to render.';
+      }
+    } catch (error) {
+      if (seq !== this.previewSeq) {
+        return;
+      }
+      this.previewError = 'Could not load preview. Check your connection and try again.';
+      console.error('❌ Preview error:', error);
+    } finally {
+      if (seq === this.previewSeq) {
+        this.previewLoading = false;
+      }
+    }
   }
 
-  // === PDF generation (ported from uploadCSV) ===
+  // === PDF generation (batch over the uploaded CSV) ===
 
   async onGeneratePdf(): Promise<void> {
     if (!this.csvFile) {
@@ -147,22 +145,8 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    const formData = new FormData();
+    const formData = this.buildSettingsFormData();
     formData.append('file', this.csvFile);
-    formData.append('size', this.envelopeSize);
-    formData.append('font_size', this.fontSize);
-    formData.append('alignment', this.alignment);
-    formData.append('line_spacing', this.lineSpacing);
-    formData.append('font_family', this.fontFamily);
-    formData.append('include_return', String(this.includeReturn));
-
-    if (this.includeReturn) {
-      formData.append('return_name', this.returnName.trim());
-      formData.append('return_street', this.returnStreet.trim());
-      formData.append('return_city', this.returnCity.trim());
-      formData.append('return_state', this.returnState.trim());
-      formData.append('return_zip', this.returnZIP.trim());
-    }
 
     try {
       const response = await fetch(`${API_BASE_URL}/upload`, {
