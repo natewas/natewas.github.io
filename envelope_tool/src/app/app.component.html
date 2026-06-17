@@ -196,3 +196,8 @@
   </div>
 
 </div>
+
+<footer class="app-version">
+  <span>frontend {{ appVersion.commit }} &middot; built {{ appVersion.buildDate | date:'short' }}</span>
+  <span *ngIf="backendVersion() as bv"> &middot; backend {{ bv.commit }} &middot; booted {{ bv.started_at | date:'short' }}</span>
+</footer>

@@ -1014,3 +1014,13 @@ body {
     max-width: 500px;
 }
 
+
+/* Build / version stamp */
+.app-version {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #9aa3ab;
+    padding: 14px 0 22px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.02em;
+}

@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 import os
+from datetime import datetime, timezone
 import pandas as pd
 from reportlab.pdfgen import canvas
 import uuid
@@ -30,9 +31,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Process boot time (UTC) - reported by /version so you can confirm a deploy.
+START_TIME = datetime.now(timezone.utc)
+
+
 @app.get("/")
 def home():
     return {"message": "FastAPI is running!"}
+
+
+@app.get("/version")
+def version():
+    """Deployment marker: which commit is live and when the server last booted.
+
+    RENDER_GIT_COMMIT is set automatically by Render to the deployed commit SHA,
+    so hitting this endpoint after a push confirms the new code is actually live.
+    """
+    now = datetime.now(timezone.utc)
+    return {
+        "commit": os.environ.get("RENDER_GIT_COMMIT", "unknown")[:12],
+        "started_at": START_TIME.isoformat(),
+        "uptime_seconds": int((now - START_TIME).total_seconds()),
+    }
 
 # ✅ Define directories
 PREVIEW_DIR = "static/previews"

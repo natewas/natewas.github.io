@@ -1,9 +1,16 @@
 import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { APP_VERSION } from '../version';
 
 const API_BASE_URL = 'https://natewas-github-io-1.onrender.com';
 const PREVIEW_DEBOUNCE_MS = 300;
+
+interface BackendVersion {
+  commit: string;
+  started_at: string;
+  uptime_seconds: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -36,11 +43,16 @@ export class AppComponent implements OnInit, OnDestroy {
   previewLoading = signal(false);
   previewError = signal<string | null>(null);
 
+  // Version stamps: frontend is baked in at build time; backend is fetched live.
+  readonly appVersion = APP_VERSION;
+  backendVersion = signal<BackendVersion | null>(null);
+
   private previewDebounce: ReturnType<typeof setTimeout> | null = null;
   private previewSeq = 0;
 
   ngOnInit(): void {
     this.refreshServerPreview();
+    this.loadBackendVersion();
   }
 
   ngOnDestroy(): void {
@@ -56,6 +68,17 @@ export class AppComponent implements OnInit, OnDestroy {
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.csvFile = input.files && input.files[0] ? input.files[0] : null;
+  }
+
+  private async loadBackendVersion(): Promise<void> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/version`);
+      if (response.ok) {
+        this.backendVersion.set(await response.json());
+      }
+    } catch (_) {
+      // backend asleep/unreachable - footer just omits the backend stamp
+    }
   }
 
   private schedulePreview(): void {
