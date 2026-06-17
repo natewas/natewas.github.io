@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:envelope-tool": "node dist/envelope-tool/server/server.mjs"
+    "serve:ssr:envelope-tool": "node dist/envelope-tool/server/server.mjs",
+    "prebuild": "node scripts/generate-version.js"
   },
   "prettier": {
     "printWidth": 100,
