@@ -39,225 +39,133 @@
         (change)="onFileSelected($event)"
       >
 
-
       <h2 class="card-title">Step 3: Select Settings</h2>
 
-<!-- ✅ NEW font family dropdown (keep this) -->
-<label for="font-family">Font family</label>
-<select
-  id="font-family"
-  [(ngModel)]="fontFamily"
-  (change)="onSettingsChange()"
->
-  <option *ngFor="let font of availableFonts" [value]="font.value">
-    {{ font.label }}
-  </option>
-</select>
-
-
-<label for="fontSize">Choose Font Size:</label>
-<select
-  id="fontSize"
-  name="fontSize"
-  [(ngModel)]="fontSize"
-  (ngModelChange)="onSettingsChange()"
->
-  <option value="10">Small</option>
-  <option value="12">Medium</option>
-  <option value="16">Large</option>
-</select>
-
-
-<label for="alignment">Text Alignment:</label>
-<select
-  id="alignment"
-  name="alignment"
-  [(ngModel)]="alignment"
-  (ngModelChange)="onSettingsChange()"
->
-  <option value="center">Centered</option>
-  <option value="left">Left-Aligned</option>
-</select>
-
-<label for="lineSpacing">Line Spacing:</label>
-<select
-  id="lineSpacing"
-  name="lineSpacing"
-  [(ngModel)]="lineSpacing"
-  (ngModelChange)="onSettingsChange()"
->
-  <option value="1.2">Tight</option>
-  <option value="1.5">Normal</option>
-  <option value="2.0">Loose</option>
-</select>
-
-<!-- ❌ OLD font dropdown (comment this out or delete it)
-<label for="fontFamily">Choose a Font:</label>
-<select
-  id="fontFamily"
-  name="fontFamily"
-  [(ngModel)]="fontFamily"
-  (ngModelChange)="onSettingsChange()"
->
-  <option value="Helvetica">Helvetica</option>
-  <option value="Times-Roman">Times New Roman</option>
-  <option value="Courier">Courier</option>
-  <option value="Lato">Lato</option>
-  <option value="Montserrat">Montserrat</option>
-  <option value="Noto Sans">Noto Sans</option>
-  <option value="Imperial Script">Imperial Script</option>
-</select>
-
-
-      <label for="fontFamily">Choose a Font:</label>
+      <label for="font-family">Font family</label>
       <select
-        id="fontFamily"
-        name="fontFamily"
+        id="font-family"
         [(ngModel)]="fontFamily"
         (ngModelChange)="onSettingsChange()"
       >
-        <option value="Helvetica">Helvetica</option>
-        <option value="Times-Roman">Times New Roman</option>
-        <option value="Courier">Courier</option>
-        <option value="Lato">Lato</option>
-        <option value="Montserrat">Montserrat</option>
-        <option value="Noto Sans">Noto Sans</option>
-        <option value="Imperial Script">Imperial Script</option>
+        <option *ngFor="let font of availableFonts" [value]="font.value">
+          {{ font.label }}
+        </option>
       </select>
--->
 
+      <label for="fontSize">Choose Font Size:</label>
+      <select
+        id="fontSize"
+        name="fontSize"
+        [(ngModel)]="fontSize"
+        (ngModelChange)="onSettingsChange()"
+      >
+        <option value="10">Small</option>
+        <option value="12">Medium</option>
+        <option value="16">Large</option>
+      </select>
+
+      <label for="alignment">Text Alignment:</label>
+      <select
+        id="alignment"
+        name="alignment"
+        [(ngModel)]="alignment"
+        (ngModelChange)="onSettingsChange()"
+      >
+        <option value="center">Centered</option>
+        <option value="left">Left-Aligned</option>
+      </select>
+
+      <label for="lineSpacing">Line Spacing:</label>
+      <select
+        id="lineSpacing"
+        name="lineSpacing"
+        [(ngModel)]="lineSpacing"
+        (ngModelChange)="onSettingsChange()"
+      >
+        <option value="1.2">Tight</option>
+        <option value="1.5">Normal</option>
+        <option value="2.0">Loose</option>
+      </select>
 
       <!-- Return Address Section -->
       <h2 class="card-title">Return Address</h2>
-<label for="includeReturn">
-  <input
-    type="checkbox"
-    id="includeReturn"
-    name="includeReturn"
-    [(ngModel)]="includeReturn"
-  >
-  Include Return Address?
-</label>
+      <label for="includeReturn">
+        <input
+          type="checkbox"
+          id="includeReturn"
+          name="includeReturn"
+          [(ngModel)]="includeReturn"
+          (ngModelChange)="onSettingsChange()"
+        >
+        Include Return Address?
+      </label>
 
-<div id="returnAddressFields" *ngIf="includeReturn">
-  <label for="returnName">Name:</label>
-  <input
-    type="text"
-    id="returnName"
-    class="form-group"
-    placeholder="John Doe"
-    [(ngModel)]="returnName"
-    name="returnName"
-  >
+      <div id="returnAddressFields" *ngIf="includeReturn">
+        <label for="returnName">Name:</label>
+        <input type="text" id="returnName" class="form-group" placeholder="John Doe"
+          [(ngModel)]="returnName" name="returnName" (ngModelChange)="onSettingsChange()">
 
-  <label for="returnStreet">Street Address:</label>
-  <input
-    type="text"
-    id="returnStreet"
-    class="form-group"
-    placeholder="123 Main St"
-    [(ngModel)]="returnStreet"
-    name="returnStreet"
-  >
+        <label for="returnStreet">Street Address:</label>
+        <input type="text" id="returnStreet" class="form-group" placeholder="123 Main St"
+          [(ngModel)]="returnStreet" name="returnStreet" (ngModelChange)="onSettingsChange()">
 
-  <label for="returnCity">City:</label>
-  <input
-    type="text"
-    id="returnCity"
-    class="form-group"
-    placeholder="New York"
-    [(ngModel)]="returnCity"
-    name="returnCity"
-  >
+        <label for="returnCity">City:</label>
+        <input type="text" id="returnCity" class="form-group" placeholder="New York"
+          [(ngModel)]="returnCity" name="returnCity" (ngModelChange)="onSettingsChange()">
 
-  <label for="returnState">State:</label>
-  <input
-    type="text"
-    id="returnState"
-    class="form-group"
-    placeholder="NY"
-    [(ngModel)]="returnState"
-    name="returnState"
-  >
+        <label for="returnState">State:</label>
+        <input type="text" id="returnState" class="form-group" placeholder="NY"
+          [(ngModel)]="returnState" name="returnState" (ngModelChange)="onSettingsChange()">
 
-  <label for="returnZIP">ZIP Code:</label>
-  <input
-    type="text"
-    id="returnZIP"
-    class="form-group"
-    placeholder="10001"
-    [(ngModel)]="returnZIP"
-    name="returnZIP"
-  >
-    <label for="matchReturnFontSize" class="inline-checkbox">
-    <input
-      type="checkbox"
-      id="matchReturnFontSize"
-      name="matchReturnFontSize"
-      [(ngModel)]="matchReturnFontSize"
-      (ngModelChange)="onSettingsChange()"
-    >
-    Make return address match recipient address font size
-  </label>
+        <label for="returnZIP">ZIP Code:</label>
+        <input type="text" id="returnZIP" class="form-group" placeholder="10001"
+          [(ngModel)]="returnZIP" name="returnZIP" (ngModelChange)="onSettingsChange()">
 
-
-
-</div>
-
-
-
+        <label for="matchReturnFontSize" class="inline-checkbox">
+          <input
+            type="checkbox"
+            id="matchReturnFontSize"
+            name="matchReturnFontSize"
+            [(ngModel)]="matchReturnFontSize"
+            (ngModelChange)="onSettingsChange()"
+          >
+          Make return address match recipient address font size
+        </label>
+      </div>
 
       <h2 class="card-title">Step 4: Generate PDF</h2>
-      <button class="btn" (click)="onGeneratePdf()">
-        Generate PDF
+      <button class="btn" (click)="onGeneratePdf()" [disabled]="isLoading">
+        {{ isLoading ? 'Generating...' : 'Generate PDF' }}
       </button>
+      <p *ngIf="loadingMessage" class="loading-message">{{ loadingMessage }}</p>
     </div>
   </div>
 
-  <!-- Right Side: Live Preview -->
+  <!-- Right Side: Live Preview (rendered server-side from the real PDF) -->
   <div class="preview-container">
-  <h2 class="preview-title">Live Preview</h2>
-  <div class="envelope-preview" [ngStyle]="envelopePreviewStyles">
+    <h2 class="preview-title">Live Preview</h2>
 
-    <!-- Return Address Preview -->
-    <!-- Return Address Preview -->
-<div
-  id="returnAddress"
-  class="preview-text return-address"
-  *ngIf="includeReturn"
-  [ngStyle]="returnAddressStyles"
->
-  <!-- Name -->
-  <div *ngIf="returnName; else namePlaceholder">
-    {{ returnName }}
-  </div>
-  <ng-template #namePlaceholder>
-    <div>Return Address</div>
-  </ng-template>
+    <div class="envelope-preview-frame">
+      <img
+        *ngIf="previewImageUrl()"
+        [src]="previewImageUrl()"
+        alt="Envelope preview"
+        class="envelope-preview-image"
+        [class.is-stale]="previewLoading()"
+      />
 
-  <!-- Street -->
-  <div *ngIf="returnStreet">
-    {{ returnStreet }}
+      <div *ngIf="previewLoading()" class="preview-status">Rendering preview...</div>
+      <div *ngIf="previewError()" class="preview-status preview-error">{{ previewError() }}</div>
+    </div>
+
+    <p class="preview-note">
+      This preview is generated by the same code that produces your final PDF.
+    </p>
   </div>
 
-  <!-- City, State ZIP -->
-  <div *ngIf="returnCity || returnState || returnZIP">
-  {{ returnCity }}<span *ngIf="returnCity && (returnState || returnZIP)">, </span>{{ returnState }}<span *ngIf="returnState && returnZIP"> </span>{{ returnZIP }}
 </div>
 
-</div>
-
-
-    <!-- Recipient Preview -->
-    <div
-      id="recipient"
-      class="preview-text recipient"
-      [ngStyle]="recipientStyles"
-      [innerHTML]="formatRecipientAddress()"
-    ></div>
-
-  </div>
-</div>
-
-
-</div>
+<footer class="app-version">
+  <span>frontend {{ appVersion.commit }} &middot; built {{ appVersion.buildDate | date:'short' }}</span>
+  <span *ngIf="backendVersion() as bv"> &middot; backend {{ bv.commit }} &middot; booted {{ bv.started_at | date:'short' }}</span>
+</footer>
