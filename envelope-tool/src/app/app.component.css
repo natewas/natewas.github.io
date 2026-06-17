@@ -73,6 +73,7 @@ ul {
     background-position: center;
     color: white;
     text-align: center;
+    /*padding: 5rem 2rem;*/
     margin-top:2rem;
     /*margin-bottom:100px;*/
     align-content:center;
@@ -286,7 +287,15 @@ body {
 }
 
 /* Project Page Styles */
-
+.project-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    margin-bottom:7rem;
+    padding: 0 1rem;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
 
 .project {
     padding: 2rem;
@@ -835,24 +844,17 @@ input, textarea {
 
 
 .main-container {
-    display: flex;
-    flex-direction: column;      /* ⬅ stack settings THEN preview */
-    gap: 24px;
-    align-items: center;         /* center the children horizontally */
-    justify-content: flex-start;
-    /*margin: 0 auto 40px;*/
-    max-width: 1200px;
-    width: 100%;
+    display: flex;  /* Use flex instead of inline-flex */
+    justify-content: center; /* Center it horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 50px; /* Space between form & preview */
+    max-width: 1200px; /* Ensures content doesn't stretch too much */
+    margin: 0 auto; /* Centers the whole container */
 }
 
-
-
 .project-container {
-    width: 100%;
-    max-width: 900px;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 24px;
+    flex: 1;  /* Makes it take equal width */
+    width: 800px;  /* Prevents excessive stretching */
 }
 
 
@@ -869,7 +871,9 @@ input, textarea {
 }
 
 /* Push everything below fixed navbar */
-
+body {
+    padding-top: 60px; /* Adjust to match navbar height */
+}
 .hero {
     width: 100%;
     display: flex;
@@ -877,6 +881,7 @@ input, textarea {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 50px 20px;  /* Extra spacing to avoid overlap */
     background-color: #f8f8f8;  /* Light background for visibility */
 }
 
@@ -890,7 +895,14 @@ input, textarea {
     font-weight: 300;
     margin-bottom: 0;
 }
-
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 50px auto 0;  /* Added margin at the top to prevent overlap */
+}
 
 /* Envelope Preview Container */
 .envelope {
@@ -925,18 +937,14 @@ input, textarea {
     position: absolute;
     top: 20px;
     left: 30px;
-    /*display: none; /* Hidden until user enables "Include Return Address" */
+    display: none; /* Hidden until user enables "Include Return Address" */
 }
 .preview-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 900px;            /* keep it from being wider than the page */
-    margin: 0 auto;
+    gap: 10px; /* Adds space between title and preview */
 }
-
 
 .preview-title {
     font-size: 1.2rem;
@@ -950,22 +958,12 @@ input, textarea {
     height: 300px;
     border: 2px solid #ddd;
     background-color: white;
-        max-width: 100%;
-
 }
 
-.inline-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-
-/* ---- Server-rendered preview (image of the actual PDF) ---- */
+/* Server-rendered preview (image of the actual PDF) */
 .envelope-preview-frame {
     position: relative;
     width: 500px;
-    max-width: 100%;
     min-height: 200px;
     display: flex;
     justify-content: center;
@@ -981,13 +979,19 @@ input, textarea {
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     overflow: hidden;
 }
+
 .envelope-preview-image {
     display: block;
     width: 100%;
     height: auto;
     transition: opacity 0.2s ease;
 }
-.envelope-preview-image.is-stale { opacity: 0.45; }
+
+/* Dim the previous image while a new one is rendering */
+.envelope-preview-image.is-stale {
+    opacity: 0.45;
+}
+
 .preview-status {
     position: absolute;
     padding: 6px 12px;
@@ -996,7 +1000,11 @@ input, textarea {
     color: #fff;
     font-size: 0.9rem;
 }
-.preview-status.preview-error { background-color: rgba(176, 0, 32, 0.9); }
+
+.preview-status.preview-error {
+    background-color: rgba(176, 0, 32, 0.9);
+}
+
 .preview-note {
     font-size: 0.8rem;
     font-style: italic;
@@ -1005,14 +1013,9 @@ input, textarea {
     margin: 4px 0 0;
     max-width: 500px;
 }
-.loading-message {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #2c3e50;
-    font-style: italic;
-}
 
-/* ---- Build / version stamp ---- */
+
+/* Build / version stamp */
 .app-version {
     text-align: center;
     font-size: 0.72rem;
@@ -1020,4 +1023,20 @@ input, textarea {
     padding: 14px 0 22px;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     letter-spacing: 0.02em;
+}
+
+/* Inline checkbox + label (return-address font-size toggle) */
+.inline-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+/* Cold-start status under the Generate button */
+.loading-message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #2c3e50;
+    font-style: italic;
 }
