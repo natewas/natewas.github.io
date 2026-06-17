@@ -272,16 +272,23 @@ def draw_envelope(
     text_y = height / 2
     spacing_multiplier = line_spacing * font_size
 
-    if alignment == "center":
-        text_x = width / 2
-        draw_text = c.drawCentredString
-    else:
-        text_x = width / 2 - 50
-        draw_text = c.drawString
+    recipient_lines = [recipient_name, recipient_street, recipient_city_line]
 
-    draw_text(text_x, text_y + spacing_multiplier, recipient_name)
-    draw_text(text_x, text_y, recipient_street)
-    draw_text(text_x, text_y - spacing_multiplier, recipient_city_line)
+    if alignment == "center":
+        # Each line individually centered on the envelope.
+        text_x = width / 2
+        for i, line in enumerate(recipient_lines):
+            c.drawCentredString(text_x, text_y + (1 - i) * spacing_multiplier, line)
+    else:
+        # Left-justified, but the block as a whole is centered horizontally:
+        # every line starts at the same x, chosen so the widest line is centered.
+        widest = max(
+            (c.stringWidth(line, font_family, font_size) for line in recipient_lines),
+            default=0,
+        )
+        text_x = (width - widest) / 2
+        for i, line in enumerate(recipient_lines):
+            c.drawString(text_x, text_y + (1 - i) * spacing_multiplier, line)
 
     # --- Return address block ---
     if include_return:
