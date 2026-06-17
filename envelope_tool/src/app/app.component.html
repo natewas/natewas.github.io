@@ -148,6 +148,17 @@
           [(ngModel)]="returnZIP"
           name="returnZIP"
         >
+
+        <label for="matchReturnFontSize">
+          <input
+            type="checkbox"
+            id="matchReturnFontSize"
+            name="matchReturnFontSize"
+            [(ngModel)]="matchReturnFontSize"
+            (ngModelChange)="onSettingsChange()"
+          >
+          Match recipient font size?
+        </label>
       </div>
 
       <h2 class="card-title">Step 4: Generate PDF</h2>

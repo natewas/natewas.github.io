@@ -2,9 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-// No trailing slash — we add the leading slash on each route below.
 const API_BASE_URL = 'https://natewas-github-io-1.onrender.com';
-
 const PREVIEW_DEBOUNCE_MS = 400;
 
 @Component({
@@ -15,33 +13,28 @@ const PREVIEW_DEBOUNCE_MS = 400;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  // Step 1: envelope size
   envelopeSize: 'A7' | '10' | 'A2' = 'A7';
 
-  // Step 3: settings
-  fontSize = '12';                // pt
+  fontSize = '12';
   alignment: 'center' | 'left' = 'center';
   lineSpacing = '1.5';
   fontFamily = 'Helvetica';
 
-  // Return address
   includeReturn = false;
+  matchReturnFontSize = false;
   returnName = '';
   returnStreet = '';
   returnCity = '';
   returnState = '';
   returnZIP = '';
 
-  // CSV file
   csvFile: File | null = null;
 
-  // Server-rendered preview state
   previewImageUrl: string | null = null;
   previewLoading = false;
   previewError: string | null = null;
 
   private previewDebounce: ReturnType<typeof setTimeout> | null = null;
-  // Monotonic counter so a slow response can't overwrite a newer one.
   private previewSeq = 0;
 
   ngOnInit(): void {
@@ -63,10 +56,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.csvFile = input.files && input.files[0] ? input.files[0] : null;
   }
 
-  // === Server-side live preview ===
-  // The backend renders the actual envelope PDF and returns it as a PNG, so what
-  // you see here is produced by the same code that generates the final PDF.
-
   private schedulePreview(): void {
     if (this.previewDebounce) {
       clearTimeout(this.previewDebounce);
@@ -85,7 +74,7 @@ export class AppComponent implements OnInit, OnDestroy {
     fd.append('line_spacing', this.lineSpacing);
     fd.append('font_family', this.fontFamily);
     fd.append('include_return', String(this.includeReturn));
-    fd.append('match_return_font_size', 'false');
+    fd.append('match_return_font_size', String(this.matchReturnFontSize));
 
     if (this.includeReturn) {
       fd.append('return_name', this.returnName.trim());
@@ -114,7 +103,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
       const result = await response.json();
 
-      // A newer request started while we were waiting — discard this result.
       if (seq !== this.previewSeq) {
         return;
       }
@@ -129,15 +117,13 @@ export class AppComponent implements OnInit, OnDestroy {
         return;
       }
       this.previewError = 'Could not load preview. Check your connection and try again.';
-      console.error('❌ Preview error:', error);
+      console.error('Preview error:', error);
     } finally {
       if (seq === this.previewSeq) {
         this.previewLoading = false;
       }
     }
   }
-
-  // === PDF generation (batch over the uploaded CSV) ===
 
   async onGeneratePdf(): Promise<void> {
     if (!this.csvFile) {
@@ -156,7 +142,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('❌ Server error response:', errorText);
+        console.error('Server error response:', errorText);
         throw new Error(`Server error: ${response.status}`);
       }
 
@@ -167,7 +153,7 @@ export class AppComponent implements OnInit, OnDestroy {
         alert('PDF generation failed. Please check your file.');
       }
     } catch (error) {
-      console.error('❌ Error uploading file:', error);
+      console.error('Error uploading file:', error);
       alert('Failed to upload. Check console for details.');
     }
   }
