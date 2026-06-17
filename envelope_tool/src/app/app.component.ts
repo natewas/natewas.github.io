@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 const API_BASE_URL = 'https://natewas-github-io-1.onrender.com';
-const PREVIEW_DEBOUNCE_MS = 400;
+const PREVIEW_DEBOUNCE_MS = 300;
 
 @Component({
   selector: 'app-root',
@@ -30,9 +30,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   csvFile: File | null = null;
 
-  previewImageUrl: string | null = null;
-  previewLoading = false;
-  previewError: string | null = null;
+  // Reactive preview state. Signals notify change detection on every write,
+  // so async updates repaint immediately whether the app runs zoneful or zoneless.
+  previewImageUrl = signal<string | null>(null);
+  previewLoading = signal(false);
+  previewError = signal<string | null>(null);
 
   private previewDebounce: ReturnType<typeof setTimeout> | null = null;
   private previewSeq = 0;
@@ -88,8 +90,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   async refreshServerPreview(): Promise<void> {
     const seq = ++this.previewSeq;
-    this.previewLoading = true;
-    this.previewError = null;
+    this.previewLoading.set(true);
+    this.previewError.set(null);
 
     try {
       const response = await fetch(`${API_BASE_URL}/preview`, {
@@ -108,19 +110,19 @@ export class AppComponent implements OnInit, OnDestroy {
       }
 
       if (result.preview_url) {
-        this.previewImageUrl = `${API_BASE_URL}${result.preview_url}`;
+        this.previewImageUrl.set(`${API_BASE_URL}${result.preview_url}`);
       } else {
-        this.previewError = 'Preview failed to render.';
+        this.previewError.set('Preview failed to render.');
       }
     } catch (error) {
       if (seq !== this.previewSeq) {
         return;
       }
-      this.previewError = 'Could not load preview. Check your connection and try again.';
+      this.previewError.set('Could not load preview. Check your connection and try again.');
       console.error('Preview error:', error);
     } finally {
       if (seq === this.previewSeq) {
-        this.previewLoading = false;
+        this.previewLoading.set(false);
       }
     }
   }

@@ -107,6 +107,7 @@
           placeholder="John Doe"
           [(ngModel)]="returnName"
           name="returnName"
+          (ngModelChange)="onSettingsChange()"
         >
 
         <label for="returnStreet">Street Address:</label>
@@ -117,6 +118,7 @@
           placeholder="123 Main St"
           [(ngModel)]="returnStreet"
           name="returnStreet"
+          (ngModelChange)="onSettingsChange()"
         >
 
         <label for="returnCity">City:</label>
@@ -127,6 +129,7 @@
           placeholder="New York"
           [(ngModel)]="returnCity"
           name="returnCity"
+          (ngModelChange)="onSettingsChange()"
         >
 
         <label for="returnState">State:</label>
@@ -137,6 +140,7 @@
           placeholder="NY"
           [(ngModel)]="returnState"
           name="returnState"
+          (ngModelChange)="onSettingsChange()"
         >
 
         <label for="returnZIP">ZIP Code:</label>
@@ -147,6 +151,7 @@
           placeholder="10001"
           [(ngModel)]="returnZIP"
           name="returnZIP"
+          (ngModelChange)="onSettingsChange()"
         >
 
         <label for="matchReturnFontSize">
@@ -174,15 +179,15 @@
 
     <div class="envelope-preview-frame">
       <img
-        *ngIf="previewImageUrl"
-        [src]="previewImageUrl"
+        *ngIf="previewImageUrl()"
+        [src]="previewImageUrl()"
         alt="Envelope preview"
         class="envelope-preview-image"
-        [class.is-stale]="previewLoading"
+        [class.is-stale]="previewLoading()"
       />
 
-      <div *ngIf="previewLoading" class="preview-status">Rendering preview…</div>
-      <div *ngIf="previewError" class="preview-status preview-error">{{ previewError }}</div>
+      <div *ngIf="previewLoading()" class="preview-status">Rendering preview...</div>
+      <div *ngIf="previewError()" class="preview-status preview-error">{{ previewError() }}</div>
     </div>
 
     <p class="preview-note">
