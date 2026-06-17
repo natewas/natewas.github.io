@@ -27,7 +27,7 @@ Right now there are effectively **three** things in two folders:
 
 | What | Where it lives today | Problem |
 |------|----------------------|---------|
-| Angular **source** (you edit this) | `Portfolio\envelope-tool\` (hyphen) | The real project |
+| Angular **source** (you edit this) | `Portfolio\envelope-tool-source\` | The real project |
 | Angular **built output** (served by Apache) | `Portfolio\envelope_tool\` (underscore) | Also contains a **stale duplicate copy** of `src/` |
 | **Backend** (FastAPI `app.py`) | `Portfolio\envelope_tool\backend\` (underscore) | Lives in the *output* folder, not the source project |
 
@@ -35,7 +35,7 @@ The single biggest source of risk this whole session was that the **underscore
 folder had its own copy of `src/`** that drifted away from the real project.
 Fixing that (Phase 3) is the highest-value cleanup.
 
-> Naming note: `envelope-tool` (hyphen) = source. `envelope_tool` (underscore) =
+> Naming note: `envelope-tool-source` = source; `envelope_tool` =
 > what the web server shows. Easy to mix up — that's part of the problem.
 
 ---
@@ -60,7 +60,7 @@ Fixing that (Phase 3) is the highest-value cleanup.
 doc that says how to run, build, and deploy means you never have to reverse-
 engineer your own project again.
 
-**How:** Create `README.md` in `envelope-tool` covering:
+**How:** Create `README.md` in `envelope-tool-source` covering:
 - What the app does (CSV in → envelope PDFs out).
 - The two-folder layout (copy the table above).
 - How to run locally (frontend `npm start`; backend `uvicorn app:app --reload --port 5001`).
@@ -102,7 +102,7 @@ folder should hold **only** built output + the backend — never editable source
   `envelope_tool\scripts\`, `envelope_tool\css\`, and `envelope_tool\_archives\`.
   These are all stale copies or legacy leftovers (e.g. the old vanilla-JS
   `scripts/envelope_tool.js`).
-- From now on, the **only** place you edit frontend code is `envelope-tool\src\`.
+- From now on, the **only** place you edit frontend code is `envelope-tool-source\src\`.
 - Treat `envelope_tool\` (underscore) as a drop zone for build output + `backend\`.
 
 **Verify:** Delete the copies, rebuild from the real project, redeploy, and

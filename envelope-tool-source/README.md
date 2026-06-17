@@ -18,11 +18,11 @@ up, so read this carefully:
 
 | Piece | Folder | What it is |
 |-------|--------|-----------|
-| **Frontend source** (you edit this) | `envelope-tool/`  *(hyphen)* | The Angular project. This is the source of truth for the UI. |
+| **Frontend source** (you edit this) | `envelope-tool-source/` | The Angular project. This is the source of truth for the UI. |
 | **Frontend deployed output** (served to users) | `envelope_tool/` *(underscore)* | The built files Apache serves. **Do not edit by hand** — it's generated. |
 | **Backend** | `envelope_tool/backend/` *(underscore)* | The FastAPI app (`app.py`) deployed to Render. |
 
-> Rule of thumb: **edit only in `envelope-tool/` (hyphen) for the UI, and in
+> Rule of thumb: **edit only in `envelope-tool-source/` for the UI, and in
 > `envelope_tool/backend/` for the API.** The underscore folder's frontend files
 > are build output.
 
@@ -59,7 +59,7 @@ the `POPPLER_PATH` environment variable pointing at poppler's `bin` folder.
 ### Frontend
 
 ```bash
-cd envelope-tool
+cd envelope-tool-source
 npm install                    # first time only
 npm start                      # serves at http://localhost:4200/
 ```
@@ -74,13 +74,13 @@ on the live site it talks to the Render backend automatically.
 ### Frontend → Apache
 
 ```bash
-cd envelope-tool
+cd envelope-tool-source
 npm run build
 ```
 
 Then copy the built output into the Apache folder, replacing the old files:
 
-- Copy everything from `envelope-tool/dist/envelope-tool/browser/`
+- Copy everything from `envelope-tool-source/dist/envelope-tool/browser/`
 - Into `C:\Apache24\htdocs\Portfolio\envelope_tool\`
 - Delete the previous `main-*.js` / `polyfills-*.js` so only the new ones remain.
 
