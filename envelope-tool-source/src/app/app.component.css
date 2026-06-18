@@ -2,6 +2,17 @@
    Trimmed to only the rules this component's template uses.
    (Portfolio-wide styles that never matched here were removed.) */
 
+/* App UI font (the on-screen text). Lato is loaded via index.html;
+   the system-font stack is a clean fallback so it never lands on Times New Roman. */
+:host {
+  font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:host h1, :host h2, :host .preview-title {
+  font-weight: 700;
+}
+
+
 .tldr {
     font-family: "Lato", serif;
     font-weight: 300;
