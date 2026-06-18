@@ -25,6 +25,7 @@ a {
 }
 
 .card-title {
+    display: block;          /* so <label class="card-title"> keeps block spacing */
     margin-top: 4.5rem;      /* breathing room between steps */
     margin-bottom: 0.75rem;
 }
