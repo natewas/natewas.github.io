@@ -163,9 +163,9 @@ input, textarea {
 }
 
 .project-container {
-    flex: 1 1 0;            /* take a share of the row, shrinkable */
-    min-width: 0;           /* allow shrinking instead of overflowing */
-    max-width: 800px;
+    flex: 0 0 360px;        /* narrow settings rail on the right */
+    max-width: 360px;
+    min-width: 0;
     box-sizing: border-box;
 }
 
@@ -184,9 +184,13 @@ input, textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; /* Adds space between title and preview */
-    flex: 1 1 0;
+    gap: 10px;
+    order: -1;                /* show the preview on the LEFT */
+    flex: 1 1 auto;           /* take the larger share of the row */
     min-width: 0;
+    position: sticky;         /* keep the envelope in view while settings scroll */
+    top: 20px;
+    align-self: flex-start;
 }
 
 .preview-title {
@@ -198,7 +202,7 @@ input, textarea {
 .envelope-preview-frame {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 760px;
     min-height: 200px;
     display: flex;
     justify-content: center;
@@ -294,6 +298,7 @@ input, textarea {
   }
 
   .project-container {
+    flex: 1 1 auto;          /* reset the desktop fixed-width rail */
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -310,6 +315,7 @@ input, textarea {
 
   .preview-container {
     width: 100%;
+    position: static;        /* don't pin the preview on small screens */
   }
 
   .envelope-preview-frame {
