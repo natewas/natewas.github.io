@@ -325,3 +325,49 @@ input, textarea {
     border-radius: 6px;
     padding: 8px 12px;
 }
+
+
+/* ===== Mobile / small screens ===== */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;   /* stack form above preview */
+    gap: 24px;
+    margin: 24px auto 0;
+    padding: 0 16px;
+  }
+
+  .project-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+  }
+
+  /* form controls fill the width and never overflow their box */
+  .project-container input,
+  .project-container select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .preview-container {
+    width: 100%;
+  }
+
+  .envelope-preview-frame {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* full-width, easy-to-tap action button */
+  button,
+  .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  /* tighten oversized headings on small screens */
+  .hero { padding: 32px 16px; }
+  .hero h1,
+  .hero-text h1 { font-size: 1.8rem; }
+}
