@@ -351,7 +351,8 @@ input, textarea {
   }
 
   /* form controls fill the width and never overflow their box */
-  .project-container input,
+  /* full-width text/file inputs + selects, but NOT checkboxes/radios */
+  .project-container input:not([type="checkbox"]):not([type="radio"]),
   .project-container select {
     width: 100%;
     box-sizing: border-box;
