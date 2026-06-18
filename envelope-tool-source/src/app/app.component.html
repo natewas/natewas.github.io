@@ -11,7 +11,7 @@
   <!-- Left Side: Form -->
   <div class="project-container shadow">
     <div class="style-settings">
-      <h2 class="card-title">Step 1: Choose Envelope Size</h2>
+      <h2 class="card-title">Step 1: Choose your envelope size.</h2>
       <select
         id="envelopeSize"
         name="envelopeSize"
@@ -23,7 +23,7 @@
         <option value="A2">A2 (4.375 x 5.75 inches)</option>
       </select>
 
-      <h2 class="card-title">Step 2: Upload CSV File</h2>
+      <h2 class="card-title">Step 2: Upload your CSV file.</h2>
       <p>
         Download and populate the template .csv:
         <a href="sample-data.csv" download="envelope-template.csv">
@@ -39,7 +39,7 @@
         (change)="onFileSelected($event)"
       >
 
-      <h2 class="card-title">Step 3: Select Settings</h2>
+      <h2 class="card-title">Step 3: Select your settings.</h2>
 
       <label for="font-family">Font family</label>
       <select
@@ -52,7 +52,7 @@
         </option>
       </select>
 
-      <label for="fontSize">Choose Font Size:</label>
+      <label for="fontSize">Choose font size:</label>
       <select
         id="fontSize"
         name="fontSize"
@@ -64,7 +64,7 @@
         <option value="16">Large</option>
       </select>
 
-      <label for="alignment">Text Alignment:</label>
+      <label for="alignment">Text alignment:</label>
       <select
         id="alignment"
         name="alignment"
@@ -75,7 +75,7 @@
         <option value="left">Left-Aligned</option>
       </select>
 
-      <label for="lineSpacing">Line Spacing:</label>
+      <label for="lineSpacing">Line spacing:</label>
       <select
         id="lineSpacing"
         name="lineSpacing"
@@ -88,7 +88,7 @@
       </select>
 
       <!-- Return Address Section -->
-      <h2 class="card-title">Return Address</h2>
+      <h2 class="card-title">Return address.</h2>
       <label for="includeReturn">
         <input
           type="checkbox"
@@ -97,7 +97,7 @@
           [(ngModel)]="includeReturn"
           (ngModelChange)="onSettingsChange()"
         >
-        Include Return Address?
+        Include return address?
       </label>
 
       <div id="returnAddressFields" *ngIf="includeReturn">
@@ -133,7 +133,7 @@
         </label>
       </div>
 
-      <h2 class="card-title">Step 4: Generate PDF</h2>
+      <h2 class="card-title">Step 4: Generate your PDF.</h2>
       <button class="btn" (click)="onGeneratePdf()" [disabled]="isGenerating()">
         {{ isGenerating() ? 'Generating...' : 'Generate PDF' }}
       </button>

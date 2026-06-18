@@ -25,8 +25,13 @@ a {
 }
 
 .card-title {
-    margin-top: 2.5rem; /* Adds space above each step */
-    margin-bottom: 0.75rem; /* Keeps titles readable */
+    margin-top: 3.25rem;     /* breathing room between steps */
+    margin-bottom: 0.75rem;
+}
+
+/* the first step shouldn't push off the top of the card */
+.style-settings .card-title:first-child {
+    margin-top: 0;
 }
 
 .form-group {
