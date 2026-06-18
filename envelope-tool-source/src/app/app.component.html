@@ -134,10 +134,15 @@
       </div>
 
       <h2 class="card-title">Step 4: Generate PDF</h2>
-      <button class="btn" (click)="onGeneratePdf()" [disabled]="isLoading">
-        {{ isLoading ? 'Generating...' : 'Generate PDF' }}
+      <button class="btn" (click)="onGeneratePdf()" [disabled]="isGenerating()">
+        {{ isGenerating() ? 'Generating...' : 'Generate PDF' }}
       </button>
-      <p *ngIf="loadingMessage" class="loading-message">{{ loadingMessage }}</p>
+
+      <p *ngIf="generateStatus()" class="status-message" aria-live="polite">{{ generateStatus() }}</p>
+      <p *ngIf="resultUrl()" class="status-link">
+        <a [href]="resultUrl()" target="_blank" rel="noopener"><b>Open your PDF &rarr;</b></a>
+      </p>
+      <p *ngIf="generateError()" class="error-message" role="alert">{{ generateError() }}</p>
     </div>
   </div>
 

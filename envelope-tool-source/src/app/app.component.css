@@ -295,9 +295,22 @@ input, textarea {
   margin-top: 0.5rem;
 }
 
-.loading-message {
+.status-message {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #2c3e50;
     font-style: italic;
+}
+.status-link {
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+.error-message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #b00020;
+    background: #fde8ea;
+    border: 1px solid #f5c2c7;
+    border-radius: 6px;
+    padding: 8px 12px;
 }

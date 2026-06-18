@@ -27,10 +27,6 @@ interface BackendVersion {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  // loading state for cold-start UX (used in onGeneratePdf)
-  isLoading = false;
-  loadingMessage = '';
-
   // Step 1: envelope size
   envelopeSize: 'A7' | '10' | 'A2' = 'A7';
 
@@ -74,6 +70,12 @@ export class AppComponent implements OnInit, OnDestroy {
   previewLoading = signal(false);
   previewError = signal<string | null>(null);
 
+  // Generate-PDF state, surfaced in the page (no alerts, no "check the console").
+  isGenerating = signal(false);
+  generateStatus = signal<string | null>(null);   // progress / success
+  generateError = signal<string | null>(null);     // user-facing error
+  resultUrl = signal<string | null>(null);         // link to the PDF (fallback if pop-up blocked)
+
   // Version stamps: frontend baked in at build time; backend fetched live.
   readonly appVersion = APP_VERSION;
   backendVersion = signal<BackendVersion | null>(null);
@@ -104,6 +106,10 @@ export class AppComponent implements OnInit, OnDestroy {
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.csvFile = input.files && input.files[0] ? input.files[0] : null;
+    // clear any stale generate messages when the file changes
+    this.generateError.set(null);
+    this.generateStatus.set(null);
+    this.resultUrl.set(null);
   }
 
   private async loadBackendVersion(): Promise<void> {
@@ -174,13 +180,15 @@ export class AppComponent implements OnInit, OnDestroy {
       if (result.preview_url) {
         this.previewImageUrl.set(`${API_BASE_URL}${result.preview_url}`);
       } else {
-        this.previewError.set('Preview failed to render.');
+        this.previewError.set('Could not render the preview. Please try again.');
       }
     } catch (error) {
       if (seq !== this.previewSeq) {
         return;
       }
-      this.previewError.set('Could not load preview. Check your connection and try again.');
+      this.previewError.set(
+        'Preview unavailable - the server may be waking up. Change any setting to retry.'
+      );
       console.error('Preview error:', error);
     } finally {
       if (seq === this.previewSeq) {
@@ -190,49 +198,106 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   async onGeneratePdf(): Promise<void> {
+    // reset any previous status
+    this.generateError.set(null);
+    this.generateStatus.set(null);
+    this.resultUrl.set(null);
+
+    // --- client-side checks with clear, specific messages ---
     if (!this.csvFile) {
-      alert('Please select a CSV file.');
+      this.generateError.set('Please choose a CSV file first (Step 2).');
       return;
     }
+    if (this.includeReturn) {
+      const missing = ([
+        ['Name', this.returnName],
+        ['Street Address', this.returnStreet],
+        ['City', this.returnCity],
+        ['State', this.returnState],
+        ['ZIP', this.returnZIP],
+      ] as [string, string][])
+        .filter(([, value]) => !value.trim())
+        .map(([label]) => label);
 
-    this.isLoading = true;
-    this.loadingMessage = '';
+      if (missing.length > 0) {
+        this.generateError.set(
+          `Please fill in all return address fields (missing: ${missing.join(', ')}), ` +
+          `or uncheck "Include Return Address".`
+        );
+        return;
+      }
+    }
+
+    this.isGenerating.set(true);
+    this.generateStatus.set('Generating your envelopes...');
 
     const formData = this.buildSettingsFormData();
     formData.append('file', this.csvFile as File);
-
     const uploadUrl = `${API_BASE_URL}/upload`;
 
-    const attemptUpload = async () => {
-      const response = await fetch(uploadUrl, {
-        method: 'POST',
-        body: formData
-      });
+    // Returns the preview_url on success; throws Error(<user-facing message>) on failure.
+    const attemptUpload = async (): Promise<string> => {
+      const response = await fetch(uploadUrl, { method: 'POST', body: formData });
       if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
+        let backendMsg = '';
+        try {
+          backendMsg = (await response.json())?.error ?? '';
+        } catch (_) { /* response had no JSON body */ }
+        throw new Error(this.friendlyUploadError(response.status, backendMsg));
       }
-      return response.json() as Promise<{ preview_url: string }>;
+      const data = await response.json();
+      if (!data.preview_url) {
+        throw new Error('The server did not return a PDF. Please try again.');
+      }
+      return data.preview_url as string;
     };
 
     try {
-      const result = await attemptUpload();
-      window.open(`${API_BASE_URL}${result.preview_url}`, '_blank');
-    } catch (firstError) {
-      console.warn('First attempt failed. Retrying after delay...', firstError);
-      this.loadingMessage = 'Waking up server... please wait...';
-
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
+      let previewUrl: string;
       try {
-        const result = await attemptUpload();
-        window.open(`${API_BASE_URL}${result.preview_url}`, '_blank');
-      } catch (finalError) {
-        console.error('Error uploading file:', finalError);
-        alert('The server took too long to respond. Please try again.');
+        previewUrl = await attemptUpload();
+      } catch (firstError) {
+        // One automatic retry, mainly for Render free-tier cold starts.
+        this.generateStatus.set('The server may be waking up - retrying...');
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        previewUrl = await attemptUpload();
       }
+
+      const fullUrl = `${API_BASE_URL}${previewUrl}`;
+      this.resultUrl.set(fullUrl);
+      const opened = window.open(fullUrl, '_blank');
+      if (opened) {
+        this.generateStatus.set('Done! Your PDF opened in a new tab.');
+      } else {
+        // Browsers often block pop-ups opened after an async call - give a link.
+        this.generateStatus.set('Your PDF is ready. Your browser blocked the pop-up, so use this link:');
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : '';
+      // Friendly messages we threw ourselves pass through; raw network errors get a generic one.
+      this.generateError.set(
+        message && !/failed to fetch|networkerror|load failed/i.test(message)
+          ? message
+          : 'Could not reach the server. It may be waking up, or your connection dropped - please try again in a moment.'
+      );
+      console.error('Generate PDF error:', error);
     } finally {
-      this.isLoading = false;
-      this.loadingMessage = '';
+      this.isGenerating.set(false);
     }
+  }
+
+  /** Map a failed /upload response to a clear, user-facing message. */
+  private friendlyUploadError(status: number, backendMsg: string): string {
+    const msg = (backendMsg || '').toLowerCase();
+    if (status === 400 && msg.includes('column')) {
+      return 'Your CSV is missing required columns. It needs: Recipient Name, Street Address, City, State, ZIP.';
+    }
+    if (status === 400 && msg.includes('return address')) {
+      return 'Please fill in all return address fields, or uncheck "Include Return Address".';
+    }
+    if (status === 400 && backendMsg) {
+      return backendMsg; // surface other validation messages as-is
+    }
+    return `The server had a problem (error ${status}). It may be waking up - please try again in a moment.`;
   }
 }
