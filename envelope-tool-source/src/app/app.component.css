@@ -190,8 +190,10 @@ input, textarea {
 }
 
 .project-container {
-    flex: 1;  /* Makes it take equal width */
-    width: 800px;  /* Prevents excessive stretching */
+    flex: 1 1 0;            /* take a share of the row, shrinkable */
+    min-width: 0;           /* allow shrinking instead of overflowing */
+    max-width: 800px;
+    box-sizing: border-box;
 }
 
 .hero {
@@ -223,6 +225,8 @@ input, textarea {
     gap: 50px;
     max-width: 1200px;
     margin: 50px auto 0;  /* Added margin at the top to prevent overlap */
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 .preview-container {
@@ -230,6 +234,8 @@ input, textarea {
     flex-direction: column;
     align-items: center;
     gap: 10px; /* Adds space between title and preview */
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .preview-title {
@@ -240,7 +246,8 @@ input, textarea {
 
 .envelope-preview-frame {
     position: relative;
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     min-height: 200px;
     display: flex;
     justify-content: center;
@@ -328,7 +335,7 @@ input, textarea {
 
 
 /* ===== Mobile / small screens ===== */
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .main-container {
     flex-direction: column;   /* stack form above preview */
     gap: 24px;
