@@ -98,6 +98,7 @@ header {
   color: var(--muted);
   max-width: 620px;
   margin-bottom: 32px;
+  text-wrap: pretty; /* avoid single-word orphan on the last line */
 }
 .btn {
   display: inline-block;
