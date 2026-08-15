@@ -1,105 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-56E5DC1BR1');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>natewasden.com</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-    
-                // Initialize menu toggle after header loads
-                setTimeout(() => {
-                    const menuToggle = document.getElementById("menu-toggle");
-                    const navMenu = document.getElementById("nav-menu");
-
-                    console.log("menuToggle:", menuToggle); // Check if menuToggle exists
-                    console.log("navMenu:", navMenu);       // Check if navMenu exists
-
-                    if (menuToggle && navMenu) {
-                        console.log("Menu toggle is being attached!");
-                        
-                        // Add the event listener after verifying menuToggle exists
-                        menuToggle.addEventListener("click", () => {
-                            console.log("Menu clicked!"); // Check if click works
-                            navMenu.classList.toggle("show"); // Add/Remove show class
-                            console.log("Nav menu visibility toggled:", navMenu.classList.contains("show"));
-                        });
-                    } else {
-                        console.error("Menu elements not found!");
-                    }
-                }, 100);
-
-            })
-            .catch(error => {
-                console.error("Error fetching header:", error);
-            });
-    
-        // Load footer
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error("Error fetching footer:", error);
-            });
-    });
-    
-    </script>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nate — Learning Engineer</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-    <!-- Placeholder for the header -->
-    <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-buttons">
-                <!--<a href="solutions.html" class="btn">Solutions</a>-->
-                <a href="portfolio.html" class="btn">View Portfolio</a>
-                <a href="gallery.html" class="btn">View Woodworking Gallery</a>
-            </div>
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="#home" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ HERO / HOME ============ -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <span class="eyebrow">Learning Engineer</span>
+      <h1>I design learning that actually sticks.</h1>
+      <p>
+        <!-- EDIT: your one-line positioning statement -->
+        I blend instructional design, data, and a little code to build training
+        and tools that help people do their best work. Here's a look at what I do
+        and how I think.
+      </p>
+      <a href="portfolio.html" class="btn">See my work</a>
+      <a href="#contact" class="btn ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section id="portfolio">
+    <div class="wrap">
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-intro">
+        A few projects that show how I approach learning design and problem-solving.
+      </p>
+      <div class="grid">
+        <a href="projects/certification-programs.html" class="card">
+          <h3>Certification Programs</h3>
+          <p>Automated credential programs: 96% satisfaction, 600+ badges, NPS +60&ndash;75.</p>
+        </a>
+        <a href="projects/lms-implementation.html" class="card">
+          <h3>Learning Management System Implementation</h3>
+          <p>Led a new LMS rollout for 300,000+ users.</p>
+        </a>
+        <a href="projects/localization-program-and-translation-automation.html" class="card">
+          <h3>Localization Program &amp; Translation Automation</h3>
+          <p>Automated translation of training content into 15 languages.</p>
+        </a>
+      </div>
+      <div class="view-all">
+        <a href="portfolio.html">View full portfolio &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div>
+          <!-- EDIT: your background story -->
+          <p>
+            I'm a Learning Engineer focused on the space where instructional design
+            meets systems and data. I like taking messy, complex processes and turning
+            them into clear learning experiences people can actually use.
+          </p>
+          <p>
+            My background spans curriculum development, LMS administration, and building
+            automation that removes busywork so teams can focus on the work that matters.
+          </p>
         </div>
-    </section>
+        <div>
+          <h3 style="font-size:1rem; margin-bottom:14px; color:var(--muted);">Skills</h3>
+          <ul class="skills">
+            <!-- EDIT: your real skills -->
+            <li>Instructional Design</li>
+            <li>Curriculum Development</li>
+            <li>LMS Administration</li>
+            <li>Python</li>
+            <li>Automation</li>
+            <li>Data &amp; Analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer Placeholder -->
-    <div id="footer-placeholder"></div>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="wrap contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">
+        Want to talk about a project or role? I'd love to hear from you.
+      </p>
+      <!-- EDIT: your real email -->
+      <a href="mailto:you@example.com" class="btn">Say hello</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+
 </body>
 </html>

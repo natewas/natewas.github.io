@@ -1,136 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56E5DC1BR1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-56E5DC1BR1');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>natewasden.com | Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/styles.css?v=2">
-
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-     <script>
-        // JavaScript to include the header
-        fetch('header.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-
-        fetch('footer.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error fetching header:', error);
-            });
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nate — Portfolio</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-    <!-- Placeholder for the header -->
-    <div id="header-placeholder"></div>
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="index.html#about">About Me</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <nav class="breadcrumbs">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li>Portfolio</li>
-        </ul>
-    </nav>
-    <section id="project-grid" class="project-grid-section">
-        <h2 class="section-title">Portfolio</h2>
-        <div class="project-grid">
-            <a href="localization-program-and-translation-automation.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Localization Program and Translation Automation</h3>
-                    <p>Implemented an automated translation system to make training content accessible in 15 languages, enhancing global user experience, compliance, and scalability.</p>
-                </div>
-            </a>
-            <a href="ai-assistants.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Artificial Intelligence Assistants</h3>
-                    <p>Created and trained a bot on how to consistently apply grading criteria to short-answer questions for the Certified Admin program.</p>
-                </div>
-            </a>
-            <a href="certification-programs.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Certification Programs</h3>
-                    <p>Developed and automated credential programs with 96% learner satisfaction and over 600 badges issued while attaining an industry-leading NPS score of +60-75.</p>
-                </div>
-            </a>
-            <a href="lms-implementation.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Learning Management System Implementation</h3>
-                    <p>Led the implmentation of a new LMS for 300,000+ users.</p>
-                </div>
-            </a>
-            <a href="business-intelligence-role-specific-learning-paths.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Business Intelligence Role-Specific Learning Paths</h3>
-                    <p>Developed and oversaw the creation of 15 microlearning courses for a new data visualization application.</p>
-                </div>
-            </a>
-            <a href="browser-automation.html" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Browser Automation</h3>
-                    <p>Automated repetitive, time-consuming processes associated with implementing a new learning management system.</p>
-                </div>
-            </a>
-                       <a href="https://natewasden.com/envelope_tool/" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Custom Envelope Generator</h3>
-                    <p>A variable data web application that combines preselected envelope sizes with data and custom styling to make print-ready envelopes for a variety of occasions and use cases.</p>
-                    <p>Please note I am making refinements to this application. </p>
-                </div>
-            </a>
-            <a href="" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">End-User Basics Videos</h3>
-                    <p>Created engaging, user-focused eLearning activities for various industries.</p>
-                </div>
-            </a>
-            <a href="" class="project-card">
-                <div class="project-card-content">
-                    <h3 class="card-title">Hybrid Curriculum Design</h3>
-                    <p>Designed 100+ hybrid learning experiences, automating processes for scalability.</p>
-                </div>
-            </a>
-            
-            
+  <!-- ============ PORTFOLIO ============ -->
+  <section id="portfolio">
+    <div class="wrap">
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-intro">
+        A collection of projects across learning design, automation, and the tools
+        I've built to help people do their best work.
+      </p>
+      <div class="grid">
+        <a href="projects/certification-programs.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></span>Certification Programs</h3>
+          <p>Designed and automated credential programs: 96% satisfaction, 600+ badges issued, and an industry-leading NPS of +60&ndash;75.</p>
+        </a>
+        <a href="projects/lms-implementation.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>Learning Management System Implementation</h3>
+          <p>Led the rollout of a new LMS serving 300,000+ users.</p>
+        </a>
+        <a href="projects/localization-program-and-translation-automation.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Localization Program &amp; Translation Automation</h3>
+          <p>Built an automated pipeline that delivers training content in 15 languages&mdash;expanding global reach while cutting manual translation work.</p>
+        </a>
+        <a href="projects/ai-assistants.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>Artificial Intelligence Assistants</h3>
+          <p>Trained an AI grader to score short-answer questions consistently for the Certified Admin program, saving reviewer time.</p>
+        </a>
+        <a href="projects/business-intelligence-role-specific-learning-paths.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>Business Intelligence Role-Specific Learning Paths</h3>
+          <p>Created 15 role-based microlearning courses for a new data visualization platform.</p>
+        </a>
+        <a href="projects/browser-automation.html" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>Browser Automation</h3>
+          <p>Automated repetitive LMS-migration tasks, eliminating hours of manual work.</p>
+        </a>
+        <a href="https://natewasden.com/envelope_tool/" class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>Custom Envelope Generator</h3>
+          <p>A variable-data web app that turns spreadsheets and custom styling into print-ready envelopes.</p>
+        </a>
+        <div class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>End-User Basics Videos</h3>
+          <p>Produced engaging, user-focused video lessons across multiple industries.</p>
         </div>
-    </section>
+        <div class="card">
+          <h3><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>Hybrid Curriculum Design</h3>
+          <p>Designed 100+ hybrid learning experiences with automation built in for scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
 
-    <div id="footer-placeholder"></div>
-
+  <script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
-

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser Automation — Nate</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="project-page">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../index.html#about">About Me</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ BREADCRUMBS ============ -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li aria-current="page">Browser Automation</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="project-hero">
+    <div class="wrap">
+      <ul class="tag-list">
+        <li><span class="tag" data-tag="automation">Automation</span></li>
+        <li><span class="tag" data-tag="python">Python</span></li>
+        <li><span class="tag" data-tag="lms">LMS</span></li>
+      </ul>
+      <h1>Browser Automation</h1>
+      <p class="lead">
+        Automated 1,000+ hours of manual LMS tasks by writing Python/Selenium scripts to do
+        what the platform couldn't via API&mdash;course creation, SCORM uploads, and mass
+        hyperlink updates. This made the full migration possible on time and ensured a
+        seamless, high-quality experience at launch.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SHOWCASE (auto-advancing) ============ -->
+  <section class="showcase" data-showcase aria-label="Browser automation highlights"
+           style="--showcase-dur: 6s;">
+    <div class="wrap">
+      <div class="showcase-viewport">
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-1"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Automation</p>
+            <h2 class="showcase-heading">Doing what the API couldn't.</h2>
+            <p class="showcase-sub">Python and Selenium scripts create courses, upload SCORM, and remap links.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-2"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Scale</p>
+            <h2 class="showcase-heading">1,000+ hours of manual work, gone.</h2>
+            <p class="showcase-sub">Background scripts handled high-volume updates across hundreds of courses.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-3"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Impact</p>
+            <h2 class="showcase-heading">On-time launch. Zero broken links.</h2>
+            <p class="showcase-sub">A seamless first experience for every new platform user.</p>
+          </div>
+        </article>
+
+        <div class="showcase-controls">
+          <div class="showcase-progress" role="tablist" aria-label="Slide progress">
+            <button class="showcase-seg" type="button" aria-label="Slide 1"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 2"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 3"><span class="showcase-seg-fill"></span></button>
+          </div>
+          <button class="showcase-playpause" type="button" aria-label="Pause">
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODY / SECTIONS ============ -->
+  <main>
+    <div class="wrap">
+      <div class="project-body">
+
+        <section class="project-section">
+          <h2>Challenge</h2>
+          <p>
+            During a major LMS implementation, the platform lacked API methods for essential
+            tasks like creating courses, applying metadata and tags, uploading SCORM packages,
+            and updating hyperlinks across hundreds of courses. These tasks were repetitive,
+            time-consuming, and critical to launch readiness. To meet deadlines and uphold
+            content quality, I needed a way to automate what couldn't be done manually at scale.
+          </p>
+        </section>
+
+        <section class="project-section">
+          <h2>Solution</h2>
+          <ul>
+            <li>Developed Python scripts using Selenium to automate browser tasks.</li>
+            <li>Automated course creation, tagging, SCORM uploads, and link remapping.</li>
+            <li>Built a matrix mapping legacy course links to new LMS URLs using analytics reports.</li>
+            <li>Scraped course HTML to identify old links and replace them accurately.</li>
+            <li>Scheduled scripts to run in the background for continuous, high-volume updates.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Independently scoped, developed, and deployed all browser-automation scripts.</li>
+            <li>Enabled the full LMS migration to happen on schedule despite platform limitations.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Tools &amp; Technologies</h2>
+          <ul>
+            <li><strong>Languages &amp; Libraries:</strong> Python, Selenium</li>
+            <li><strong>Platforms:</strong> Skilljar, Articulate Rise 360</li>
+            <li><strong>Utilities:</strong> Windows Command Prompt</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Impact</h2>
+          <div class="impact-stats">
+            <div class="stat">
+              <div class="num">1,000+</div>
+              <div class="label">Hours of manual labor saved</div>
+            </div>
+            <div class="stat">
+              <div class="num">On time</div>
+              <div class="label">LMS launch despite no usable APIs</div>
+            </div>
+            <div class="stat">
+              <div class="num">Zero</div>
+              <div class="label">404s or broken links on customer courses</div>
+            </div>
+            <div class="stat">
+              <div class="num">Positive</div>
+              <div class="label">First experience for new platform users</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/showcase.js" defer></script>
+
+</body>
+</html>

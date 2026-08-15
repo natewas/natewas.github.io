@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Localization Program &amp; Translation Automation — Nate</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="project-page">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../index.html#about">About Me</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ BREADCRUMBS ============ -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li aria-current="page">Localization Program &amp; Translation Automation</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="project-hero">
+    <div class="wrap">
+      <ul class="tag-list">
+        <li><span class="tag" data-tag="localization">Localization</span></li>
+        <li><span class="tag" data-tag="automation">Automation</span></li>
+        <li><span class="tag" data-tag="python">Python</span></li>
+      </ul>
+      <h1>Localization Program &amp; Translation Automation</h1>
+      <p class="lead">
+        Designed and built an automated localization system to make 750 courses available in
+        15 languages. A custom utility parses SCORM packages, translates via SmartCat's CLI,
+        and reinserts the content&mdash;localizing text, UI, captions, and media within 24 hours.
+        The result: drastically less manual effort, better compliance, and a scalable
+        foundation for global training.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SHOWCASE (auto-advancing) ============ -->
+  <section class="showcase" data-showcase aria-label="Localization program highlights"
+           style="--showcase-dur: 6s;">
+    <div class="wrap">
+      <div class="showcase-viewport">
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-1"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Localization Program</p>
+            <h2 class="showcase-heading">750+ courses, available in 15 languages.</h2>
+            <p class="showcase-sub">A scalable foundation for global training&mdash;planned and rolled out language by language.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-2"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Automated Pipeline</p>
+            <h2 class="showcase-heading">SCORM in. Translated course out.</h2>
+            <p class="showcase-sub">A custom utility parses each package, batch-translates via SmartCat's CLI, and reintegrates every asset&mdash;no manual rebuild.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-3"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Full Ecosystem</p>
+            <h2 class="showcase-heading">Everything localized&mdash;down to the captions.</h2>
+            <p class="showcase-sub">Text, UI, navigation, and <code>.vtt</code> video captions: an entire course localized within 24 hours.</p>
+          </div>
+        </article>
+
+        <div class="showcase-controls">
+          <div class="showcase-progress" role="tablist" aria-label="Slide progress">
+            <button class="showcase-seg" type="button" aria-label="Slide 1"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 2"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 3"><span class="showcase-seg-fill"></span></button>
+          </div>
+          <button class="showcase-playpause" type="button" aria-label="Pause">
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODY / SECTIONS ============ -->
+  <main>
+    <div class="wrap">
+      <div class="project-body">
+
+        <section class="project-section">
+          <h2>Challenge</h2>
+          <p>
+            MasterControl Academy offers 750+ English-language eLearning courses but lacked a
+            scalable localization process. The manual workflow took 38&ndash;60 minutes per course
+            and left key components untranslated:
+          </p>
+          <ul>
+            <li>Video captions remained in English.</li>
+            <li>Internal navigation and links redirected to untranslated content.</li>
+            <li>Non-English terms were poorly searchable.</li>
+          </ul>
+          <p>
+            These gaps created barriers for non-native speakers and posed compliance risks in
+            regulated global markets.
+          </p>
+        </section>
+
+        <section class="project-section">
+          <h2>Solution</h2>
+          <p>
+            I built a program plan around an automated localization pipeline that processes and
+            reintegrates translated content with minimal human intervention.
+          </p>
+          <h3>Custom Utility Development</h3>
+          <ul>
+            <li>Extracts all course text, including <code>.vtt</code> captions, from SCORM packages.</li>
+            <li>Converts content into structured JSON for translation.</li>
+            <li>Uses SmartCat's CLI to batch-translate into 15 target languages.</li>
+            <li>Reintegrates translated assets into SCORM, preserving structure and LMS compatibility.</li>
+          </ul>
+          <h3>Full Ecosystem Translation</h3>
+          <p>The system localizes not just core course content, but also:</p>
+          <ul>
+            <li>Catalog pages and associated metadata.</li>
+            <li>Learning paths and UI-level navigation.</li>
+            <li>Multimedia captions and embedded instructional content.</li>
+          </ul>
+          <h3>Quality Control Loop</h3>
+          <p>
+            A feedback process with regional SMEs ensures high-quality, contextually relevant
+            translations. Version control is built into the utility for efficient iteration.
+          </p>
+        </section>
+
+        <section class="project-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Owned the end-to-end design, development, and deployment of the program.</li>
+            <li>Designed the automation workflow and system architecture.</li>
+            <li>Developed the custom SCORM-to-JSON utility in Python.</li>
+            <li>Integrated the SmartCat CLI with our LMS and authoring pipeline.</li>
+            <li>Collaborated with global stakeholders to validate and test localized outputs.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Tools &amp; Technologies</h2>
+          <ul>
+            <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
+            <li><strong>Authoring:</strong> Articulate Rise</li>
+            <li><strong>LMS:</strong> Skilljar</li>
+            <li><strong>Collaboration &amp; Versioning:</strong> Git</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Impact</h2>
+          <div class="impact-stats">
+            <div class="stat">
+              <div class="num">96</div>
+              <div class="label">Courses localized to date (scaling to 750+)</div>
+            </div>
+            <div class="stat">
+              <div class="num">Up to 80%</div>
+              <div class="label">Reduction in localization time per course</div>
+            </div>
+            <div class="stat">
+              <div class="num">All elements</div>
+              <div class="label">Captions and navigation translated, not just text</div>
+            </div>
+            <div class="stat">
+              <div class="num">Standard</div>
+              <div class="label">Adopted as the global localization standard</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/showcase.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============================================================
+       PROJECT PAGE TEMPLATE
+       To reuse for another project, copy this file and update:
+         1. <title> and the breadcrumb "current" label
+         2. The .project-hero (title + lead paragraph)
+         3. The carousel slides (add/remove .carousel-slide blocks)
+         4. Each .project-section (Challenge / Solution / Role / Tools / Impact)
+       Image paths are relative to /projects/ -> ../assets/img/<slug>/…
+       ============================================================ -->
+  <title>Certification Programs — Nate</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="project-page">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../index.html#about">About Me</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ BREADCRUMBS ============ -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li aria-current="page">Certification Programs</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="project-hero">
+    <div class="wrap">
+      <ul class="tag-list">
+        <li><span class="tag" data-tag="credentialing">Credentialing</span></li>
+        <li><span class="tag" data-tag="automation">Automation</span></li>
+        <li><span class="tag" data-tag="instructional-design">Instructional Design</span></li>
+      </ul>
+      <h1>Certification Programs</h1>
+      <p class="lead">
+        Defined the strategy for a new global certification program, authored 800+ exam
+        questions, and automated the entire pipeline&mdash;enrollment, login provisioning,
+        grading, scoring, badge issuance, and learner notifications. Piloted with
+        stakeholders, then scaled to a +88 NPS.
+        <a href="https://www.linkedin.com/search/results/all/?keywords=%23mastercontrolcertifiedadmin" target="_blank" rel="noopener noreferrer">See recent badge earners on LinkedIn.</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SHOWCASE (auto-advancing) ============ -->
+  <section class="showcase" data-showcase aria-label="Certification program highlights"
+           style="--showcase-dur: 6s;">
+    <div class="wrap">
+      <div class="showcase-viewport">
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-1"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Credentialing at Scale</p>
+            <h2 class="showcase-heading">8 exams. 800+ questions. Fully automated.</h2>
+            <p class="showcase-sub">One pipeline handles enrollment, grading, scoring, and badge issuance across every exam.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-2"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Automation</p>
+            <h2 class="showcase-heading">Badges issued the moment you pass.</h2>
+            <p class="showcase-sub">Python and JavaScript workflows integrate the Credly API for instant digital credentials.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-3"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Impact</p>
+            <h2 class="showcase-heading">96% satisfaction. +88 NPS.</h2>
+            <p class="showcase-sub">650+ credentials issued, with 75% less administrative overhead.</p>
+          </div>
+        </article>
+
+        <div class="showcase-controls">
+          <div class="showcase-progress" role="tablist" aria-label="Slide progress">
+            <button class="showcase-seg" type="button" aria-label="Slide 1"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 2"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 3"><span class="showcase-seg-fill"></span></button>
+          </div>
+          <button class="showcase-playpause" type="button" aria-label="Pause">
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODY / SECTIONS ============ -->
+  <main>
+    <div class="wrap">
+      <div class="project-body">
+
+        <section class="project-section">
+          <h2>Challenge</h2>
+          <p>
+            Launching a global certification program for admins, partners, employees, and
+            developers meant scaling a fair, secure, and rigorous exam process. We needed to
+            evaluate hundreds of learners with varied workflows, prevent question fatigue, and
+            eliminate manual work like account creation and badge delivery.
+          </p>
+        </section>
+
+        <section class="project-section">
+          <h2>Solution</h2>
+          <h3>Exam Design</h3>
+          <ul>
+            <li>Authored 800+ questions targeting core competencies across user types.</li>
+            <li>Refined questions with stakeholders to balance clarity and challenge.</li>
+            <li>Used pilot data to optimize for accuracy and learner experience.</li>
+          </ul>
+          <h3>Automation Workflows</h3>
+          <ul>
+            <li>Built Python and JavaScript workflows for enrollment, grading, sandbox setup, and messaging.</li>
+            <li>Integrated the Credly API to auto-issue digital badges on exam completion.</li>
+          </ul>
+          <h3>Data &amp; Feedback Loop</h3>
+          <ul>
+            <li>Connected data from Qualtrics, Skilljar, and Credly in a Domo dashboard.</li>
+            <li>Gave leadership real-time program health and learner feedback.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Designed and led the entire digital credential program end to end.</li>
+            <li>Wrote 800+ certification questions using evidence-based assessment frameworks.</li>
+            <li>Ran stakeholder pilots and usability tests to refine systems and UX.</li>
+            <li>Built automation tools to cut administrative overhead.</li>
+            <li>Built dashboards and data tooling for performance tracking.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Tools &amp; Technologies</h2>
+          <ul>
+            <li><strong>Development:</strong> Python, JavaScript</li>
+            <li><strong>Data &amp; Dashboards:</strong> Domo, Qualtrics, Skilljar</li>
+            <li><strong>Credentialing:</strong> Credly API</li>
+            <li><strong>Communication:</strong> Dynamic email system</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Impact</h2>
+          <div class="impact-stats">
+            <div class="stat">
+              <div class="num">96%</div>
+              <div class="label">Learner satisfaction (+88 NPS)</div>
+            </div>
+            <div class="stat">
+              <div class="num">75%</div>
+              <div class="label">Decrease in admin overhead</div>
+            </div>
+            <div class="stat">
+              <div class="num">650+</div>
+              <div class="label">Credentials issued to date</div>
+            </div>
+            <div class="stat">
+              <div class="num">Scalable</div>
+              <div class="label">Repeatable model for future programs</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/showcase.js" defer></script>
+
+</body>
+</html>

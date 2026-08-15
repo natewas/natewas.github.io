@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artificial Intelligence Assistants — Nate</title>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="project-page">
+
+  <!-- ============ NAVIGATION ============ -->
+  <header>
+    <div class="wrap nav">
+      <a href="../index.html" class="brand">Nate<span>.</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li><a href="../index.html#about">About Me</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ============ BREADCRUMBS ============ -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="wrap">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../portfolio.html">Portfolio</a></li>
+        <li aria-current="page">Artificial Intelligence Assistants</li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="project-hero">
+    <div class="wrap">
+      <ul class="tag-list">
+        <li><span class="tag" data-tag="ai">AI</span></li>
+        <li><span class="tag" data-tag="assessment">Assessment</span></li>
+        <li><span class="tag" data-tag="automation">Automation</span></li>
+      </ul>
+      <h1>Artificial Intelligence Assistants</h1>
+      <p class="lead">
+        Built an AI assistant to evaluate short-answer responses from Certified Admin exams,
+        cutting grading time by 50% while holding 95&ndash;99% agreement with human graders. It
+        delivers consistent, contextual feedback, handles complex inputs, and scales human
+        effort across eight exams and 80+ unique questions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ SHOWCASE (auto-advancing) ============ -->
+  <section class="showcase" data-showcase aria-label="AI assistant highlights"
+           style="--showcase-dur: 6s;">
+    <div class="wrap">
+      <div class="showcase-viewport">
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-1"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">AI Assessment</p>
+            <h2 class="showcase-heading">Short-answer grading, automated.</h2>
+            <p class="showcase-sub">An AI assistant evaluates open responses across eight certification exams.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-2"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Consistency</p>
+            <h2 class="showcase-heading">95&ndash;99% agreement with human graders.</h2>
+            <p class="showcase-sub">Rubric-based scoring, validated against SMEs through blind comparison.</p>
+          </div>
+        </article>
+
+        <article class="showcase-slide">
+          <div class="showcase-bg grad-3"></div>
+          <div class="showcase-scrim"></div>
+          <div class="showcase-copy">
+            <p class="showcase-eyebrow">Impact</p>
+            <h2 class="showcase-heading">50% less grading time.</h2>
+            <p class="showcase-sub">Consistent, supportive feedback on every response&mdash;at scale.</p>
+          </div>
+        </article>
+
+        <div class="showcase-controls">
+          <div class="showcase-progress" role="tablist" aria-label="Slide progress">
+            <button class="showcase-seg" type="button" aria-label="Slide 1"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 2"><span class="showcase-seg-fill"></span></button>
+            <button class="showcase-seg" type="button" aria-label="Slide 3"><span class="showcase-seg-fill"></span></button>
+          </div>
+          <button class="showcase-playpause" type="button" aria-label="Pause">
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BODY / SECTIONS ============ -->
+  <main>
+    <div class="wrap">
+      <div class="project-body">
+
+        <section class="project-section">
+          <h2>Challenge</h2>
+          <p>
+            The Certified Admin exams included over 80 unique short-answer questions across
+            eight assessments, each requiring manual grading. The process was time-consuming,
+            inconsistent across graders, and difficult to scale.
+          </p>
+          <p>
+            Delivering contextual, personalized feedback was also hard given vague, overly
+            detailed, or partially correct responses from learners of varying backgrounds.
+          </p>
+        </section>
+
+        <section class="project-section">
+          <h2>Solution</h2>
+          <h3>AI-Powered Grading Engine</h3>
+          <ul>
+            <li>Trained on course materials, answer keys, and company-specific context.</li>
+            <li>Handles vague, nuanced, and over-detailed answers.</li>
+            <li>Excludes biased or incorrect historical data from training.</li>
+          </ul>
+          <h3>Feedback Generator</h3>
+          <ul>
+            <li>Produces precise, supportive feedback (e.g. "missing concept," "good structure, incomplete logic").</li>
+            <li>Encourages learning without pass/fail bias.</li>
+          </ul>
+          <h3>Evaluation Pipeline</h3>
+          <ul>
+            <li>Uses blind comparison against human graders to refine model accuracy.</li>
+            <li>Implements rubric-based scoring aligned with SME validation.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>My Role</h2>
+          <ul>
+            <li>Led project design and development from ideation to pilot testing.</li>
+            <li>Authored the custom prompt architecture and validation scripts.</li>
+            <li>Ran blind testing with SMEs and iterated based on feedback.</li>
+            <li>Designed the rollout and data-governance framework.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Tools &amp; Technologies</h2>
+          <ul>
+            <li><strong>Development:</strong> Excel, Word, proprietary LLM</li>
+            <li><strong>Integration:</strong> Skilljar (theoretical)</li>
+            <li><strong>Evaluation:</strong> SME blind scoring, feedback-loop design</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Impact</h2>
+          <div class="impact-stats">
+            <div class="stat">
+              <div class="num">50%</div>
+              <div class="label">Reduction in manual grading time</div>
+            </div>
+            <div class="stat">
+              <div class="num">95&ndash;99%</div>
+              <div class="label">Agreement with human graders</div>
+            </div>
+            <div class="stat">
+              <div class="num">70+</div>
+              <div class="label">Questions across 7 certification exams</div>
+            </div>
+            <div class="stat">
+              <div class="num">Consistent</div>
+              <div class="label">High-quality feedback on every response</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Nate. Built with HTML, CSS &amp; JavaScript.
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/showcase.js" defer></script>
+
+</body>
+</html>

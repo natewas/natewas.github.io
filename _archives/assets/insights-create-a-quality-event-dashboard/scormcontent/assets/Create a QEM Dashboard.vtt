@@ -1,0 +1,84 @@
+WEBVTT
+
+00:00:02.080 --> 00:00:06.920
+In this video, we’ll demonstrate how 
+to create a new Advanced QEM dashboard.
+
+00:00:06.920 --> 00:00:13.120
+In Insights, let's create a new folder. 
+We’ll also enter a name for the folder.
+
+00:00:13.120 --> 00:00:17.800
+Next, we’ll create a new dashboard, 
+select the Advanced QEM data source,
+
+00:00:17.800 --> 00:00:22.320
+and enter a title for the 
+dashboard. Then, select Create.
+
+00:00:22.320 --> 00:00:25.520
+Before creating a widget, we should 
+consider the questions we want to
+
+00:00:25.520 --> 00:00:29.960
+address in our dashboard. Let’s say we 
+want to answer the following questions:
+
+00:00:29.960 --> 00:00:32.320
+- What tags are included in our forms?
+
+00:00:32.320 --> 00:00:34.760
+- What workflow is each tag on?
+
+00:00:34.760 --> 00:00:36.800
+- What is the name of each event?
+
+00:00:36.800 --> 00:00:40.640
+- How did users respond to each form question?
+
+00:00:40.640 --> 00:00:44.600
+Now that we’ve identified our 
+questions, let’s add a widget.
+
+00:00:44.600 --> 00:00:47.840
+Let’s select a table as our chart.
+
+00:00:47.840 --> 00:00:52.920
+Now, the first question we want to answer 
+is, “What tags are included in our forms?”
+
+00:00:52.920 --> 00:00:59.920
+So let’s add a column, and search for and 
+select the Analytics Tag Name attribute.
+
+00:00:59.920 --> 00:01:07.200
+Great! Now, the second question we want to 
+answer is, “What workflow is each tag on?”
+
+00:01:07.200 --> 00:01:13.600
+Let’s add another column, and search for 
+and select the Workflow Name attribute.
+
+00:01:13.600 --> 00:01:18.280
+The third question we want to answer 
+is, “What is the name of each event?”
+
+00:01:18.280 --> 00:01:24.160
+Let’s add another column, and search 
+for and select the Event Name attribute.
+
+00:01:24.160 --> 00:01:28.560
+The fourth question we want to answer 
+is, “How did users respond to each form question?”
+
+00:01:28.560 --> 00:01:37.000
+Let’s add another column, and search for and 
+select the Event Element Value attribute.
+
+00:01:37.000 --> 00:01:48.240
+The last thing we’ll do is create a widget filter 
+to exclude tag names with the value Personal.
+
+00:01:48.240 --> 00:01:55.200
+And, of course, we’ll enter a 
+widget name, and select Apply.

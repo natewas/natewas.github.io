@@ -1,0 +1,608 @@
+/* ---- edit these two lines to re-theme the whole page ---- */
+:root {
+  --accent: #4f7cff;
+  --accent-dark: #3355cc;
+  --ink: #1a1d24;
+  --muted: #5b6472;
+  --bg: #ffffff;
+  --bg-soft: #f5f7fb;
+  --border: #e5e9f0;
+  --radius: 14px;
+  --max: 1080px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+/* ---- Navigation bar ---- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+.brand span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.nav-links a:hover { color: var(--ink); background: var(--bg-soft); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ---- Hero ---- */
+.hero { padding: 96px 0 72px; }
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--bg-soft);
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+.hero p {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 620px;
+  margin-bottom: 32px;
+}
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 10px;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  margin-left: 10px;
+}
+.btn.ghost:hover { background: var(--bg-soft); }
+
+/* ---- Generic section ---- */
+section { padding: 72px 0; }
+section:nth-of-type(even) { background: var(--bg-soft); }
+.section-title {
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-intro { color: var(--muted); max-width: 640px; margin-bottom: 40px; }
+
+/* ---- Cards grid (Portfolio) ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(26, 29, 36, 0.08);
+}
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+.card p { color: var(--muted); font-size: 0.95rem; }
+/* Small line icon beside a card title */
+.card-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--accent);
+}
+.card-icon svg { width: 22px; height: 22px; display: block; }
+/* Clickable cards (anchors) get a subtle accent title on hover */
+a.card:hover h3 { color: var(--accent); }
+
+/* "View full portfolio" style link under a grid */
+.view-all { margin-top: 32px; text-align: center; }
+.view-all a {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--accent);
+}
+.view-all a:hover { color: var(--accent-dark); }
+
+/* ---- About ---- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.about p { color: var(--muted); margin-bottom: 16px; }
+.skills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.skills li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---- Contact ---- */
+.contact { text-align: center; }
+.contact .section-intro { margin: 0 auto 32px; }
+
+/* ---- Footer ---- */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 720px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: absolute;
+    top: 66px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px 16px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 8px; border-radius: 6px; }
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .btn.ghost { margin-left: 0; margin-top: 10px; }
+}
+
+/* ============================================================
+   PROJECT PAGE TEMPLATE
+   Reusable styles for individual portfolio project pages.
+   ============================================================ */
+
+/* Neutralize only the homepage's <section> background striping on project
+   pages. (Don't reset padding here — it would out-specify the per-block
+   padding rules below and silently flatten their spacing.) */
+.project-page section { background: transparent; }
+
+/* ---- Breadcrumbs ---- */
+.breadcrumbs { padding: 32px 0 0; }
+.breadcrumbs ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.breadcrumbs li { display: flex; align-items: center; gap: 8px; }
+.breadcrumbs li + li::before { content: "/"; color: var(--border); }
+.breadcrumbs a { color: var(--muted); transition: color 0.15s ease; }
+.breadcrumbs a:hover { color: var(--accent); }
+.breadcrumbs li[aria-current] { color: var(--ink); font-weight: 500; }
+
+/* ---- Project hero ---- */
+.project-hero { padding: 52px 0 0; }
+.project-hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 4px 0 0;
+}
+.project-hero .lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 640px;
+  margin-top: 20px;
+}
+.project-hero .lead a { color: var(--accent); text-decoration: underline; }
+
+/* ---- Tags (multiple, filterable later) ---- */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin-bottom: 20px;
+}
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  padding: 6px 13px;
+  border-radius: 100px;
+}
+/* Hover affordance for when tags become filter links/buttons. */
+a.tag, button.tag {
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+a.tag:hover, button.tag:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ---- Image carousel ---- */
+.carousel { padding: 72px 0; }
+.carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+.carousel-slide { min-width: 100%; }
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+  background: var(--bg-soft);
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+.carousel-btn:hover { background: #fff; }
+.carousel-btn:active { transform: translateY(-50%) scale(0.96); }
+.carousel-btn.prev { left: 14px; }
+.carousel-btn.next { right: 14px; }
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.carousel-dot.active { background: var(--accent); transform: scale(1.2); }
+/* When there is only one image, hide the controls entirely. */
+.carousel[data-single] .carousel-btn,
+.carousel[data-single] .carousel-dots { display: none; }
+
+/* ---- Project body / content sections ---- */
+.project-body { max-width: 720px; }
+.project-section { padding: 48px 0; }
+/* First section sits directly under the carousel; let the carousel's own
+   bottom padding provide the gap so it matches the space above the image. */
+.project-body .project-section:first-child { padding-top: 0; }
+/* When a project has no carousel, <main> follows the hero directly. Restore
+   the top gap so the first section isn't jammed against the hero. */
+.project-hero + main { padding-top: 72px; }
+.project-section + .project-section { border-top: 1px solid var(--border); }
+.project-section h2 {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.project-section h3 {
+  font-size: 1.05rem;
+  margin: 24px 0 10px;
+}
+.project-section p { color: var(--muted); margin-bottom: 14px; }
+.project-section ul { list-style: none; }
+.project-section li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.project-section li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.project-section li strong { color: var(--ink); }
+
+/* ---- Impact stat tiles ---- */
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+.stat {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  background: var(--bg);
+}
+.stat .num {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+.stat .label {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+  .carousel-btn.prev { left: 8px; }
+  .carousel-btn.next { right: 8px; }
+}
+
+/* ============================================================
+   SHOWCASE — Apple-style auto-advancing image + text carousel.
+   Progress is driven by a CSS animation on the active segment;
+   when it finishes, showcase.js advances to the next slide, so
+   the fills and the slide changes stay in sync. Pause simply
+   freezes the animation (which also halts advancing).
+   ============================================================ */
+.showcase { padding: 48px 0 64px; }
+.showcase-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  height: clamp(300px, 34vw, 400px);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b0d12;
+  border: 1px solid var(--border);
+}
+
+/* Slides cross-fade; each has a background layer + a scrim for legibility. */
+.showcase-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.showcase-slide.is-active { opacity: 1; }
+.showcase-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+}
+/* Colorful gradient backgrounds — kept dark in the top-left corner (where the
+   copy sits) so white text stays legible as the gradient drifts. */
+.showcase-bg.grad-1 { background-image: linear-gradient(135deg, #1e3a8a 0%, #4f7cff 55%, #22d3ee 100%); }
+.showcase-bg.grad-2 { background-image: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #ec4899 100%); }
+.showcase-bg.grad-3 { background-image: linear-gradient(135deg, #065f46 0%, #059669 52%, #a3e635 100%); }
+.showcase-slide.is-active .showcase-bg {
+  animation: showcase-drift 16s ease-in-out infinite alternate;
+}
+@keyframes showcase-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+/* Light left-side scrim: a touch of extra contrast for the copy without
+   muddying the colors. */
+.showcase-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    rgba(6, 8, 15, 0.45) 0%,
+    rgba(6, 8, 15, 0.12) 52%,
+    rgba(6, 8, 15, 0) 100%);
+}
+.showcase-copy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 540px;
+  padding: clamp(24px, 4vw, 44px);
+  color: #fff;
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.25);
+}
+.showcase-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 12px;
+}
+.showcase-heading {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.showcase-sub {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 460px;
+}
+
+/* ---- Controls: segmented progress + play/pause ---- */
+.showcase-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.showcase-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 100px;
+  background: rgba(28, 30, 36, 0.55);
+  backdrop-filter: saturate(160%) blur(12px);
+}
+.showcase-seg {
+  position: relative;
+  width: 34px;
+  height: 5px;
+  padding: 0;
+  border: none;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+}
+.showcase-seg-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.showcase-seg.done .showcase-seg-fill { transform: scaleX(1); }
+.showcase-seg.active .showcase-seg-fill {
+  animation: showcase-fill var(--showcase-dur, 6s) linear forwards;
+}
+.showcase.is-paused .showcase-seg.active .showcase-seg-fill {
+  animation-play-state: paused;
+}
+@keyframes showcase-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.showcase-playpause {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(28, 30, 36, 0.55);
+  backdrop-filter: saturate(160%) blur(12px);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.showcase-playpause:hover { background: rgba(28, 30, 36, 0.85); }
+.showcase-playpause svg { width: 18px; height: 18px; display: block; fill: #fff; }
+.showcase-playpause .icon-play { display: none; }
+.showcase.is-paused .showcase-playpause .icon-play { display: block; }
+.showcase.is-paused .showcase-playpause .icon-pause { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-slide { transition: none; }
+  .showcase-slide.is-active .showcase-bg { animation: none; }
+  .showcase-seg.active .showcase-seg-fill { animation: none; transform: scaleX(1); }
+}
+
+@media (max-width: 720px) {
+  .showcase-viewport { height: clamp(340px, 80vw, 440px); }
+  .showcase-scrim {
+    background: linear-gradient(180deg,
+      rgba(8, 10, 15, 0.82) 0%,
+      rgba(8, 10, 15, 0.5) 45%,
+      rgba(8, 10, 15, 0.2) 100%);
+  }
+}
