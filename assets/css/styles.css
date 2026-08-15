@@ -7,6 +7,7 @@
   --bg: #ffffff;
   --bg-soft: #f5f7fb;
   --border: #e5e9f0;
+  --header-bg: rgba(255, 255, 255, 0.85);
   --radius: 14px;
   --max: 1080px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -29,7 +30,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--header-bg);
   backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -447,7 +448,7 @@ a.tag:hover, button.tag:hover {
   width: 100%;
   max-width: 880px;
   margin: 0 auto;
-  height: clamp(300px, 34vw, 400px);
+  height: clamp(280px, 30vw, 360px);
   border-radius: 20px;
   overflow: hidden;
   background: #0b0d12;
@@ -605,4 +606,25 @@ a.tag:hover, button.tag:hover {
       rgba(8, 10, 15, 0.5) 45%,
       rgba(8, 10, 15, 0.2) 100%);
   }
+}
+
+/* ---- Split hero: title/description on the left, showcase card on the right.
+   Add class "hero-split" to the .project-hero section and wrap its two
+   children (.hero-split-text and the .showcase) in .hero-split-grid. ---- */
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: start;
+}
+/* In split mode the showcase fills its column instead of being a centered band. */
+.hero-split .showcase { padding: 0; }
+.hero-split .showcase-viewport {
+  max-width: none;
+  margin: 0;
+  height: clamp(300px, 26vw, 380px);
+}
+@media (max-width: 860px) {
+  .hero-split-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-split .showcase-viewport { height: clamp(300px, 58vw, 380px); }
 }
