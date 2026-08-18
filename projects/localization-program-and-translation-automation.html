@@ -118,11 +118,27 @@
   </section>
 
   <!-- ============ BODY / SECTIONS ============ -->
-  <main>
+  <main class="project-band">
     <div class="wrap">
       <div class="project-body">
 
-        <section class="project-section">
+        <section class="project-section section-challenge">
+          <svg class="section-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="13.5" r="9"/>
+            <circle cx="10.5" cy="13.5" r="5.5"/>
+            <circle cx="10.5" cy="13.5" r="2"/>
+            <g class="mark-knockout" transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+            </g>
+            <g transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+              <path d="M17.9 13.5 L18.8 11.3 M19.5 13.5 L20.4 11.3 M17.9 13.5 L18.8 15.7 M19.5 13.5 L20.4 15.7"/>
+            </g>
+          </svg>
           <h2>Challenge</h2>
           <p>
             A global enterprise client's academy offers 750+ English-language eLearning courses but lacked a
@@ -142,29 +158,36 @@
 
         <section class="project-section">
           <h2>Solution</h2>
-          <p>
-            I built a program plan around an automated localization pipeline that processes and
-            reintegrates translated content with minimal human intervention.
-          </p>
-          <h3>Custom Utility Development</h3>
-          <ul>
-            <li>Extracts all course text, including <code>.vtt</code> captions, from SCORM packages.</li>
-            <li>Converts content into structured JSON for translation.</li>
-            <li>Uses SmartCat's CLI to batch-translate into 15 target languages.</li>
-            <li>Reintegrates translated assets into SCORM, preserving structure and LMS compatibility.</li>
-          </ul>
-          <h3>Full Ecosystem Translation</h3>
-          <p>The system localizes not just core course content, but also:</p>
-          <ul>
-            <li>Catalog pages and associated metadata.</li>
-            <li>Learning paths and UI-level navigation.</li>
-            <li>Multimedia captions and embedded instructional content.</li>
-          </ul>
-          <h3>Quality Control Loop</h3>
-          <p>
-            A feedback process with regional SMEs ensures high-quality, contextually relevant
-            translations. Version control is built into the utility for efficient iteration.
-          </p>
+
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>A full course localized in 24 hours</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>A custom utility extracts course text and <code>.vtt</code> captions from SCORM, converts them to structured JSON, batch-translates into 15 languages via SmartCat's CLI, and reintegrates every asset while preserving structure and LMS compatibility.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>The whole ecosystem, not just text</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Localizes catalog pages, metadata, learning paths, UI navigation, and multimedia captions, not only the core course content.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Quality kept in the loop</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Regional SMEs review each output for context and accuracy, and version control is built into the utility for fast iteration.</p>
+              </div></div>
+            </div>
+          </div>
         </section>
 
         <section class="project-section">
@@ -175,16 +198,6 @@
             <li>Developed the custom SCORM-to-JSON utility in Python.</li>
             <li>Integrated the SmartCat CLI with the client's LMS and authoring pipeline.</li>
             <li>Collaborated with global stakeholders to validate and test localized outputs.</li>
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2>Tools &amp; Technologies</h2>
-          <ul>
-            <li><strong>Development:</strong> Python, SmartCat CLI, JSON, SCORM 1.2/2004</li>
-            <li><strong>Authoring:</strong> Articulate Rise</li>
-            <li><strong>LMS:</strong> Skilljar</li>
-            <li><strong>Collaboration &amp; Versioning:</strong> Git</li>
           </ul>
         </section>
 

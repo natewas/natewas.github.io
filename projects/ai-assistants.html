@@ -117,11 +117,27 @@
   </section>
 
   <!-- ============ BODY / SECTIONS ============ -->
-  <main>
+  <main class="project-band">
     <div class="wrap">
       <div class="project-body">
 
-        <section class="project-section">
+        <section class="project-section section-challenge">
+          <svg class="section-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="13.5" r="9"/>
+            <circle cx="10.5" cy="13.5" r="5.5"/>
+            <circle cx="10.5" cy="13.5" r="2"/>
+            <g class="mark-knockout" transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+            </g>
+            <g transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+              <path d="M17.9 13.5 L18.8 11.3 M19.5 13.5 L20.4 11.3 M17.9 13.5 L18.8 15.7 M19.5 13.5 L20.4 15.7"/>
+            </g>
+          </svg>
           <h2>Challenge</h2>
           <p>
             The Certified Admin exams included over 80 unique short-answer questions across
@@ -136,22 +152,36 @@
 
         <section class="project-section">
           <h2>Solution</h2>
-          <h3>AI-Powered Grading Engine</h3>
-          <ul>
-            <li>Trained on course materials, answer keys, and company-specific context.</li>
-            <li>Handles vague, nuanced, and over-detailed answers.</li>
-            <li>Excludes biased or incorrect historical data from training.</li>
-          </ul>
-          <h3>Feedback Generator</h3>
-          <ul>
-            <li>Produces precise, supportive feedback (e.g. "missing concept," "good structure, incomplete logic").</li>
-            <li>Encourages learning without pass/fail bias.</li>
-          </ul>
-          <h3>Evaluation Pipeline</h3>
-          <ul>
-            <li>Uses blind comparison against human graders to refine model accuracy.</li>
-            <li>Implements rubric-based scoring aligned with SME validation.</li>
-          </ul>
+
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Consistent, contextual grading</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>An engine trained on course materials, answer keys, and company context handles vague, nuanced, and over-detailed answers, while excluding biased or incorrect historical data.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Feedback that teaches</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Generates precise, supportive feedback (e.g. "missing concept," "good structure, incomplete logic") without pass/fail bias.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Validated against human graders</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Rubric-based scoring, aligned with SME validation and refined through blind comparison against human graders.</p>
+              </div></div>
+            </div>
+          </div>
         </section>
 
         <section class="project-section">
@@ -161,15 +191,6 @@
             <li>Authored the custom prompt architecture and validation scripts.</li>
             <li>Ran blind testing with SMEs and iterated based on feedback.</li>
             <li>Designed the rollout and data-governance framework.</li>
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2>Tools &amp; Technologies</h2>
-          <ul>
-            <li><strong>Development:</strong> Excel, Word, proprietary LLM</li>
-            <li><strong>Integration:</strong> Skilljar (theoretical)</li>
-            <li><strong>Evaluation:</strong> SME blind scoring, feedback-loop design</li>
           </ul>
         </section>
 

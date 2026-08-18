@@ -35,39 +35,7 @@
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero-woodworks" id="home">
-    <!-- Hand-drawn dovetail joint schematic (decorative background) -->
-    <svg class="hero-sketch" viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <filter id="ww-sketch" x="-6%" y="-6%" width="112%" height="112%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="4" result="n" />
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.4" />
-        </filter>
-      </defs>
-      <g filter="url(#ww-sketch)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
-        <!-- assembled panel outline -->
-        <rect x="60" y="70" width="370" height="260" />
-        <!-- interlocking dovetail seam (tails right, pins left) -->
-        <path d="M245,70 L245,90 L295,82 L295,138 L245,130 L245,150 L195,142 L195,198 L245,190 L245,210 L295,202 L295,258 L245,250 L245,270 L195,262 L195,318 L245,310 L245,330" />
-        <!-- section hatching on the left board -->
-        <g stroke-width="1.3" opacity="0.7">
-          <line x1="80" y1="112" x2="112" y2="90" />
-          <line x1="80" y1="146" x2="122" y2="118" />
-          <line x1="80" y1="180" x2="122" y2="152" />
-          <line x1="80" y1="214" x2="122" y2="186" />
-          <line x1="80" y1="248" x2="118" y2="222" />
-        </g>
-        <!-- top dimension line with end ticks -->
-        <g stroke-width="1.3">
-          <line x1="60" y1="52" x2="430" y2="52" />
-          <line x1="60" y1="45" x2="60" y2="59" />
-          <line x1="430" y1="45" x2="430" y2="59" />
-        </g>
-        <!-- slope callout: 1:8 dovetail ratio -->
-        <path d="M330,150 L372,150 L372,166" stroke-width="1.3" />
-        <text x="332" y="145" font-family="'Courier New', monospace" font-size="15" letter-spacing="1" fill="currentColor" stroke="none">1:8</text>
-      </g>
-    </svg>
+  <section class="hero" id="home">
     <div class="wrap">
       <h1>Wasden Woodworks</h1>
       <p>

@@ -117,11 +117,27 @@
   </section>
 
   <!-- ============ BODY / SECTIONS ============ -->
-  <main>
+  <main class="project-band">
     <div class="wrap">
       <div class="project-body">
 
-        <section class="project-section">
+        <section class="project-section section-challenge">
+          <svg class="section-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="13.5" r="9"/>
+            <circle cx="10.5" cy="13.5" r="5.5"/>
+            <circle cx="10.5" cy="13.5" r="2"/>
+            <g class="mark-knockout" transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+            </g>
+            <g transform="rotate(-45 10.5 13.5)">
+              <line x1="10.5" y1="13.5" x2="22" y2="13.5"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 10.8 L17 10.8 Z"/>
+              <path d="M16 13.5 L21.5 13.5 L22.5 16.2 L17 16.2 Z"/>
+              <path d="M17.9 13.5 L18.8 11.3 M19.5 13.5 L20.4 11.3 M17.9 13.5 L18.8 15.7 M19.5 13.5 L20.4 15.7"/>
+            </g>
+          </svg>
           <h2>Challenge</h2>
           <p>
             During a major LMS implementation, the platform lacked API methods for essential
@@ -134,13 +150,36 @@
 
         <section class="project-section">
           <h2>Solution</h2>
-          <ul>
-            <li>Developed Python scripts using Selenium to automate browser tasks.</li>
-            <li>Automated course creation, tagging, SCORM uploads, and link remapping.</li>
-            <li>Built a matrix mapping legacy course links to new LMS URLs using analytics reports.</li>
-            <li>Scraped course HTML to identify old links and replace them accurately.</li>
-            <li>Scheduled scripts to run in the background for continuous, high-volume updates.</li>
-          </ul>
+
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>The work the API couldn't do</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Python and Selenium scripts handled course creation, tagging, SCORM uploads, and link remapping.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Links remapped accurately at scale</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>A matrix mapped legacy course links to new LMS URLs from analytics reports, and scripts scraped course HTML to find and replace old links.</p>
+              </div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" type="button" aria-expanded="false">
+                <span class="accordion-icon" aria-hidden="true"></span>
+                <span>Runs unattended</span>
+              </button>
+              <div class="accordion-panel"><div>
+                <p>Scheduled to run in the background for continuous, high-volume updates.</p>
+              </div></div>
+            </div>
+          </div>
         </section>
 
         <section class="project-section">
@@ -148,15 +187,6 @@
           <ul>
             <li>Independently scoped, developed, and deployed all browser-automation scripts.</li>
             <li>Enabled the full LMS migration to happen on schedule despite platform limitations.</li>
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2>Tools &amp; Technologies</h2>
-          <ul>
-            <li><strong>Languages &amp; Libraries:</strong> Python, Selenium</li>
-            <li><strong>Platforms:</strong> Skilljar, Articulate Rise 360</li>
-            <li><strong>Utilities:</strong> Windows Command Prompt</li>
           </ul>
         </section>
 
