@@ -534,6 +534,22 @@ a.tag:hover, button.tag:hover {
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
+/* Large decorative section mark in the right margin (e.g. Challenge target). */
+.section-challenge { position: relative; }
+.section-mark {
+  position: absolute;
+  top: 0;
+  left: 760px;
+  width: 190px;
+  height: 190px;
+  color: var(--muted);
+  pointer-events: none;
+}
+/* Halo behind the arrow, in the band colour, so the rings are cut back and
+   the arrow sits on top with a clean margin. Filled so the rings don't show
+   through the hollow fletching vanes. */
+.section-mark .mark-knockout { stroke: var(--bg-soft); stroke-width: 1.8; fill: var(--bg-soft); }
+@media (max-width: 1120px) { .section-mark { display: none; } }
 .project-section h3 {
   font-size: 1.05rem;
   margin: 56px 0 10px;
