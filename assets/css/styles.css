@@ -1,7 +1,7 @@
 /* ---- edit these two lines to re-theme the whole page ---- */
 :root {
-  --accent: #4f7cff;
-  --accent-dark: #3355cc;
+  --accent: #7c3aed;
+  --accent-dark: #6d28d9;
   --ink: #1a1d24;
   --muted: #5b6472;
   --bg: #ffffff;
@@ -521,6 +521,14 @@ a.tag:hover, button.tag:hover {
    the top gap so the first section isn't jammed against the hero. */
 .project-hero + main { padding-top: 72px; }
 .project-section + .project-section { border-top: 1px solid var(--border); }
+
+/* Full-width muted-grey band behind the whole case-study body. */
+.project-band { background: var(--bg-soft); }
+/* White breathing room below the hero so the showcase card doesn't butt
+   against the grey band. Applies only when a band actually follows. */
+.project-hero:has(+ .project-band) { padding-bottom: 56px; }
+/* Accordion pills are bg-soft by default; lift them to white on the grey band. */
+.project-band .accordion-head { background: var(--bg); }
 .project-section h2 {
   font-size: 1.6rem;
   letter-spacing: -0.02em;
