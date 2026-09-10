@@ -287,8 +287,13 @@ a.card:hover .card-arrow { opacity: 1; transform: translateX(0); color: var(--ac
 /* ---- Woodworking gallery ---- */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+/* Masonry mode (added by JS once images have measured heights) */
+.gallery.is-masonry {
+  grid-auto-rows: 10px;
 }
 .gallery figure {
   margin: 0;
@@ -305,8 +310,7 @@ a.card:hover .card-arrow { opacity: 1; transform: translateX(0); color: var(--ac
 .gallery img {
   display: block;
   width: 100%;
-  height: 230px;
-  object-fit: cover;
+  height: auto;
   background: var(--bg-soft);
 }
 .gallery figcaption {
